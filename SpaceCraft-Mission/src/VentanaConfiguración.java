@@ -102,6 +102,7 @@ public class VentanaConfiguración extends JFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				if (rdbtnAzul.isSelected()== false && rdbtnVerde.isSelected()== false && rdbtnRojo.isSelected()== false){
 					JOptionPane.showMessageDialog(null, "Seleccione un color de nave");
 				}else if(rdbtnWasd.isSelected()==false&&radioButton.isSelected()==false){

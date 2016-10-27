@@ -56,6 +56,13 @@ public class Nave {
 	public void setPosY(double posY) {
 		this.posY = posY;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Nave [miVelocidad=" + miVelocidad + ", miDireccionActual=" + miDireccionActual + ", posX=" + posX
+				+ ", posY=" + posY + "]";
+	}
 	
 	
 	
