@@ -1,13 +1,20 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Clases.Configuracion;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaConfiguración extends JFrame {
 
@@ -91,7 +98,37 @@ public class VentanaConfiguración extends JFrame {
 		//2º Grupo
 		BotonesFlechas.add(rdbtnWasd);
 		BotonesFlechas.add(radioButton);
+		Configuracion config=new Configuracion();
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (rdbtnAzul.isSelected()== false && rdbtnVerde.isSelected()== false && rdbtnRojo.isSelected()== false){
+					JOptionPane.showMessageDialog(null, "Seleccione un color de nave");
+				}else if(rdbtnWasd.isSelected()==false&&radioButton.isSelected()==false){
+					JOptionPane.showMessageDialog(null, "Seleccione una configuracion de botones");
+				}else if(rdbtnAzul.isSelected()== false && rdbtnVerde.isSelected()== false && rdbtnRojo.isSelected()== false&&rdbtnWasd.isSelected()==false&&radioButton.isSelected()==false){
+					JOptionPane.showMessageDialog(null, "Seleccione un color de nave y una configuracion de botones");
+				}else if (rdbtnAzul.isSelected()== true ){
+					config.setColorNave(Color.BLUE);
+				}else if (rdbtnVerde.isSelected()== true ){
+					config.setColorNave(Color.GREEN);
+				}else if (rdbtnRojo.isSelected()== true ){
+					config.setColorNave(Color.RED);
+				}else if (rdbtnWasd.isSelected()==true){
+					config.setTeclas(0);
+				}else if (radioButton.isSelected()==true){
+					config.setTeclas(1);
+				}
+			   }
+		});
+		btnAceptar.setBounds(228, 227, 89, 23);
+		contentPane.add(btnAceptar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(335, 227, 89, 23);
+		contentPane.add(btnCancelar);
 		
 		
 	}
+	
 }
