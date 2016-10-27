@@ -55,7 +55,7 @@ public class PrimeraVentana extends JFrame {
 		contentPane.add(MensajeBienvenida);
 
 		btnQuieroJugar = new JButton("Quiero Jugar");
-		btnQuieroJugar.setBounds(159, 85, 106, 23);
+		btnQuieroJugar.setBounds(159, 119, 129, 23);
 		contentPane.add(btnQuieroJugar);
 		btnQuieroJugar.addActionListener(new ActionListener(){
 
@@ -64,6 +64,15 @@ public class PrimeraVentana extends JFrame {
 			String NombreJugador = Jugador.getText();
 			if (NombreJugador.length() ==0 ){
 				JOptionPane.showMessageDialog(null, "No ha introducido un nombre de usuario");
+				
+				
+			}
+			
+			else{
+				Clases.Jugador j = new Clases.Jugador (NombreJugador);
+				VentanaPrincipal vp = new VentanaPrincipal(j);
+				vp.setVisible(true);
+				dispose();
 				
 				
 			}
@@ -89,7 +98,7 @@ public class PrimeraVentana extends JFrame {
 		contentPane.add(btnSalir);
 		
 		Jugador = new JTextField();
-		Jugador.setBounds(171, 130, 86, 20);
+		Jugador.setBounds(159, 65, 129, 20);
 		contentPane.add(Jugador);
 		Jugador.setColumns(10);
 		

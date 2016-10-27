@@ -4,9 +4,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Clases.Configuracion;
+import Clases.Jugador;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -16,7 +21,7 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -28,11 +33,11 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal() {
+	public VentanaPrincipal(Jugador e) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 365);
 		contentPane = new JPanel();
@@ -48,7 +53,7 @@ public class VentanaPrincipal extends JFrame {
 		
 		
 		
-		ElegirMundo.setBounds(156, 117, 133, 28);
+		ElegirMundo.setBounds(180, 118, 133, 28);
 		contentPane.add(ElegirMundo);
 		
 		MenuConfiguracion = new JButton ("Configuración");
@@ -60,7 +65,11 @@ public class VentanaPrincipal extends JFrame {
 			}
 		
 		});
-		MenuConfiguracion.setBounds(156, 198, 133, 28);
+		MenuConfiguracion.setBounds(180, 185, 133, 28);
 		contentPane.add(MenuConfiguracion);
+		
+		JLabel lblNewLabel = new JLabel("Menu Principal (Cambiar por un icono)");
+		lblNewLabel.setBounds(180, 31, 165, 46);
+		contentPane.add(lblNewLabel);
 	}
 }

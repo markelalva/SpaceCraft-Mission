@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 
 public class VentanaConfiguración extends JFrame {
@@ -79,5 +80,18 @@ public class VentanaConfiguración extends JFrame {
 		JRadioButton radioButton = new JRadioButton("\u2190\u2191\u2192\u2193");
 		radioButton.setBounds(174, 194, 109, 23);
 		contentPane.add(radioButton);
+		
+		ButtonGroup BotonesNave = new ButtonGroup();
+		ButtonGroup BotonesFlechas = new ButtonGroup();
+		//Agrupamos los botones
+		//1º Grupo
+		BotonesNave.add(rdbtnAzul);
+		BotonesNave.add(rdbtnVerde);
+		BotonesNave.add(rdbtnRojo);
+		//2º Grupo
+		BotonesFlechas.add(rdbtnWasd);
+		BotonesFlechas.add(radioButton);
+		
+		
 	}
 }

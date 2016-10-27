@@ -4,9 +4,9 @@ public class Jugador {
 	
 	private String nombre;
 	private Configuracion confi;
-	public Jugador(String nombre, Configuracion confi) {
+	public Jugador(String nombre) {
 		this.nombre = nombre;
-		this.confi = confi;
+		this.confi = new Configuracion();
 	}
 	
 	public Jugador(){
