@@ -12,12 +12,14 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JButton ElegirMundo;
 	private JButton MenuConfiguracion;
+	private JLabel NombreUsuario;
 	/**
 	 * Launch the application.
 	 */
@@ -60,16 +62,24 @@ public class VentanaPrincipal extends JFrame {
 		MenuConfiguracion.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e){
+				VentanaConfiguración vc = new VentanaConfiguración();
+				vc.setVisible(true);
+				
 				
 				
 			}
+			
 		
 		});
 		MenuConfiguracion.setBounds(180, 185, 133, 28);
 		contentPane.add(MenuConfiguracion);
 		
 		JLabel lblNewLabel = new JLabel("Menu Principal (Cambiar por un icono)");
-		lblNewLabel.setBounds(180, 31, 165, 46);
+		lblNewLabel.setBounds(180, 23, 165, 46);
 		contentPane.add(lblNewLabel);
+		
+		NombreUsuario = new JLabel(e.getNombre());
+		NombreUsuario.setBounds(10, 23, 46, 14);
+		contentPane.add(NombreUsuario);
 	}
 }
