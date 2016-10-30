@@ -39,16 +39,13 @@ public class Configuracion {
 		Teclas = teclas;
 	}
 
+	@Override
+
+
 	//ToString
 	public String toString() {
-		String teclas;
-		if (Teclas ==0){
-			teclas = "WASD";
-		}
-		else
-			teclas ="Flechas";
-	
-	return "La configuración actual es : Usando las " + teclas + " y con la nave de color: " + this.ColorNave ;
+		return "Configuracion [ColorNave=" + ColorNave + ", Teclas=" + Teclas + "]";
+	}
 	
 
 	
@@ -58,5 +55,5 @@ public class Configuracion {
 	
 	
 
-}
+
 }

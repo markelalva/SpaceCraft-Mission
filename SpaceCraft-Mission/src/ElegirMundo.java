@@ -9,6 +9,9 @@ import javax.swing.JLabel;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import Clases.Jugador;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +29,7 @@ public class ElegirMundo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ElegirMundo frame = new ElegirMundo();
+					ElegirMundo frame = new ElegirMundo(new Jugador());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +41,7 @@ public class ElegirMundo extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ElegirMundo() {
+	public ElegirMundo(Jugador usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 529, 356);
 		contentPane = new JPanel();
@@ -67,6 +70,15 @@ public class ElegirMundo extends JFrame {
 		contentPane.add(Mundo3);
 		
 		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal vp = new VentanaPrincipal(usuario);
+				vp.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 		btnVolver.setBounds(364, 263, 89, 23);
 		contentPane.add(btnVolver);
 		

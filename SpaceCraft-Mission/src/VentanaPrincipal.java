@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal(Jugador e) {
+	public VentanaPrincipal(Jugador usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 365);
 		contentPane = new JPanel();
@@ -50,6 +50,9 @@ public class VentanaPrincipal extends JFrame {
 		ElegirMundo = new JButton("Seleccionar Nivel");
 		ElegirMundo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ElegirMundo em = new ElegirMundo(usuario);
+				em.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -62,15 +65,28 @@ public class VentanaPrincipal extends JFrame {
 		MenuConfiguracion.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e){
-				VentanaConfiguración vc = new VentanaConfiguración();
+				VentanaConfiguración vc = new VentanaConfiguración(usuario.getConfi());
 				vc.setVisible(true);
+				vc.btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						usuario.setConfi(vc.getModificada());
+						vc.dispose();
+					}
+					
+					
+				}
 				
 				
 				
-			}
+			
+			
+			
 			
 		
-		});
+		);
+			}
+		}
+		);
 		MenuConfiguracion.setBounds(180, 185, 133, 28);
 		contentPane.add(MenuConfiguracion);
 		
@@ -78,8 +94,11 @@ public class VentanaPrincipal extends JFrame {
 		lblNewLabel.setBounds(180, 23, 165, 46);
 		contentPane.add(lblNewLabel);
 		
-		NombreUsuario = new JLabel(e.getNombre());
+		NombreUsuario = new JLabel(usuario.getNombre());
 		NombreUsuario.setBounds(10, 23, 46, 14);
 		contentPane.add(NombreUsuario);
 	}
 }
+
+
+
