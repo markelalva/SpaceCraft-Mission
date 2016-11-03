@@ -56,6 +56,8 @@ public class ElegirMundo extends JFrame {
 		Mundo1 = new JButton("1");
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				VentanaJuego as = new VentanaJuego();
+				as.setVisible(true);
 			}
 		});
 		Mundo1.setBounds(22, 54, 89, 23);

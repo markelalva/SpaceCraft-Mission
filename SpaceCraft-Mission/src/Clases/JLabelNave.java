@@ -1,15 +1,13 @@
 package Clases;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import Clases.*;
 
 public class JLabelNave extends JLabel {
 	
@@ -17,17 +15,16 @@ public class JLabelNave extends JLabel {
 		public static final int TAMANYO_NAVE = 50;  // píxels (igual ancho que algo)
 		public static final int RADIO_ESFERA_COCHE = 35;  // Radio en píxels del bounding circle del coche (para choques)
 		private static final boolean DIBUJAR_ESFERA_NAVE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
-public JLabelNave(Color c){
+public JLabelNave(){
+	//TODO Dependiendo del color que se le pase, se cogerá un icono u otro.
 	try {
-		//TODO Dependiendo del color que se le pase, se cogerá un icono u otro.
-		setIcon( new ImageIcon( JLabelNave.class.getResource( "img/nave.png" ).toURI().toURL() ) );
-	} catch (MalformedURLException e) {
+		setIcon( new ImageIcon( JLabelNave.class.getResource( "Clases/nave.png" ).toURI().toURL() ) );
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (URISyntaxException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		System.err.println( "Error en carga de recurso: nave.png no encontrado" );
+		
 	}
+	
 	
 	
 }

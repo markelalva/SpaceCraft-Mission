@@ -16,6 +16,10 @@ import javax.swing.JTextField;
 
 public class VentanaPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4962475822908674877L;
 	private JPanel contentPane;
 	private JButton ElegirMundo;
 	private JButton MenuConfiguracion;

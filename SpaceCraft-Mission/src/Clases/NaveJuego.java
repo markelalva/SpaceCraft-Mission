@@ -8,15 +8,16 @@ public class NaveJuego extends Nave {
 private JLabelNave miGrafico; 
 
 
-public NaveJuego(Color c){
+public NaveJuego(){
 	//Le pasamos un color para elegir un icono u otro
-	miGrafico = new JLabelNave(c);
+	miGrafico = new JLabelNave();
 	
 	
 }
 
 
 public JLabelNave getMiGrafico() {
+	System.out.println("ger mi frafico");
 	return miGrafico;
 }
 
@@ -36,6 +37,17 @@ public void setPosY(double posY) {
 	super.setPosY(posY);
 	miGrafico.setLocation( (int)posX, (int)posY );
 }
+
+
+@Override
+public String toString() {
+	return "NaveJuego [miGrafico=" + miGrafico + "]";
+}
+
+
+
+
+
 
 
 
