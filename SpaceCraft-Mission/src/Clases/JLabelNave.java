@@ -12,18 +12,20 @@ import Clases.*;
 public class JLabelNave extends JLabel {
 	
 		private static final long serialVersionUID = 1L;  // Para serialización
-		public static final int TAMANYO_NAVE = 50;  // píxels (igual ancho que algo)
+		public static final int TAMANYO_NAVE = 100;  // píxels (igual ancho que algo)
 		public static final int RADIO_ESFERA_COCHE = 35;  // Radio en píxels del bounding circle del coche (para choques)
 		private static final boolean DIBUJAR_ESFERA_NAVE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
 public JLabelNave(){
 	//TODO Dependiendo del color que se le pase, se cogerá un icono u otro.
 	try {
-		setIcon( new ImageIcon( JLabelNave.class.getResource( "Clases/nave.png" ).toURI().toURL() ) );
+		setIcon( new ImageIcon( JLabelNave.class.getResource("nave.png" ).toURI().toURL() ) );
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		System.err.println( "Error en carga de recurso: nave.png no encontrado" );
 		
 	}
+	
+	 setSize( TAMANYO_NAVE, TAMANYO_NAVE );  
 	
 	
 	

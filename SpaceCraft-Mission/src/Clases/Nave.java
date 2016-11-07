@@ -36,15 +36,23 @@ public class Nave {
 	public void setMiDireccionActual(double miDireccionActual) {
 		this.miDireccionActual = miDireccionActual;
 	}
+	
+	public void setPosicion(double posX, double posY) {
+		setPosX(posX);
+		setPosY(posY);
+	}
+	
+	public void setPosX(double posX) {
+		this.posX = posX;
+	}
+
+	public void setPosY(double posY) {
+		this.posY = posY;
+	}
 
 
 	public double getPosX() {
 		return posX;
-	}
-
-
-	public void setPosX(double posX) {
-		this.posX = posX;
 	}
 
 
@@ -53,9 +61,6 @@ public class Nave {
 	}
 
 
-	public void setPosY(double posY) {
-		this.posY = posY;
-	}
 
 
 	@Override

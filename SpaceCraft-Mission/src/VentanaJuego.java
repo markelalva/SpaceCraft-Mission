@@ -23,14 +23,21 @@ public class VentanaJuego extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanel();
 		Principal.setBounds(0, 58, 994, 663);
+		Principal.setFocusable(true);
 		mensajes = new JPanel();
 				getContentPane().setLayout(null);
 		
 		// Formato y layouts
 				Principal.setLayout( null );
-				Principal.setBackground( Color.white );
+				Principal.setBackground( Color.WHITE );
 				// Añadido de componentes a contenedores
-				getContentPane().add( Principal );
+				getContentPane().add( Principal,  BorderLayout.CENTER );
+				
+				
+				// Formato de ventana
+				setSize( 1000, 750 );
+				setResizable( false );
+				
 				
 				JPanel Informacion = new JPanel();
 				Informacion.setBackground(Color.YELLOW);
@@ -42,18 +49,17 @@ public class VentanaJuego extends JFrame {
 				Puntuacion1.setBounds(10, 21, 99, 14);
 				Informacion.add(Puntuacion1);
 				
-				JLabel Tiempo1 = new JLabel("TIEMPO:");
+				JLabel Tiempo1 = new JLabel("TIEMPO: ");
 				Tiempo1.setBounds(582, 21, 46, 14);
 				Informacion.add(Tiempo1);
-				// Formato de ventana
-				setSize( 1000, 750 );
-				setResizable( false );
+			
 		
 		
-				miMundo = new GenerarMundo( Principal );
-				miMundo.cargarNave();
-				nave = miMundo.getNave();
-				Principal.repaint();
+				this.miMundo = new GenerarMundo( Principal );
+				this.miMundo.cargarNave(0,00);
+				this.nave = miMundo.getNave();
+				this.Principal.repaint();
+			
 				
 			}
 		

@@ -1,14 +1,10 @@
 package Clases;
 
-import java.awt.Color;
-
-import org.omg.Messaging.SyncScopeHelper;
-
 public class NaveJuego extends Nave {
 private JLabelNave miGrafico; 
 
 
-public NaveJuego(){
+public NaveJuego (){
 	//Le pasamos un color para elegir un icono u otro
 	miGrafico = new JLabelNave();
 	
@@ -17,7 +13,6 @@ public NaveJuego(){
 
 
 public JLabelNave getMiGrafico() {
-	System.out.println("ger mi frafico");
 	return miGrafico;
 }
 

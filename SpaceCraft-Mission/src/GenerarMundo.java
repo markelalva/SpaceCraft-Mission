@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import Clases.NaveJuego;
 
 public class GenerarMundo {
-	JPanel panel;
+	private JPanel panel;
 	NaveJuego nave;	
 
 
@@ -14,10 +14,9 @@ public class GenerarMundo {
 		this.panel = panel;
 	} 
 	
-	public void cargarNave(){
+	public void cargarNave(double posx, double posy){
 		nave = new NaveJuego();
-		nave.setPosX(100);
-		nave.setPosY(100);
+		nave.setPosicion(posx, posy);
 		panel.add( nave.getMiGrafico() );  // Añade al panel visual	
 		nave.getMiGrafico().repaint();
 	

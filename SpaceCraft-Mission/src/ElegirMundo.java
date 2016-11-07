@@ -31,6 +31,7 @@ public class ElegirMundo extends JFrame {
 				try {
 					ElegirMundo frame = new ElegirMundo(new Jugador());
 					frame.setVisible(true);
+					System.out.println("HOLA");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
