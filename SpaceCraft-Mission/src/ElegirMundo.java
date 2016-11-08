@@ -21,6 +21,7 @@ public class ElegirMundo extends JFrame {
 	private JPanel contentPane;
 	private JButton Mundo1, Mundo2, Mundo3;
 	private JButton btnVolver;
+	
 
 	/**
 	 * Launch the application.
@@ -57,7 +58,7 @@ public class ElegirMundo extends JFrame {
 		Mundo1 = new JButton("1");
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaJuego as = new VentanaJuego();
+				VentanaJuego as = new VentanaJuego(usuario);
 				as.setVisible(true);
 			}
 		});

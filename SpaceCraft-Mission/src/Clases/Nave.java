@@ -5,6 +5,9 @@ public class Nave {
 	protected double miDireccionActual; // Dirección en la que estoy mirando en grados (de 0 a 360)
 	protected double posX; // Posición en X (horizontal)
 	protected double posY; //Posicion en Y (vertical)
+	private final static int LIMITE_SUPERIOR = -5;
+	private final static int LIMITE_INFERIOR = 615;
+	
 	
 	
 	public Nave() {
@@ -68,6 +71,33 @@ public class Nave {
 		return "Nave [miVelocidad=" + miVelocidad + ", miDireccionActual=" + miDireccionActual + ", posX=" + posX
 				+ ", posY=" + posY + "]";
 	}
+	
+	
+	public void MovimientoEjeY(boolean bajar){
+		//Si subir es true, la nave sube, si es false, la nave baja
+		if (this.posY >=LIMITE_SUPERIOR && this.posY <= LIMITE_INFERIOR){
+		if (bajar)	{
+		setPosY(this.posY + 10);
+		//Para evitar que pase de 615.
+		if (posY >615)
+		setPosY(615);
+		}
+		else
+		setPosY(this.posY -10);
+		
+		}
+		
+	}
+	
+
+	
+	public void Gravedad(){
+		if (this.posY < LIMITE_INFERIOR )
+		setPosY(this.posY +1);
+		
+	}
+	
+	
 	
 	
 	

@@ -1,68 +1,230 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Clases.Jugador;
 import Clases.NaveJuego;
-
-
 public class VentanaJuego extends JFrame {
-	
+
 	private static final long serialVersionUID = 1L;
-	JPanel Principal;
-	JPanel mensajes;
-	JLabel Tiempo;
-	JLabel Puntuacion;
+	static Fondo panelfondo;
+	JPanel Principal, mensajes;
+	JLabel Tiempo, Puntuacion;
 	GenerarMundo miMundo;
 	NaveJuego nave;
-	
-	public VentanaJuego(){
+	boolean presionado[];
+	MiRunnable Hilo = null;
+
+
+	public VentanaJuego(Jugador usuario) {
+		
+		
+		presionado = new boolean[4];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanel();
 		Principal.setBounds(0, 58, 994, 663);
 		Principal.setFocusable(true);
 		mensajes = new JPanel();
-				getContentPane().setLayout(null);
-		
+		getContentPane().setLayout(null);
+
 		// Formato y layouts
-				Principal.setLayout( null );
-				Principal.setBackground( Color.WHITE );
-				// Añadido de componentes a contenedores
-				getContentPane().add( Principal,  BorderLayout.CENTER );
-				
-				
-				// Formato de ventana
-				setSize( 1000, 750 );
-				setResizable( false );
-				
-				
-				JPanel Informacion = new JPanel();
-				Informacion.setBackground(Color.YELLOW);
-				Informacion.setBounds(0, 0, 994, 59);
-				getContentPane().add(Informacion);
-				Informacion.setLayout(null);
-				
-				JLabel Puntuacion1 = new JLabel("PUNTUACION:");
-				Puntuacion1.setBounds(10, 21, 99, 14);
-				Informacion.add(Puntuacion1);
-				
-				JLabel Tiempo1 = new JLabel("TIEMPO: ");
-				Tiempo1.setBounds(582, 21, 46, 14);
-				Informacion.add(Tiempo1);
-			
+		Principal.setLayout(null);
+		Principal.setBackground(Color.WHITE);
+		// Añadido de componentes a contenedores
+		getContentPane().add(Principal, null);
+
+		// Formato de ventana
+		setSize(1000, 750);
+		setResizable(false);
 		
 		
-				this.miMundo = new GenerarMundo( Principal );
-				this.miMundo.cargarNave(0,00);
-				this.nave = miMundo.getNave();
-				this.Principal.repaint();
+
+		JPanel Informacion = new JPanel();
+		Informacion.setBackground(Color.YELLOW);
+		Informacion.setBounds(0, 0, 994, 59);
+		getContentPane().add(Informacion);
+		Informacion.setLayout(null);
+
+		JLabel Puntuacion1 = new JLabel("PUNTUACION:");
+		Puntuacion1.setBounds(10, 21, 99, 14);
+		Informacion.add(Puntuacion1);
+
+		JLabel Tiempo1 = new JLabel("TIEMPO: ");
+		Tiempo1.setBounds(582, 21, 46, 14);
+		Informacion.add(Tiempo1);
+		
+		
+		Principal.addKeyListener( new KeyAdapter () {
+			public void keyPressed(KeyEvent a) {
+				// Miramos el tipo de configuracion que tiene.
+				// Flechas
+				if (usuario.getConfi().getTeclas() == 0) {
+					switch (a.getKeyCode()) {
+
+					case KeyEvent.VK_UP:
+						// SUBIR NAVE
+						presionado[0] = true;
+						break;
+
+					case KeyEvent.VK_DOWN:
+						// BAJAR NAVE
+						presionado[1] = true;
+						break;
+
+					case KeyEvent.VK_RIGHT:
+						// AVANZAR
+						presionado[2] = true;
+						break;
+
+					case KeyEvent.VK_LEFT:
+						// RETROCEDER
+						presionado[3] = true;
+						break;
+					}
+
+				} else {
+
+					switch (a.getKeyCode()) {
+
+					case KeyEvent.VK_W:
+						// SUBIR NAVE
+						presionado[0] = true;
+						break;
+
+					case KeyEvent.VK_S:
+						// BAJAR NAVE
+						presionado[1] = true;
+						break;
+
+					case KeyEvent.VK_D:
+						// AVANZAR
+						presionado[2] = true;
+						break;
+
+					case KeyEvent.VK_A:
+						// RETROCEDER
+						presionado[3] = true;
+						break;
+					}
+
+				}
+
+			}
+
+			public void keyReleased(KeyEvent a) {
+				if (usuario.getConfi().getTeclas() == 0) {
+
+					switch (a.getKeyCode()) {
+
+					case KeyEvent.VK_UP:
+						// DEJAR DE SUBIR NAVE
+						presionado[0] = false;
+						
+						break;
+
+					case KeyEvent.VK_DOWN:
+						// DEJAR DE BAJAR NAVE
+						presionado[1] = false;
+						break;
+
+					case KeyEvent.VK_RIGHT:
+						// PARAR
+						presionado[2] = false;
+						break;
+
+					case KeyEvent.VK_LEFT:
+						// PARAR
+						presionado[3] = false;
+						break;
+					}
+
+				} else {
+
+					switch (a.getKeyCode()) {
+
+					case KeyEvent.VK_W:
+						// DEJAR DE SUBIR
+						presionado[0] = false;
+						break;
+
+					case KeyEvent.VK_S:
+						// DEJAR DE BAJAR NAVE
+						presionado[1] = false;
+						break;
+
+					case KeyEvent.VK_D:
+						// PARAR
+						presionado[2] = false;
+						break;
+
+					case KeyEvent.VK_A:
+						// PARAR
+						presionado[3] = false;
+						break;
+					}
+
+				}
+
+			}
 			
+
+		});
+		this.miMundo = new GenerarMundo(Principal);
+		this.miMundo.cargarNave(100, 100);
+		this.nave = miMundo.getNave();
+		this.Principal.repaint();
+		// Sintaxis de new para clase interna
+		this.Hilo = new MiRunnable();  // Sintaxis de new para clase interna
+		Thread nuevoHilo = new Thread( this.Hilo );
+		nuevoHilo.start();
+
+
+	};
+	
+	//CREAMOS EL HILO PARA GESTIONAR TODO
+	
+	class MiRunnable implements Runnable {
+
+		@Override
+		public void run() {
+			boolean seguir = true;
+			while (seguir){
+			//Miramos las posiciones del array para mover o no mover
+			if (presionado[0] == true){
+				//Llamada al metodo de subir la nave
+				nave.MovimientoEjeY(false);
 				
 			}
+			else if (presionado[1] == true){
+				//Llamada al metodo de bajar la nave
+				nave.MovimientoEjeY(true);
+			}
+			else if (presionado[2] == true){
+				//Llamada al metodo de ir avanzando
+			}
+			else if (presionado [3] ==true){
+				//Llamada al metodo de retroceder.
+			}
 		
-	
-	
+			//Aplicamos el efecto de la gravedad.
+				nave.Gravedad();
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		}
+
+}
 }
