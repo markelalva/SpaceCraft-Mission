@@ -3,35 +3,39 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Clases.Columna;
 import Clases.Jugador;
 import Clases.NaveJuego;
 public class VentanaJuego extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	static Fondo panelfondo;
-	JPanel Principal, mensajes;
-	JLabel Tiempo, Puntuacion;
+	JPanel Principal, Informacion1;
+	JLabel Tiempo1, Puntuacion1, Tiempo2,Puntuacion2;
 	GenerarMundo miMundo;
 	NaveJuego nave;
 	boolean presionado[];
 	MiRunnable Hilo = null;
+	private double tiempojugado;
+	
+	
 
 
 	public VentanaJuego(Jugador usuario) {
-		
+
 		
 		presionado = new boolean[4];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanel();
 		Principal.setBounds(0, 58, 994, 663);
 		Principal.setFocusable(true);
-		mensajes = new JPanel();
 		getContentPane().setLayout(null);
 
 		// Formato y layouts
@@ -46,19 +50,27 @@ public class VentanaJuego extends JFrame {
 		
 		
 
-		JPanel Informacion = new JPanel();
-		Informacion.setBackground(Color.YELLOW);
-		Informacion.setBounds(0, 0, 994, 59);
-		getContentPane().add(Informacion);
-		Informacion.setLayout(null);
+		Informacion1 = new JPanel();
+		Informacion1.setBackground(Color.YELLOW);
+		Informacion1.setBounds(0, 0, 994, 59);
+		getContentPane().add(Informacion1);
+		Informacion1.setLayout(null);
 
-		JLabel Puntuacion1 = new JLabel("PUNTUACION:");
+		Puntuacion1 = new JLabel("PUNTUACION:");
 		Puntuacion1.setBounds(10, 21, 99, 14);
-		Informacion.add(Puntuacion1);
+		Informacion1.add(Puntuacion1);
 
-		JLabel Tiempo1 = new JLabel("TIEMPO: ");
-		Tiempo1.setBounds(582, 21, 46, 14);
-		Informacion.add(Tiempo1);
+		 Tiempo1 = new JLabel("TIEMPO: ");
+		Tiempo1.setBounds(582, 21, 87, 14);
+		Informacion1.add(Tiempo1);
+		
+		Puntuacion2 = new JLabel("New label");
+		Puntuacion2.setBounds(141, 21, 46, 14);
+		Informacion1.add(Puntuacion2);
+		
+		Tiempo2 = new JLabel("New label");
+		Tiempo2.setBounds(679, 21, 46, 14);
+		Informacion1.add(Tiempo2);
 		
 		
 		Principal.addKeyListener( new KeyAdapter () {
@@ -177,13 +189,25 @@ public class VentanaJuego extends JFrame {
 
 		});
 		this.miMundo = new GenerarMundo(Principal);
-		this.miMundo.cargarNave(100, 100);
+		this.miMundo.cargarNave(200, 300);
 		this.nave = miMundo.getNave();
 		this.Principal.repaint();
-		// Sintaxis de new para clase interna
+		//PONEMOS A 0 EL TIEMPO.
+		tiempojugado = System.currentTimeMillis();
+		
+		
+		//HILO
 		this.Hilo = new MiRunnable();  // Sintaxis de new para clase interna
 		Thread nuevoHilo = new Thread( this.Hilo );
 		nuevoHilo.start();
+		
+		//Prueba de creación de Columna.
+
+		miMundo.CrearColumnaInferior();
+		miMundo.CrearColumnaSuperior();
+
+		
+		
 
 
 	};
@@ -202,21 +226,30 @@ public class VentanaJuego extends JFrame {
 				nave.MovimientoEjeY(false);
 				
 			}
-			else if (presionado[1] == true){
+			 if (presionado[1] == true){
 				//Llamada al metodo de bajar la nave
 				nave.MovimientoEjeY(true);
+				
 			}
-			else if (presionado[2] == true){
+			 if (presionado[2] == true){
 				//Llamada al metodo de ir avanzando
+				System.out.println("Avanzando");
+				miMundo.Avanzar();
 			}
-			else if (presionado [3] ==true){
+			 if (presionado [3] ==true){
 				//Llamada al metodo de retroceder.
 			}
+			
+			
+			
 		
 			//Aplicamos el efecto de la gravedad.
 				nave.Gravedad();
+			//Actualizamos los labels
+				
+				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
 			try {
-				Thread.sleep(40);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
