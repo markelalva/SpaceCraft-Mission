@@ -201,10 +201,11 @@ public class VentanaJuego extends JFrame {
 		Thread nuevoHilo = new Thread( this.Hilo );
 		nuevoHilo.start();
 		
-		//Prueba de creación de Columna.
-
+		//Creamos las dos primeras columnas.
 		miMundo.CrearColumnaInferior();
 		miMundo.CrearColumnaSuperior();
+
+		
 
 		
 		
@@ -245,6 +246,8 @@ public class VentanaJuego extends JFrame {
 		
 			//Aplicamos el efecto de la gravedad.
 				nave.Gravedad();
+			//Generamos mas columnas.
+				CrearColumnas();
 			//Actualizamos los labels
 				
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
@@ -260,4 +263,11 @@ public class VentanaJuego extends JFrame {
 		}
 
 }
+	
+	public void CrearColumnas(){
+		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >200 ){
+		miMundo.CrearColumnaInferior();
+		miMundo.CrearColumnaSuperior();
+		}
+	}
 }

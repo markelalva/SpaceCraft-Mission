@@ -11,7 +11,8 @@ public class GenerarMundo {
 	private JPanel panel;
 	NaveJuego nave;	
 	public static Fondo panelfondo;
-	private ArrayList <Columna> ListaColumnas  = new ArrayList<Columna> ();
+	protected ArrayList <Columna> ListaColumnas  = new ArrayList<Columna> ();
+	public double distanciarecorrida = 0;
 
 
 
@@ -72,6 +73,7 @@ public class GenerarMundo {
 			panel.repaint();
 		
 		}
+			distanciarecorrida++;
 	}
 }
 	
