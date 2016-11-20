@@ -35,4 +35,24 @@ public class BaseDeDatos {
 		}
 	}
 
+	public static boolean usuarioInsert( Statement st,String Nickname) {
+		boolean correcto= true;
+		
+		String sentSQL = "";
+		
+
+			sentSQL = "Insert into usuario values(" +
+					"'" + Nickname+"'0,0,0,0,0)";
+					
+		try {
+			st.executeUpdate(sentSQL);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			correcto=false;
+		}	
+		
+	return correcto;
+
+}
 }
