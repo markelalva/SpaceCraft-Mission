@@ -43,17 +43,20 @@ public class GenerarMundo {
 	}
 	//600, 465, 0
 	
-	public void CrearColumnaInferior(){
-		Columna col = new Columna();
+	public void CrearColumnaInferior(int tamaño){
+		Columna col = new Columna(tamaño);
 		col.setX(600);
-		col.setY(465);
+		if (tamaño >=200)
+		col.setY( (465 - (tamaño-200) ) );
+		else
+			col.setY(465+ (200 - tamaño) );
 		panel.add( col.getMigrafico() );  // Añade al panel visual	
 		col.getMigrafico().repaint();
 		ListaColumnas.add(col);
 }
 	//600, 0, 1
-	public void CrearColumnaSuperior(){
-		Columna col = new Columna();
+	public void CrearColumnaSuperior(int tamaño){
+		Columna col = new Columna(tamaño);
 		col.setX(600);
 		col.setY(0);
 		col.setTipo(1);
@@ -68,13 +71,28 @@ public class GenerarMundo {
 	public void Avanzar(){
 			for(Columna ee : ListaColumnas){
 				ee.Avanzar();
-				System.out.println(ee.getX());
 			ee.getMigrafico().repaint();
 			panel.repaint();
 		
 		}
 			distanciarecorrida++;
 	}
+
+
+public boolean ComprobarChoques(){
+	boolean chocan = false;
+	for (Columna e : ListaColumnas){
+	if(e.getR().intersects(nave.getR())){
+	chocan = true;
+	
+	}
+	System.out.println(chocan);
+
+	
+	
+	}
+	return chocan;
+}
 }
 	
 	

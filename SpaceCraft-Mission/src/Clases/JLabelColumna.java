@@ -10,11 +10,12 @@ import javax.swing.JLabel;
 public class JLabelColumna extends JLabel {
 	
 		private static final long serialVersionUID = 1L;  // Para serialización
-		public static final int TAMANYO_COLUMNA = 200;  // píxels (igual ancho que algo)
-		public static final int AREA_COLUMNA = 55;  // Radio en píxels del bounding circle del coche (para choques)
-public JLabelColumna(){
-	//TODO Dependiendo del color que se le pase, se cogerá un icono u otro.
+		public  int TAMANYO_COLUMNA = 200;  // píxels (igual ancho que algo)  // Radio en píxels del bounding circle del coche (para choques)
+public JLabelColumna(int tamaño){
+	TAMANYO_COLUMNA = tamaño;
+	
 	try {
+		
 		setIcon( new ImageIcon(getClass().getResource("/img/columna.png")));
 	} catch (Exception e) {
 		// TODO Auto-generated catch block

@@ -3,30 +3,32 @@ package Clases;
 import java.awt.Rectangle;
 
 public class Columna {
-	public int x;
-	public int y;
+	public double x;
+	public double y;
 	private JLabelColumna migrafico;
 	private double fechacreacion;
 	private int tipo;
+	private Rectangle r;
 	//Pondremos tipo 0 si es inferior y tipo 1 si es superior
 	//Creamos el JLabel
-	public Columna(int x, int y, int tipo) {
+	public Columna(int x, int y, int tipo, int tamaño) {
 		this.x = x;
 		this.y = y;
 		this.tipo = tipo;
-		migrafico = new JLabelColumna();
+		migrafico = new JLabelColumna(tamaño);
 		this.fechacreacion = System.currentTimeMillis();
-		Rectangle r = new Rectangle();
+		r = new Rectangle(x,y, tamaño/3, tamaño);
 		
 		
 		
 	}
 	
-	public Columna(){
+	public Columna(int tamaño){
 		this.x = 0;
 		this.x = 0;
-		migrafico = new JLabelColumna();
-		this.tipo =0; 
+		migrafico = new JLabelColumna(tamaño);
+		this.tipo =0;
+		r = new Rectangle( (int) this.x, (int) this.y,  tamaño/3, tamaño);
 	}
 
 	public int getTipo() {
@@ -37,16 +39,17 @@ public class Columna {
 		this.tipo = tipo;
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
 	public void setX(int x) {
 		this.x = x;
 		migrafico.setLocation( (int)x, (int)y );
+		r.setLocation((int)this.x, (int)this.y);
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 		
 	}
@@ -67,8 +70,16 @@ public class Columna {
 	
 	public void Avanzar(){
 		this.x = this.x -1;
-		migrafico.setLocation( x, y);
+		int valor = (int) this.x;
+		int valor2 = (int)  this.y;
+		migrafico.setLocation( valor, valor2);
+		r.setLocation((int)this.x, (int)this.y);
 	}
+
+	public Rectangle getR() {
+		return r;
+	}
+
 	
 	
 	

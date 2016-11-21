@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ public class VentanaJuego extends JFrame {
 	boolean presionado[];
 	MiRunnable Hilo = null;
 	private double tiempojugado;
+	private Random r;
 	
 	
 
@@ -202,8 +204,8 @@ public class VentanaJuego extends JFrame {
 		nuevoHilo.start();
 		
 		//Creamos las dos primeras columnas.
-		miMundo.CrearColumnaInferior();
-		miMundo.CrearColumnaSuperior();
+		miMundo.CrearColumnaInferior(200);
+		miMundo.CrearColumnaSuperior(200);
 
 		
 
@@ -234,7 +236,6 @@ public class VentanaJuego extends JFrame {
 			}
 			 if (presionado[2] == true){
 				//Llamada al metodo de ir avanzando
-				System.out.println("Avanzando");
 				miMundo.Avanzar();
 			}
 			 if (presionado [3] ==true){
@@ -251,6 +252,9 @@ public class VentanaJuego extends JFrame {
 			//Actualizamos los labels
 				
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
+				
+				//Comprobamos los choques
+				miMundo.ComprobarChoques();
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
@@ -265,9 +269,11 @@ public class VentanaJuego extends JFrame {
 }
 	
 	public void CrearColumnas(){
+		r = new Random();
 		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >200 ){
-		miMundo.CrearColumnaInferior();
-		miMundo.CrearColumnaSuperior();
+			int n = r.nextInt(350);
+		miMundo.CrearColumnaInferior(n);
+		miMundo.CrearColumnaSuperior(n);
 		}
 	}
 }
