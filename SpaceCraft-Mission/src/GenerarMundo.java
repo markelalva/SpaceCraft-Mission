@@ -50,8 +50,10 @@ public class GenerarMundo {
 		col.setY( (465 - (tamaño-200) ) );
 		else
 			col.setY(465+ (200 - tamaño) );
+		col.AjustarColumna();
 		panel.add( col.getMigrafico() );  // Añade al panel visual	
 		col.getMigrafico().repaint();
+		
 		ListaColumnas.add(col);
 }
 	//600, 0, 1
@@ -59,9 +61,12 @@ public class GenerarMundo {
 		Columna col = new Columna(tamaño);
 		col.setX(600);
 		col.setY(0);
+		col.r.setLocation(600+300, 0);
+		col.AjustarColumna();
 		col.setTipo(1);
 		panel.add( col.getMigrafico() );  // Añade al panel visual	
 		col.getMigrafico().repaint();
+
 		ListaColumnas.add(col);
 
 		
@@ -83,10 +88,14 @@ public boolean ComprobarChoques(){
 	boolean chocan = false;
 	for (Columna e : ListaColumnas){
 	if(e.getR().intersects(nave.getR())){
+		System.out.println("Coord Nave: " + nave.getR().toString());
+		System.out.println("Coord Colum: " + e.getR().toString());
+
 	chocan = true;
 	
 	}
 	System.out.println(chocan);
+	
 
 	
 	

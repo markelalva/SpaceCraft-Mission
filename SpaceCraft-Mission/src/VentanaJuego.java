@@ -255,6 +255,7 @@ public class VentanaJuego extends JFrame {
 				
 				//Comprobamos los choques
 				miMundo.ComprobarChoques();
+				
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {
@@ -270,8 +271,12 @@ public class VentanaJuego extends JFrame {
 	
 	public void CrearColumnas(){
 		r = new Random();
+		int n =0;
 		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >200 ){
-			int n = r.nextInt(350);
+			do{  n= r.nextInt(300);
+			
+			} while(n <100);
+		
 		miMundo.CrearColumnaInferior(n);
 		miMundo.CrearColumnaSuperior(n);
 		}

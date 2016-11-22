@@ -11,7 +11,7 @@ public NaveJuego (){
 	//Le pasamos un color para elegir un icono u otro
 	miGrafico = new JLabelNave();
 	r = new Rectangle();
-	r.setBounds(0, 0, 60, 60);
+	r.setBounds(0, 0, 50, 50);
 	
 	
 }

@@ -8,7 +8,7 @@ public class Columna {
 	private JLabelColumna migrafico;
 	private double fechacreacion;
 	private int tipo;
-	private Rectangle r;
+	public Rectangle r;
 	//Pondremos tipo 0 si es inferior y tipo 1 si es superior
 	//Creamos el JLabel
 	public Columna(int x, int y, int tipo, int tamaño) {
@@ -28,7 +28,7 @@ public class Columna {
 		this.x = 0;
 		migrafico = new JLabelColumna(tamaño);
 		this.tipo =0;
-		r = new Rectangle( (int) this.x, (int) this.y,  tamaño/3, tamaño);
+		r = new Rectangle( (int) this.x , (int) this.y,  tamaño/3, tamaño);
 	}
 
 	public int getTipo() {
@@ -73,11 +73,15 @@ public class Columna {
 		int valor = (int) this.x;
 		int valor2 = (int)  this.y;
 		migrafico.setLocation( valor, valor2);
-		r.setLocation((int)this.x, (int)this.y);
+		r.setLocation((int) (r.getX()-1), (int)this.y);
 	}
 
 	public Rectangle getR() {
 		return r;
+	}
+	
+	public void AjustarColumna(){
+		this.r.setLocation((int)this.x +50,(int) this.y);
 	}
 
 	
