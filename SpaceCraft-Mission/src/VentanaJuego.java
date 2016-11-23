@@ -221,7 +221,9 @@ public class VentanaJuego extends JFrame {
 
 		@Override
 		public void run() {
+			boolean boss = false;
 			boolean seguir = true;
+			boolean bosscargado = false;
 			while (seguir){
 			//Miramos las posiciones del array para mover o no mover
 			if (presionado[0] == true){
@@ -248,13 +250,25 @@ public class VentanaJuego extends JFrame {
 			//Aplicamos el efecto de la gravedad.
 				nave.Gravedad();
 			//Generamos mas columnas.
+				if (!boss){
 				CrearColumnas();
+			//Comprobamos los choques
+				 seguir = !miMundo.ComprobarChoques();
+				}
 			//Actualizamos los labels
 				
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
 				
-				//Comprobamos los choques
-				miMundo.ComprobarChoques();
+			//Cuando la distancia llegue a un valor, activamos el Modo Boss.
+				if (miMundo.distanciarecorrida >1000){
+					boss = true;
+					
+					if (!bosscargado){
+						bosscargado = miMundo.cargarBoss();
+						miMundo.BorrarColumnas();
+					}
+					miMundo.boss.MoverBoss();
+				}
 				
 			try {
 				Thread.sleep(20);
@@ -273,9 +287,9 @@ public class VentanaJuego extends JFrame {
 		r = new Random();
 		int n =0;
 		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >200 ){
-			do{  n= r.nextInt(300);
+			do{  n= r.nextInt(340);
 			
-			} while(n <100);
+			} while(n <170);
 		
 		miMundo.CrearColumnaInferior(n);
 		miMundo.CrearColumnaSuperior(n);

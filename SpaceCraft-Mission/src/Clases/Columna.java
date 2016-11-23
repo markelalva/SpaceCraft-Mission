@@ -17,7 +17,7 @@ public class Columna {
 		this.tipo = tipo;
 		migrafico = new JLabelColumna(tamaño);
 		this.fechacreacion = System.currentTimeMillis();
-		r = new Rectangle(x,y, tamaño/3, tamaño);
+		r = new Rectangle(x,y, tamaño/3, tamaño -10);
 		
 		
 		
@@ -28,7 +28,7 @@ public class Columna {
 		this.x = 0;
 		migrafico = new JLabelColumna(tamaño);
 		this.tipo =0;
-		r = new Rectangle( (int) this.x , (int) this.y,  tamaño/3, tamaño);
+		r = new Rectangle( (int) this.x , (int) this.y,  tamaño/3, tamaño -20);
 	}
 
 	public int getTipo() {

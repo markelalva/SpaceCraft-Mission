@@ -4,15 +4,18 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
+import Clases.Boss;
 import Clases.Columna;
 import Clases.NaveJuego;
 
 public class GenerarMundo {
 	private JPanel panel;
-	NaveJuego nave;	
+	private NaveJuego nave;	
+	public Boss boss;
 	public static Fondo panelfondo;
 	protected ArrayList <Columna> ListaColumnas  = new ArrayList<Columna> ();
 	public double distanciarecorrida = 0;
+	
 
 
 
@@ -94,7 +97,7 @@ public boolean ComprobarChoques(){
 	chocan = true;
 	
 	}
-	System.out.println(chocan);
+
 	
 
 	
@@ -102,7 +105,35 @@ public boolean ComprobarChoques(){
 	}
 	return chocan;
 }
+//Metodo para borrar las columnas una vez que el Boss ha aparecido
+public void BorrarColumnas(){
+	//Borramos todo
+for (Columna ee : ListaColumnas){
+	panel.remove(ee.getMigrafico());
 }
+ListaColumnas.clear();
+
+//Minimizamos el tamaño del array, para no ocupar memoria que no necesitamos.
+ListaColumnas.trimToSize();
+panel.repaint();
+	}
+
+//Metodo para Crear los Boss
+public boolean cargarBoss(){
+	boss = new Boss();
+	boss.setPosicion(700, 200);
+	panel.add( boss.getMiGrafico() );  // Añade al panel visual	
+	boss.getMiGrafico().repaint();
+	
+	return true;
+
+
+	
+	
+}
+	
+}
+
 	
 	
 	
