@@ -25,7 +25,7 @@ public class VentanaJuego extends JFrame {
 	boolean presionado[];
 	MiRunnable Hilo = null;
 	private double tiempojugado;
-	private Random r;
+	private Random r; //Prueba
 	
 	
 
