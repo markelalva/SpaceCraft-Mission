@@ -69,11 +69,11 @@ public class Columna {
 	}
 	
 	public void Avanzar(){
-		this.x = this.x -1;
+		this.x = this.x -3;
 		int valor = (int) this.x;
 		int valor2 = (int)  this.y;
 		migrafico.setLocation( valor, valor2);
-		r.setLocation((int) (r.getX()-1), (int)this.y);
+		r.setLocation((int) (r.getX()-3), (int)this.y);
 	}
 
 	public Rectangle getR() {
