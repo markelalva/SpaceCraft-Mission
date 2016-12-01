@@ -16,7 +16,7 @@ public class JLabelBoss extends JLabel  {
 		
 		try {
 			
-			setIcon( new ImageIcon(getClass().getResource("/img/naveBoss1.png")));
+			setIcon( new ImageIcon(getClass().getResource("/img/Bowser.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println( "Error en carga de recurso: columna.png no encontrado" );

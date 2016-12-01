@@ -139,7 +139,7 @@ public boolean cargarBoss(){
 }
 
 public void AtacaBoss(){
-	//if (ListaAtaques.size() !=0){
+	//if (ListaAtaques.size() >-1){
 		//if ( System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion() >5000 ){
 			Ataque r = new Ataque ();
 			r.setAtacante("HATSUROBIN");
