@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Clases.Columna;
+import Clases.JPanelFondo;
 import Clases.Jugador;
 import Clases.NaveJuego;
 public class VentanaJuego extends JFrame {
@@ -35,7 +36,7 @@ public class VentanaJuego extends JFrame {
 		
 		presionado = new boolean[4];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Principal = new JPanel();
+		Principal = new JPanelFondo();
 		Principal.setBounds(0, 58, 994, 663);
 		Principal.setFocusable(true);
 		getContentPane().setLayout(null);
@@ -191,7 +192,7 @@ public class VentanaJuego extends JFrame {
 
 		});
 		this.miMundo = new GenerarMundo(Principal);
-		this.miMundo.cargarNave(200, 300);
+		this.miMundo.cargarNave(200, 300, usuario.getConfi());
 		this.nave = miMundo.getNave();
 		this.Principal.repaint();
 		//PONEMOS A 0 EL TIEMPO.

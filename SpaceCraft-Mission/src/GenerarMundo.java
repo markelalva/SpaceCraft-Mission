@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 
 import Clases.Boss;
 import Clases.Columna;
+import Clases.Configuracion;
+import Clases.JPanelFondo;
 import Clases.NaveJuego;
 
 public class GenerarMundo {
@@ -16,22 +18,16 @@ public class GenerarMundo {
 	protected ArrayList <Columna> ListaColumnas  = new ArrayList<Columna> ();
 	public double distanciarecorrida = 0;
 	
+	public GenerarMundo(JPanel panel1){
+		panel = panel1;
+		
+	}
 
 
 
-	public GenerarMundo(JPanel panel) {
-		this.panel = panel;
-		//Ponemos el Fondo
-				/*panelfondo = new Fondo();
-				panelfondo.setForeground(Color.WHITE);
-				panelfondo.setBounds(0, 0, 994, 663);
-				panel.add(panelfondo);
-				panelfondo.setLayout(null);*/
-			
-	} 
 	
-	public void cargarNave(double posx, double posy){
-		nave = new NaveJuego();
+	public void cargarNave(double posx, double posy, Configuracion con){
+		nave = new NaveJuego(con);
 		nave.setPosicion(posx, posy);
 		panel.add( nave.getMiGrafico() );  // Añade al panel visual	
 		nave.getMiGrafico().repaint();
@@ -40,6 +36,7 @@ public class GenerarMundo {
 		
 		
 }
+
 
 	public NaveJuego getNave() {
 		return nave;

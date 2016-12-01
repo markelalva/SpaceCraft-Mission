@@ -7,9 +7,9 @@ private JLabelNave miGrafico;
 private Rectangle r;
 
 
-public NaveJuego (){
+public NaveJuego (Configuracion con){
 	//Le pasamos un color para elegir un icono u otro
-	miGrafico = new JLabelNave();
+	miGrafico = new JLabelNave(con);
 	r = new Rectangle();
 	r.setBounds(0, 0, 40, 30);
 	

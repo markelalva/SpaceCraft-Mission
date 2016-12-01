@@ -1,5 +1,6 @@
 package Clases;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -15,10 +16,15 @@ public class JLabelNave extends JLabel {
 		public static final int TAMANYO_NAVE = 60;  // píxels (igual ancho que algo)
 		public static final int RADIO_ESFERA_COCHE = 55;  // Radio en píxels del bounding circle del coche (para choques)
 		private static final boolean DIBUJAR_ESFERA_NAVE = true;  // Dibujado (para depuración) del bounding circle de choque del coche
-public JLabelNave(){
+public JLabelNave(Configuracion con){
 	//TODO Dependiendo del color que se le pase, se cogerá un icono u otro.
 	try {
-		setIcon( new ImageIcon(getClass().getResource("/img/nave.png")));
+		if (con.getColorNave() == Color.RED)
+		setIcon( new ImageIcon(getClass().getResource("/img/NaveROJO.png")));
+		if(con.getColorNave() == Color.BLUE)
+			setIcon( new ImageIcon(getClass().getResource("/img/NaveAzul.png")));
+		if(con.getColorNave() == Color.GREEN)
+			setIcon( new ImageIcon(getClass().getResource("/img/NaveVerde.png")));
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		System.err.println( "Error en carga de recurso: nave.png no encontrado" );
