@@ -239,12 +239,11 @@ public class VentanaJuego extends JFrame {
 			}
 			 if (presionado[2] == true){
 				//Llamada al metodo de ir avanzando
-				miMundo.Avanzar();
+				 miMundo.Avanzar();
 			}
 			 if (presionado [3] ==true){
 				//Llamada al metodo de retroceder.
 			}
-			
 			
 			
 		
@@ -258,6 +257,7 @@ public class VentanaJuego extends JFrame {
 				}
 			//Actualizamos los labels
 				
+				
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
 				
 			//Cuando la distancia llegue a un valor, activamos el Modo Boss.
@@ -267,8 +267,11 @@ public class VentanaJuego extends JFrame {
 					if (!bosscargado){
 						bosscargado = miMundo.cargarBoss();
 						miMundo.BorrarColumnas();
+						miMundo.AtacaBoss();
 					}
 					miMundo.boss.MoverBoss();
+					miMundo.AvanzaAtaques();
+					
 				}
 				
 			try {
@@ -287,8 +290,8 @@ public class VentanaJuego extends JFrame {
 	public void CrearColumnas(){
 		r = new Random();
 		int n =0;
-		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >200 ){
-			do{  n= r.nextInt(340);
+		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() /2)) >100 ){
+			do{  n= r.nextInt(300);
 			
 			} while(n <170);
 		

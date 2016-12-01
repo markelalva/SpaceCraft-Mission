@@ -9,14 +9,16 @@ public class Ataque {
 	private double x;
 	private double y;
 	private JLabelDisparo miGrafico;
+	private long TiempoCreacion;
 	
-	public Ataque(String atacante, int daño, Rectangle r, double x, double y, JLabelDisparo miGrafico) {
+	public Ataque(String atacante, int daño,  double x, double y, JLabelDisparo miGrafico) {
 		Atacante = atacante;
 		this.daño = daño;
-		this.r = r;
+		this.r = new Rectangle();
 		this.x = x;
 		this.y = y;
 		this.miGrafico = miGrafico;
+		this.TiempoCreacion = System.currentTimeMillis();
 	}
 	
 	public Ataque(){
@@ -25,7 +27,17 @@ public class Ataque {
 		this.r = new Rectangle();
 		this.x =0;
 		this.y =0;
+		this.TiempoCreacion = System.currentTimeMillis();
+		miGrafico = new JLabelDisparo();
 		
+	}
+
+	public long getTiempoCreacion() {
+		return TiempoCreacion;
+	}
+
+	public void setTiempoCreacion(long tiempoCreacion) {
+		TiempoCreacion = tiempoCreacion;
 	}
 
 	public String getAtacante() {
@@ -82,6 +94,15 @@ public class Ataque {
 		setY(posY);
 		//Colocamos el grafico a esa posicion
 		miGrafico.setLocation( (int)posX, (int)posY );
+	}
+	
+	
+	public void Avanzar(){
+		this.x = this.x -3;
+		int valor = (int) this.x;
+		int valor2 = (int)  this.y;
+		miGrafico.setLocation( valor, valor2);
+		r.setLocation((int) (r.getX()-3), (int)this.y);
 	}
 
 	//To String para Pruebas

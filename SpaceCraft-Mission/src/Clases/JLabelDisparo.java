@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 
 public class JLabelDisparo extends JLabel{
 	private static final long serialVersionUID = 1L;  // Para serialización
-	private static final int TAMANYO_DISPARO = 20; // píxels (igual ancho que algo)  
+	private static final int TAMANYO_DISPARO = 40; // píxels (igual ancho que algo)  
 
-	public JLabelDisparo(int tamaño){
+	public JLabelDisparo(){
 		
 		try {
 			
-			setIcon( new ImageIcon(getClass().getResource("/img/Bala.png")));
+			setIcon( new ImageIcon(getClass().getResource("/img/AtaqueBowser.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println( "Error en carga de recurso: Bala.png no encontrado" );

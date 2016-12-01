@@ -84,6 +84,15 @@ public class GenerarMundo {
 		}
 			distanciarecorrida++;
 	}
+	
+	public void AvanzaAtaques(){
+		for(Ataque at : ListaAtaques){
+			at.Avanzar();
+		at.getMiGrafico().repaint();
+		panel.repaint();
+	
+	}
+}
 
 
 public boolean ComprobarChoques(){
@@ -126,6 +135,22 @@ public boolean cargarBoss(){
 
 
 	
+	
+}
+
+public void AtacaBoss(){
+	//if (ListaAtaques.size() !=0){
+		//if ( System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion() >5000 ){
+			Ataque r = new Ataque ();
+			r.setAtacante("HATSUROBIN");
+			r.setDaño(boss.getDañoataque());
+			r.setPosicion(boss.getX() -10, boss.getY());
+			ListaAtaques.add(r);
+			panel.add(r.getMiGrafico());
+			r.getMiGrafico().repaint();
+		//}
+		
+	//}
 	
 }
 	
