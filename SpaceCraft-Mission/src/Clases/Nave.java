@@ -7,7 +7,7 @@ public class Nave {
 	protected double posY; //Posicion en Y (vertical)
 	private final static int LIMITE_SUPERIOR = -5;
 	private final static int LIMITE_INFERIOR = 615;
-	
+	protected int danyoataque;
 	
 	
 	public Nave() {
@@ -15,7 +15,7 @@ public class Nave {
 		miDireccionActual = 0;
 		posX = 300;
 		posY = 300;
-		
+		this.danyoataque = 100;
 		
 	}
 
@@ -63,7 +63,12 @@ public class Nave {
 		return posY;
 	}
 
-
+	public int getDanyoataque() {
+		return danyoataque;
+	}
+	public void setDanyoataque(int danyoataque) {
+		this.danyoataque = danyoataque;
+	}
 
 
 	@Override

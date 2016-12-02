@@ -139,7 +139,7 @@ public boolean cargarBoss(){
 }
 
 public void AtacaBoss(){
-	System.out.println(ListaAtaques.size());
+
 	if (ListaAtaques.size() == 0 ){
 		Ataque r = new Ataque ();
 		r.setAtacante("HATSUROBIN");
@@ -154,7 +154,7 @@ public void AtacaBoss(){
 	else{
 		if ( (System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion()) >1000 ){
 	
-			System.out.println("Nuevo Ataque");
+			
 		Ataque r = new Ataque ();
 			r.setAtacante("HATSUROBIN");
 			r.setDanyo(boss.getDanyoataque());
@@ -168,6 +168,34 @@ public void AtacaBoss(){
 	
 }
 	
+/*public void AtacaNave(){
+	if (ListaAtaques.size() == 0 ){
+		Ataque r = new Ataque ();
+		r.setAtacante("HATSUROBIN2");
+		r.setDanyo(nave.getDanyoataque());
+		r.setPosicion(nave.getPosX() -10, nave.getPosY());
+		ListaAtaques.add(r);
+		panel.add(r.getMiGrafico());
+		r.getMiGrafico().repaint();
+	}
+		
+	
+	else{
+		
+	
+			
+		Ataque r = new Ataque ();
+			r.setAtacante("HATSUROBIN2");
+			r.setDanyo(nave.getDanyoataque());
+			r.setPosicion(nave.getPosX() -10, nave.getPosY());
+			ListaAtaques.add(r);
+			panel.add(r.getMiGrafico());
+			r.getMiGrafico().repaint();
+		}
+		
+	}
+	
+}*/
 }
 
 	

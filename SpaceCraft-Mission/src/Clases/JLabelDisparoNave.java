@@ -1,6 +1,5 @@
 package Clases;
 
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,18 +8,18 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class JLabelDisparo extends JLabel{
+public class JLabelDisparoNave extends JLabel {
 	private static final long serialVersionUID = 1L;  // Para serialización
-	private static final int TAMANYO_DISPARO = 40; // píxels (igual ancho que algo)  
+	private static final int TAMANYO_DISPARO = 20; // píxels (igual ancho que algo)  
 
-	public JLabelDisparo(){
+	public JLabelDisparoNave(){
 		
 		try {
 			
-			setIcon( new ImageIcon(getClass().getResource("/img/AtaqueBowser.png")));
+			setIcon( new ImageIcon(getClass().getResource("/img/DisparoMegaman.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.err.println( "Error en carga de recurso: AtaqueBowser.png no encontrado" );
+			System.err.println( "Error en carga de recurso: DisparoMegaman.png no encontrado" );
 		}	
 		 setSize( TAMANYO_DISPARO, TAMANYO_DISPARO ); 
 		}

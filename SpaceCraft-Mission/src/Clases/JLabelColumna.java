@@ -16,10 +16,10 @@ public JLabelColumna(int tamanyo){
 	
 	try {
 		
-		setIcon( new ImageIcon(getClass().getResource("/img/columna.png")));
+		setIcon( new ImageIcon(getClass().getResource("/img/columnaverde.png")));
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
-		System.err.println( "Error en carga de recurso: columna.png no encontrado" );
+		System.err.println( "Error en carga de recurso: columnaverde.png no encontrado" );
 		
 	}
 	
