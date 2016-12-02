@@ -11,11 +11,11 @@ public class Columna {
 	public Rectangle r;
 	//Pondremos tipo 0 si es inferior y tipo 1 si es superior
 	//Creamos el JLabel
-	public Columna(int x, int y, int tipo, int tamanyo) {
+	public Columna(int x, int y, int tipo, int tamanyo, int color) {
 		this.x = x;
 		this.y = y;
 		this.tipo = tipo;
-		migrafico = new JLabelColumna(tamanyo);
+		migrafico = new JLabelColumna(tamanyo, color);
 		this.fechacreacion = System.currentTimeMillis();
 		r = new Rectangle(x,y, tamanyo/3, tamanyo -10);
 		
@@ -23,10 +23,10 @@ public class Columna {
 		
 	}
 	
-	public Columna(int tamanyo){
+	public Columna(int tamanyo, int color){
 		this.x = 0;
 		this.x = 0;
-		migrafico = new JLabelColumna(tamanyo);
+		migrafico = new JLabelColumna(tamanyo, color);
 		this.tipo =0;
 		r = new Rectangle( (int) this.x , (int) this.y,  tamanyo/3, tamanyo -20);
 	}

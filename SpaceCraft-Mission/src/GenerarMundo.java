@@ -20,6 +20,7 @@ public class GenerarMundo {
 	protected ArrayList <Ataque> ListaAtaques = new ArrayList <Ataque>(); //Array para los ataques del Boss
 	protected ArrayList <Ataque> ListaAtaquesNave = new ArrayList <Ataque> ();
 	public double distanciarecorrida = 0;
+	private Random r = new Random(); //Para cosas en las que se necesite aleatoriedad
 	
 	public GenerarMundo(JPanel panel1){
 		panel = panel1;
@@ -46,8 +47,9 @@ public class GenerarMundo {
 	}
 	//600, 465, 0
 	
-	public void CrearColumnaInferior(int tamanyo){
-		Columna col = new Columna(tamanyo);
+	public void CrearColumnaInferior(int tamanyo, int color){
+		
+		Columna col = new Columna(tamanyo, color);
 		col.setX(600);
 		if (tamanyo >=200)
 		col.setY( (465 - (tamanyo-200) ) );
@@ -60,8 +62,8 @@ public class GenerarMundo {
 		ListaColumnas.add(col);
 }
 	//600, 0, 1
-	public void CrearColumnaSuperior(int tamanyo){
-		Columna col = new Columna(tamanyo);
+	public void CrearColumnaSuperior(int tamanyo, int color){
+		Columna col = new Columna(tamanyo, color );
 		col.setX(600);
 		col.setY(0);
 		col.r.setLocation(600+300, 0);

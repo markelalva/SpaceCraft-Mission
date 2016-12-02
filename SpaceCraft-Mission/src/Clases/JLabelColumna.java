@@ -11,12 +11,14 @@ public class JLabelColumna extends JLabel {
 	
 		private static final long serialVersionUID = 1L;  // Para serializaci�n
 		public  int TAMANYO_COLUMNA = 200;  // p�xels (igual ancho que algo)  // Radio en p�xels del bounding circle del coche (para choques)
-public JLabelColumna(int tamanyo){
+public JLabelColumna(int tamanyo, int tipo){
 	TAMANYO_COLUMNA = tamanyo;
 	
 	try {
-		
+		if (tipo ==0)
 		setIcon( new ImageIcon(getClass().getResource("/img/columnaverde.png")));
+		else
+			setIcon( new ImageIcon(getClass().getResource("/img/columnarojo.png")));	
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		System.err.println( "Error en carga de recurso: columnaverde.png no encontrado" );

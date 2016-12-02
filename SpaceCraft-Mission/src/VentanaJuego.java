@@ -26,7 +26,7 @@ public class VentanaJuego extends JFrame {
 	boolean presionado[];
 	MiRunnable Hilo = null;
 	private double tiempojugado;
-	private Random r; //Prueba
+	private Random r = new 	Random(); //Prueba
 	
 	
 
@@ -226,8 +226,9 @@ public class VentanaJuego extends JFrame {
 		nuevoHilo.start();
 		
 		//Creamos las dos primeras columnas.
-		miMundo.CrearColumnaInferior(200);
-		miMundo.CrearColumnaSuperior(200);
+		 int Color = r.nextInt(2);
+		miMundo.CrearColumnaInferior(200, Color);
+		miMundo.CrearColumnaSuperior(200,Color);
 
 		
 
@@ -320,9 +321,9 @@ public class VentanaJuego extends JFrame {
 			do{  n= r.nextInt(300);
 			
 			} while(n <170);
-		
-		miMundo.CrearColumnaInferior(n);
-		miMundo.CrearColumnaSuperior(n);
+		int Color = r.nextInt(2);
+		miMundo.CrearColumnaInferior(n, Color);
+		miMundo.CrearColumnaSuperior(n, Color);
 		}
 	}
 }
