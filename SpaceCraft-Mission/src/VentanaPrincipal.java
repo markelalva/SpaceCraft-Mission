@@ -65,11 +65,11 @@ public class VentanaPrincipal extends JFrame {
 		ElegirMundo.setBounds(180, 118, 133, 28);
 		contentPane.add(ElegirMundo);
 		
-		MenuConfiguracion = new JButton ("Configuración");
+		MenuConfiguracion = new JButton ("Configuraciï¿½n");
 		MenuConfiguracion.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e){
-				VentanaConfiguración vc = new VentanaConfiguración(usuario.getConfi());
+				VentanaConfiguracion vc = new VentanaConfiguracion(usuario.getConfi());
 				vc.setVisible(true);
 				vc.btnCancelar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {

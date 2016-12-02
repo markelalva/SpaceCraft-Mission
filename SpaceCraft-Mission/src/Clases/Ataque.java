@@ -4,16 +4,16 @@ import java.awt.Rectangle;
 
 public class Ataque {
 	private String Atacante;
-	private int daño;
+	private int danyo;
 	private Rectangle r;
 	private double x;
 	private double y;
 	private JLabelDisparo miGrafico;
 	private long TiempoCreacion;
 	
-	public Ataque(String atacante, int daño,  double x, double y, JLabelDisparo miGrafico) {
+	public Ataque(String atacante, int danyo,  double x, double y, JLabelDisparo miGrafico) {
 		Atacante = atacante;
-		this.daño = daño;
+		this.danyo = danyo;
 		this.r = new Rectangle();
 		this.x = x;
 		this.y = y;
@@ -23,7 +23,7 @@ public class Ataque {
 	
 	public Ataque(){
 		this.Atacante = "HatsuRobin";
-		this.daño =0;
+		this.danyo =0;
 		this.r = new Rectangle();
 		this.x =0;
 		this.y =0;
@@ -48,12 +48,12 @@ public class Ataque {
 		Atacante = atacante;
 	}
 
-	public int getDaño() {
-		return daño;
+	public int getDanyo() {
+		return danyo;
 	}
 
-	public void setDaño(int daño) {
-		this.daño = daño;
+	public void setDanyo(int danyo) {
+		this.danyo = danyo;
 	}
 
 	public Rectangle getR() {
@@ -107,7 +107,7 @@ public class Ataque {
 
 	//To String para Pruebas
 	public String toString() {
-		return "Ataque [Atacante=" + Atacante + ", daño=" + daño + ", r=" + r + ", x=" + x + ", y=" + y + "]";
+		return "Ataque [Atacante=" + Atacante + ", daï¿½o=" + danyo + ", r=" + r + ", x=" + x + ", y=" + y + "]";
 	}
 	
 

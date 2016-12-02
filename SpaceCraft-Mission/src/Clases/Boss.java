@@ -7,16 +7,16 @@ public class Boss {
 private double x;
 private double y;
 private int vida;
-private int dañoataque;
+private int danyoataque;
 private JLabelBoss miGrafico;
 private Rectangle r;
-private boolean arriba = true;//Constructor con todos los parámetros
-public Boss(int x, int y, int vida, int dañoataque, Rectangle r) {
+private boolean arriba = true;//Constructor con todos los parï¿½metros
+public Boss(int x, int y, int vida, int danyoataque, Rectangle r) {
 	super();
 	this.x = x;
 	this.y = y;
 	this.vida = vida;
-	this.dañoataque = dañoataque;
+	this.danyoataque = danyoataque;
 	this.r = r;
 	miGrafico = new JLabelBoss();
 }
@@ -25,7 +25,7 @@ public Boss() {
 	this.x = 0;
 	this.y = 0;
 	this.vida = 100;
-	this.dañoataque = 100;
+	this.danyoataque = 100;
 	miGrafico = new JLabelBoss();
 	// TODO Auto-generated constructor stub
 }
@@ -49,11 +49,11 @@ public int getVida() {
 public void setVida(int vida) {
 	this.vida = vida;
 }
-public int getDañoataque() {
-	return dañoataque;
+public int getDanyoataque() {
+	return danyoataque;
 }
-public void setDañoataque(int dañoataque) {
-	this.dañoataque = dañoataque;
+public void setDanyoataque(int danyoataque) {
+	this.danyoataque = danyoataque;
 }
 public Rectangle getR() {
 	return r;
@@ -61,10 +61,10 @@ public Rectangle getR() {
 public void setR(Rectangle r) {
 	this.r = r;
 }
-//To String (Por si es necesario sacar algún dato por consola).
+//To String (Por si es necesario sacar algï¿½n dato por consola).
 @Override
 public String toString() {
-	return "Boss [x=" + x + ", y=" + y + ", vida=" + vida + ", dañoataque=" + dañoataque + ", r=" + r + "]";
+	return "Boss [x=" + x + ", y=" + y + ", vida=" + vida + ", daï¿½oataque=" + danyoataque + ", r=" + r + "]";
 }
 
 public void setPosicion(double posX, double posY) {

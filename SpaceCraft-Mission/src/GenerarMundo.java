@@ -31,7 +31,7 @@ public class GenerarMundo {
 	public void cargarNave(double posx, double posy, Configuracion con){
 		nave = new NaveJuego(con);
 		nave.setPosicion(posx, posy);
-		panel.add( nave.getMiGrafico() );  // Añade al panel visual	
+		panel.add( nave.getMiGrafico() );  // Aï¿½ade al panel visual	
 		nave.getMiGrafico().repaint();
 	
 	
@@ -45,28 +45,28 @@ public class GenerarMundo {
 	}
 	//600, 465, 0
 	
-	public void CrearColumnaInferior(int tamaño){
-		Columna col = new Columna(tamaño);
+	public void CrearColumnaInferior(int tamanyo){
+		Columna col = new Columna(tamanyo);
 		col.setX(600);
-		if (tamaño >=200)
-		col.setY( (465 - (tamaño-200) ) );
+		if (tamanyo >=200)
+		col.setY( (465 - (tamanyo-200) ) );
 		else
-			col.setY(465+ (200 - tamaño) );
+			col.setY(465+ (200 - tamanyo) );
 		col.AjustarColumna();
-		panel.add( col.getMigrafico() );  // Añade al panel visual	
+		panel.add( col.getMigrafico() );  // Aï¿½ade al panel visual	
 		col.getMigrafico().repaint();
 		
 		ListaColumnas.add(col);
 }
 	//600, 0, 1
-	public void CrearColumnaSuperior(int tamaño){
-		Columna col = new Columna(tamaño);
+	public void CrearColumnaSuperior(int tamanyo){
+		Columna col = new Columna(tamanyo);
 		col.setX(600);
 		col.setY(0);
 		col.r.setLocation(600+300, 0);
 		col.AjustarColumna();
 		col.setTipo(1);
-		panel.add( col.getMigrafico() );  // Añade al panel visual	
+		panel.add( col.getMigrafico() );  // Aï¿½ade al panel visual	
 		col.getMigrafico().repaint();
 
 		ListaColumnas.add(col);
@@ -119,7 +119,7 @@ for (Columna ee : ListaColumnas){
 }
 ListaColumnas.clear();
 
-//Minimizamos el tamaño del array, para no ocupar memoria que no necesitamos.
+//Minimizamos el tamaï¿½o del array, para no ocupar memoria que no necesitamos.
 ListaColumnas.trimToSize();
 panel.repaint();
 	}
@@ -128,7 +128,7 @@ panel.repaint();
 public boolean cargarBoss(){
 	boss = new Boss();
 	boss.setPosicion(700, 200);
-	panel.add( boss.getMiGrafico() );  // Añade al panel visual	
+	panel.add( boss.getMiGrafico() );  // Aï¿½ade al panel visual	
 	boss.getMiGrafico().repaint();
 	
 	return true;
@@ -139,18 +139,32 @@ public boolean cargarBoss(){
 }
 
 public void AtacaBoss(){
-	//if (ListaAtaques.size() >-1){
-		//if ( System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion() >5000 ){
-			Ataque r = new Ataque ();
+	System.out.println(ListaAtaques.size());
+	if (ListaAtaques.size() == 0 ){
+		Ataque r = new Ataque ();
+		r.setAtacante("HATSUROBIN");
+		r.setDanyo(boss.getDanyoataque());
+		r.setPosicion(boss.getX() -10, boss.getY());
+		ListaAtaques.add(r);
+		panel.add(r.getMiGrafico());
+		r.getMiGrafico().repaint();
+	}
+		
+	
+	else{
+		if ( (System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion()) >1000 ){
+	
+			System.out.println("Nuevo Ataque");
+		Ataque r = new Ataque ();
 			r.setAtacante("HATSUROBIN");
-			r.setDaño(boss.getDañoataque());
+			r.setDanyo(boss.getDanyoataque());
 			r.setPosicion(boss.getX() -10, boss.getY());
 			ListaAtaques.add(r);
 			panel.add(r.getMiGrafico());
 			r.getMiGrafico().repaint();
-		//}
+		}
 		
-	//}
+	}
 	
 }
 	

@@ -9,10 +9,10 @@ import javax.swing.JLabel;
 
 public class JLabelColumna extends JLabel {
 	
-		private static final long serialVersionUID = 1L;  // Para serialización
-		public  int TAMANYO_COLUMNA = 200;  // píxels (igual ancho que algo)  // Radio en píxels del bounding circle del coche (para choques)
-public JLabelColumna(int tamaño){
-	TAMANYO_COLUMNA = tamaño;
+		private static final long serialVersionUID = 1L;  // Para serializaciï¿½n
+		public  int TAMANYO_COLUMNA = 200;  // pï¿½xels (igual ancho que algo)  // Radio en pï¿½xels del bounding circle del coche (para choques)
+public JLabelColumna(int tamanyo){
+	TAMANYO_COLUMNA = tamanyo;
 	
 	try {
 		
@@ -30,7 +30,7 @@ public JLabelColumna(int tamaño){
 //			super.paintComponent(g);   // En este caso no nos sirve el pintado normal de un JLabel
 			Image img = ((ImageIcon)getIcon()).getImage();
 			Graphics2D g2 = (Graphics2D) g;  // El Graphics realmente es Graphics2D
-			// Escalado más fino con estos 3 parámetros:
+			// Escalado mï¿½s fino con estos 3 parï¿½metros:
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	

@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VentanaConfiguración extends JFrame {
+public class VentanaConfiguracion extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel txtConfiguracin, txtColorNave, txtTeclas;
@@ -32,7 +32,7 @@ public class VentanaConfiguración extends JFrame {
 			public void run() {
 				try {
 					Configuracion e = new Configuracion();
-					VentanaConfiguración frame = new VentanaConfiguración(e);
+					VentanaConfiguracion frame = new VentanaConfiguracion(e);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class VentanaConfiguración extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaConfiguración(Configuracion usuario) {
+	public VentanaConfiguracion(Configuracion usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -91,11 +91,11 @@ public class VentanaConfiguración extends JFrame {
 		ButtonGroup BotonesNave = new ButtonGroup();
 		ButtonGroup BotonesFlechas = new ButtonGroup();
 		//Agrupamos los botones
-		//1º Grupo
+		//1ï¿½ Grupo
 		BotonesNave.add(rdbtnAzul);
 		BotonesNave.add(rdbtnVerde);
 		BotonesNave.add(rdbtnRojo);
-		//2º Grupo
+		//2ï¿½ Grupo
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(335, 227, 89, 23);
@@ -131,12 +131,12 @@ public class VentanaConfiguración extends JFrame {
 				}
 				//Comprobamos si se ha modificado con la que existe en el usuario.
 					if (modificada.equals(usuario)){
-						JOptionPane.showMessageDialog(null, "Ya disponías de esta configuracion, pulsa el boton salir para volver al menu.");
+						JOptionPane.showMessageDialog(null, "Ya disponï¿½as de esta configuracion, pulsa el boton salir para volver al menu.");
 						
 					}
 					
 					else{
-					JOptionPane.showMessageDialog(null, "Su configuración es correcta y ha sido guardada, pulse el botón salir para volver al menu.");
+					JOptionPane.showMessageDialog(null, "Su configuraciï¿½n es correcta y ha sido guardada, pulse el botï¿½n salir para volver al menu.");
 					System.out.println(modificada.toString());
 				}
 					btnCancelar.setText("Salir");

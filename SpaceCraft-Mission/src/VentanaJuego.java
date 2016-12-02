@@ -44,7 +44,7 @@ public class VentanaJuego extends JFrame {
 		// Formato y layouts
 		Principal.setLayout(null);
 		Principal.setBackground(Color.WHITE);
-		// Añadido de componentes a contenedores
+		// Aï¿½adido de componentes a contenedores
 		getContentPane().add(Principal, null);
 
 		// Formato de ventana
@@ -267,9 +267,10 @@ public class VentanaJuego extends JFrame {
 					if (!bosscargado){
 						bosscargado = miMundo.cargarBoss();
 						miMundo.BorrarColumnas();
-						miMundo.AtacaBoss();
+						
 					}
 					miMundo.boss.MoverBoss();
+					miMundo.AtacaBoss();
 					miMundo.AvanzaAtaques();
 					
 				}
