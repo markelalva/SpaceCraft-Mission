@@ -17,7 +17,8 @@ public class GenerarMundo {
 	public Boss boss;
 	public static Fondo panelfondo;
 	protected ArrayList <Columna> ListaColumnas  = new ArrayList<Columna> ();
-	protected ArrayList <Ataque> ListaAtaques = new ArrayList <Ataque>();
+	protected ArrayList <Ataque> ListaAtaques = new ArrayList <Ataque>(); //Array para los ataques del Boss
+	protected ArrayList <Ataque> ListaAtaquesNave = new ArrayList <Ataque> ();
 	public double distanciarecorrida = 0;
 	
 	public GenerarMundo(JPanel panel1){
@@ -85,13 +86,22 @@ public class GenerarMundo {
 			distanciarecorrida++;
 	}
 	
-	public void AvanzaAtaques(){
+	public void AvanzaAtaquesBoss(){
 		for(Ataque at : ListaAtaques){
-			at.Avanzar();
+			at.Avanzar(false);
 		at.getMiGrafico().repaint();
 		panel.repaint();
 	
 	}
+	}
+		
+		public void AvanzaAtaquesNave(){
+			for(Ataque at : ListaAtaquesNave){
+				at.Avanzar(true);
+			at.getMiGrafico().repaint();
+			panel.repaint();
+		
+		}
 }
 
 
@@ -141,7 +151,7 @@ public boolean cargarBoss(){
 public void AtacaBoss(){
 
 	if (ListaAtaques.size() == 0 ){
-		Ataque r = new Ataque ();
+		Ataque r = new Ataque (false);
 		r.setAtacante("HATSUROBIN");
 		r.setDanyo(boss.getDanyoataque());
 		r.setPosicion(boss.getX() -10, boss.getY());
@@ -155,7 +165,7 @@ public void AtacaBoss(){
 		if ( (System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() -1).getTiempoCreacion()) >1000 ){
 	
 			
-		Ataque r = new Ataque ();
+		Ataque r = new Ataque (false);
 			r.setAtacante("HATSUROBIN");
 			r.setDanyo(boss.getDanyoataque());
 			r.setPosicion(boss.getX() -10, boss.getY());
@@ -168,13 +178,13 @@ public void AtacaBoss(){
 	
 }
 	
-/*public void AtacaNave(){
-	if (ListaAtaques.size() == 0 ){
-		Ataque r = new Ataque ();
-		r.setAtacante("HATSUROBIN2");
+public void AtacaNave(){
+	if (ListaAtaquesNave.size() == 0 ){
+		Ataque r = new Ataque (true);
+		r.setAtacante("PLAYER");
 		r.setDanyo(nave.getDanyoataque());
 		r.setPosicion(nave.getPosX() -10, nave.getPosY());
-		ListaAtaques.add(r);
+		ListaAtaquesNave.add(r);
 		panel.add(r.getMiGrafico());
 		r.getMiGrafico().repaint();
 	}
@@ -182,20 +192,21 @@ public void AtacaBoss(){
 	
 	else{
 		
-	
+		if ( (System.currentTimeMillis() - ListaAtaquesNave.get(ListaAtaquesNave.size() -1).getTiempoCreacion()) >1000 ){
 			
-		Ataque r = new Ataque ();
-			r.setAtacante("HATSUROBIN2");
+		Ataque r = new Ataque (true);
+			r.setAtacante("PLAYER");
 			r.setDanyo(nave.getDanyoataque());
 			r.setPosicion(nave.getPosX() -10, nave.getPosY());
-			ListaAtaques.add(r);
+			ListaAtaquesNave.add(r);
 			panel.add(r.getMiGrafico());
 			r.getMiGrafico().repaint();
 		}
-		
 	}
+		
 	
-}*/
+	
+}
 }
 
 	

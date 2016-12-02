@@ -10,14 +10,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class JLabelDisparo extends JLabel{
-	private static final long serialVersionUID = 1L;  // Para serialización
-	private static final int TAMANYO_DISPARO = 40; // píxels (igual ancho que algo)  
+	private static final long serialVersionUID = 1L;  // Para serializaciï¿½n
+	private  int TAMANYO_DISPARO = 40; // pï¿½xels (igual ancho que algo)  
 
-	public JLabelDisparo(){
+	public JLabelDisparo(boolean AtacaPlayer){
 		
 		try {
-			
+			if (!AtacaPlayer)
 			setIcon( new ImageIcon(getClass().getResource("/img/AtaqueBowser.png")));
+			else{
+			setIcon( new ImageIcon(getClass().getResource("/img/DisparoMegaman.png")));
+			this.TAMANYO_DISPARO = 20;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println( "Error en carga de recurso: AtaqueBowser.png no encontrado" );
@@ -28,11 +32,14 @@ public class JLabelDisparo extends JLabel{
 //		super.paintComponent(g);   // En este caso no nos sirve el pintado normal de un JLabel
 		Image img = ((ImageIcon)getIcon()).getImage();
 		Graphics2D g2 = (Graphics2D) g;  // El Graphics realmente es Graphics2D
-		// Escalado más fino con estos 3 parámetros:
+		// Escalado mï¿½s fino con estos 3 parï¿½metros:
 		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 		g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	
         // Dibujado de la imagen
         g2.drawImage( img, 0, 0, TAMANYO_DISPARO, TAMANYO_DISPARO, null );
 }
+
+	
+
 }

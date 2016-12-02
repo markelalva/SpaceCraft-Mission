@@ -34,7 +34,7 @@ public class VentanaJuego extends JFrame {
 	public VentanaJuego(Jugador usuario) {
 
 		
-		presionado = new boolean[4];
+		presionado = new boolean[5];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanelFondo();
 		Principal.setBounds(0, 58, 994, 663);
@@ -102,6 +102,11 @@ public class VentanaJuego extends JFrame {
 						// RETROCEDER
 						presionado[3] = true;
 						break;
+						//Dispàrar
+					case KeyEvent.VK_SPACE:
+						presionado[4] = true;
+						break;
+						
 					}
 
 				} else {
@@ -127,6 +132,12 @@ public class VentanaJuego extends JFrame {
 						// RETROCEDER
 						presionado[3] = true;
 						break;
+						//Atacar
+					case KeyEvent.VK_SPACE:
+						presionado[4] = true;
+						break;
+						
+					
 					}
 
 				}
@@ -158,6 +169,12 @@ public class VentanaJuego extends JFrame {
 						// PARAR
 						presionado[3] = false;
 						break;
+						//DISPARAR
+					case KeyEvent.VK_SPACE:
+						presionado[4] = false;
+						break;
+						
+				
 					}
 
 				} else {
@@ -182,6 +199,10 @@ public class VentanaJuego extends JFrame {
 					case KeyEvent.VK_A:
 						// PARAR
 						presionado[3] = false;
+						break;
+						//DISPARAR
+					case KeyEvent.VK_SPACE:
+						presionado[4] = false;
 						break;
 					}
 
@@ -271,7 +292,11 @@ public class VentanaJuego extends JFrame {
 					}
 					miMundo.boss.MoverBoss();
 					miMundo.AtacaBoss();
-					miMundo.AvanzaAtaques();
+					miMundo.AvanzaAtaquesBoss();
+					miMundo.AvanzaAtaquesNave();
+					if (presionado[4]){
+						miMundo.AtacaNave();
+					}
 					
 				}
 				

@@ -21,14 +21,18 @@ public class Ataque {
 		this.TiempoCreacion = System.currentTimeMillis();
 	}
 	
-	public Ataque(){
+	public Ataque(boolean AtacaPlayer){
 		this.Atacante = "HatsuRobin";
 		this.danyo =0;
 		this.r = new Rectangle();
 		this.x =0;
 		this.y =0;
 		this.TiempoCreacion = System.currentTimeMillis();
-		miGrafico = new JLabelDisparo();
+		if(AtacaPlayer)
+		miGrafico = new JLabelDisparo(true);
+		else
+		miGrafico = new JLabelDisparo(false);
+			
 		
 	}
 
@@ -97,12 +101,22 @@ public class Ataque {
 	}
 	
 	
-	public void Avanzar(){
+	public void Avanzar(boolean EsJugador){
+		if (!EsJugador){
 		this.x = this.x -3;
 		int valor = (int) this.x;
 		int valor2 = (int)  this.y;
 		miGrafico.setLocation( valor, valor2);
 		r.setLocation((int) (r.getX()-3), (int)this.y);
+	}
+		else
+		{
+			this.x = this.x +3;
+			int valor = (int) this.x;
+			int valor2 = (int)  this.y;
+			miGrafico.setLocation( valor, valor2);
+			r.setLocation((int) (r.getX()+3), (int)this.y);
+		}
 	}
 
 	//To String para Pruebas
