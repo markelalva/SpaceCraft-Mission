@@ -283,7 +283,7 @@ public class VentanaJuego extends JFrame {
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
 				
 			//Cuando la distancia llegue a un valor, activamos el Modo Boss.
-				if (miMundo.distanciarecorrida >1000){
+				if (miMundo.distanciarecorrida >100){
 					boss = true;
 					
 					if (!bosscargado){
@@ -295,6 +295,7 @@ public class VentanaJuego extends JFrame {
 					miMundo.AtacaBoss();
 					miMundo.AvanzaAtaquesBoss();
 					miMundo.AvanzaAtaquesNave();
+					miMundo.ComprobarChoquesAtaques();
 					if (presionado[4]){
 						miMundo.AtacaNave();
 					}

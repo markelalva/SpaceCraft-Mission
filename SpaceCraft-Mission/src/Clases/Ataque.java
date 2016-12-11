@@ -28,10 +28,13 @@ public class Ataque {
 		this.x =0;
 		this.y =0;
 		this.TiempoCreacion = System.currentTimeMillis();
-		if(AtacaPlayer)
+		if(AtacaPlayer){
 		miGrafico = new JLabelDisparo(true);
-		else
+		r.setBounds((int)x,(int)y, 20,20);
+		}else{
 		miGrafico = new JLabelDisparo(false);
+		r.setBounds((int)x,(int)y, 40,40);
+		}
 			
 		
 	}
@@ -98,6 +101,7 @@ public class Ataque {
 		setY(posY);
 		//Colocamos el grafico a esa posicion
 		miGrafico.setLocation( (int)posX, (int)posY );
+		r.setLocation((int)posX, (int)posY);
 	}
 	
 	

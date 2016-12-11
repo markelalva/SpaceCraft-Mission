@@ -209,6 +209,31 @@ public void AtacaNave(){
 	
 	
 }
+
+public void ComprobarChoquesAtaques(){
+	//Comprobamos que los ataques no choquen entre ellos, si chocan entre ellos eliminamos los 2.
+	if (ListaAtaques.size() >0 && ListaAtaquesNave.size() >0){
+		for (Ataque aNave: ListaAtaquesNave){
+			for (Ataque aBoss : ListaAtaques){
+		
+			System.out.println(aBoss.getR().toString());
+			System.out.println(aNave.getR().toString());
+			if (aBoss.getR().intersects(aNave.getR())){
+				System.out.println(aBoss.getR().toString());
+				System.out.println(aNave.getR().toString());
+				System.out.println("Borramos");
+				panel.remove(aNave.getMiGrafico());
+				panel.remove(aBoss.getMiGrafico());
+				ListaAtaques.remove(aBoss);
+				ListaAtaquesNave.remove(aNave);
+				
+			}
+		}
+	}
+	panel.repaint();
+	
+}
+}
 }
 
 	
