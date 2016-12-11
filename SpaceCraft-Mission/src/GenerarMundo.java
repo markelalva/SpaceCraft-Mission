@@ -20,10 +20,14 @@ public class GenerarMundo {
 	protected ArrayList <Ataque> ListaAtaques = new ArrayList <Ataque>(); //Array para los ataques del Boss
 	protected ArrayList <Ataque> ListaAtaquesNave = new ArrayList <Ataque> ();
 	public double distanciarecorrida = 0;
-	private Random r = new Random(); //Para cosas en las que se necesite aleatoriedad
+	private Random r = new Random();
+	private int VidasJugador =0;
+	private int VidasBoss = 0;//Para cosas en las que se necesite aleatoriedad
 	
 	public GenerarMundo(JPanel panel1){
 		panel = panel1;
+		VidasJugador = 3;
+		VidasBoss = 1;
 		
 	}
 
@@ -211,6 +215,9 @@ public void AtacaNave(){
 }
 
 public void ComprobarChoquesAtaques(){
+	//Creo dos ArrayList temporales de Ataques, para almacenar los que tengo que eliminar, y evitar un concurrentModificationException
+ArrayList <Ataque> ListaAtaquesTemp = new ArrayList <Ataque>(); //Array para los ataques del Boss
+ ArrayList <Ataque> ListaAtaquesNaveTemp = new ArrayList <Ataque> ();
 	//Comprobamos que los ataques no choquen entre ellos, si chocan entre ellos eliminamos los 2.
 	if (ListaAtaques.size() >0 && ListaAtaquesNave.size() >0){
 		for (Ataque aNave: ListaAtaquesNave){
@@ -219,20 +226,69 @@ public void ComprobarChoquesAtaques(){
 			System.out.println(aBoss.getR().toString());
 			System.out.println(aNave.getR().toString());
 			if (aBoss.getR().intersects(aNave.getR())){
-				System.out.println(aBoss.getR().toString());
-				System.out.println(aNave.getR().toString());
-				System.out.println("Borramos");
 				panel.remove(aNave.getMiGrafico());
 				panel.remove(aBoss.getMiGrafico());
-				ListaAtaques.remove(aBoss);
-				ListaAtaquesNave.remove(aNave);
+				ListaAtaquesTemp.add(aBoss);
+				ListaAtaquesNaveTemp.add(aNave);
 				
 			}
 		}
 	}
+
 	panel.repaint();
 	
 }
+	for (Ataque a1 : ListaAtaquesTemp){
+		ListaAtaques.remove(a1);
+	}
+	for (Ataque a1 : ListaAtaquesNaveTemp){
+		ListaAtaquesNave.remove(a1);
+	}
+	ListaAtaquesTemp.clear();
+	ListaAtaquesNaveTemp.clear();
+	
+	//Comprobamos que los ataques no choquen con el boss o el jugador
+	//Impacto al Boss
+	
+	if (ListaAtaquesNave.size() >0){
+	for (Ataque aNave: ListaAtaquesNave){
+		if (aNave.getR().intersects(boss.getR())){
+			panel.remove(aNave.getMiGrafico());
+			ListaAtaquesNaveTemp.add(aNave);
+			VidasBoss--;
+			
+			
+		}
+	}
+	}
+	//Impacto al Jugador
+	if (ListaAtaques.size() >0){
+	for (Ataque aBoss: ListaAtaques){
+		if (aBoss.getR().intersects(nave.getR())){
+			panel.remove(aBoss.getMiGrafico());
+			ListaAtaquesTemp.add(aBoss);
+			VidasJugador--;
+			
+		}
+	}
+	}
+	
+	for (Ataque a1 : ListaAtaquesTemp){
+		ListaAtaques.remove(a1);
+	}
+	for (Ataque a1 : ListaAtaquesNaveTemp){
+		ListaAtaquesNave.remove(a1);
+	}
+	
+	
+	
+}
+
+public boolean SeSigueJugando(){
+	if (VidasJugador == 0 || VidasBoss ==0)
+		return false;
+		else
+			return true;
 }
 }
 

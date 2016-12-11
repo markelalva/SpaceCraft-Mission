@@ -27,6 +27,8 @@ public Boss() {
 	this.vida = 100;
 	this.danyoataque = 100;
 	miGrafico = new JLabelBoss();
+	r = new Rectangle();
+	r.setBounds(0, 0, 100, 100);
 	// TODO Auto-generated constructor stub
 }
 
@@ -72,6 +74,7 @@ public void setPosicion(double posX, double posY) {
 	setY(posY);
 	//Colocamos el grafico a esa posicion
 	miGrafico.setLocation( (int)posX, (int)posY );
+	r.setLocation((int)posX, (int)posY );
 }
 
 public JLabelBoss getMiGrafico() {

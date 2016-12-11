@@ -296,6 +296,7 @@ public class VentanaJuego extends JFrame {
 					miMundo.AvanzaAtaquesBoss();
 					miMundo.AvanzaAtaquesNave();
 					miMundo.ComprobarChoquesAtaques();
+					seguir = miMundo.SeSigueJugando();
 					if (presionado[4]){
 						miMundo.AtacaNave();
 					}
