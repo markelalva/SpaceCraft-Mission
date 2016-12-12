@@ -11,6 +11,8 @@ import Clases.Jugador;
 
 public class BaseDeDatos {
 	
+	
+	
 	public static Connection initBD( String nombreBD ) {
 		try {
 		    Class.forName("org.sqlite.JDBC");

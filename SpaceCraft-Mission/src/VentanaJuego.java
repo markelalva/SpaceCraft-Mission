@@ -8,6 +8,7 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -311,6 +312,19 @@ public class VentanaJuego extends JFrame {
 			}
 			
 			
+		}
+		if (!seguir){
+			
+			if(miMundo.VidasJugador ==0){
+				JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo. Puntuacion: (Pendiente de editar");
+				
+				
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Ha ganado");
+				
+			}
 		}
 		}
 
