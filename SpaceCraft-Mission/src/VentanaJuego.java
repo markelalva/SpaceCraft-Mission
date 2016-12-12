@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -16,18 +17,25 @@ import Clases.Columna;
 import Clases.JPanelFondo;
 import Clases.Jugador;
 import Clases.NaveJuego;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 public class VentanaJuego extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	static Fondo panelfondo;
 	JPanel Principal, Informacion1;
-	JLabel Tiempo1, Puntuacion1, Tiempo2,Puntuacion2;
+	JLabel Tiempo1, Puntuacion1, Tiempo2,Puntuacion2,Vida1Jugador,Vida2Jugador,Vida3Jugador,Vida1Boss,Vida2Boss,Vida3Boss;
 	GenerarMundo miMundo;
 	NaveJuego nave;
 	boolean presionado[];
 	MiRunnable Hilo = null;
 	private double tiempojugado;
 	private Random r = new 	Random(); //Prueba
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
 	
 	
 
@@ -38,7 +46,7 @@ public class VentanaJuego extends JFrame {
 		presionado = new boolean[5];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanelFondo();
-		Principal.setBounds(0, 58, 994, 663);
+		Principal.setBounds(-40, 57, 994, 653);
 		Principal.setFocusable(true);
 		getContentPane().setLayout(null);
 
@@ -76,6 +84,46 @@ public class VentanaJuego extends JFrame {
 		Tiempo2.setBounds(679, 21, 46, 14);
 		Informacion1.add(Tiempo2);
 		
+		Vida1Jugador = new JLabel("");
+		Vida1Jugador.setBounds(285, 15, 40, 27);
+		Informacion1.add(Vida1Jugador);
+		
+		Vida2Jugador = new JLabel("");
+		Vida2Jugador.setBounds(335, 15, 40, 27);
+		Informacion1.add(Vida2Jugador);
+		
+		Vida3Jugador  = new JLabel("");
+		Vida3Jugador .setBounds(385, 15, 40, 27);
+		Informacion1.add(Vida3Jugador );
+		
+		ImageIcon corazon=new ImageIcon("src/img/corazon.jpg");
+		Icon icono1=new ImageIcon(corazon.getImage().getScaledInstance(Vida1Jugador.getWidth(), Vida1Jugador.getHeight(), Image.SCALE_DEFAULT));
+		Vida1Jugador.setIcon(icono1);
+		Vida2Jugador.setIcon(icono1);
+		Vida3Jugador.setIcon(icono1);
+	
+		lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(218, 21, 46, 14);
+		Informacion1.add(lblNewLabel);
+		
+		Vida1Boss = new JLabel("");
+		Vida1Boss.setBounds(760, 15, 40, 27);
+		Informacion1.add(Vida1Boss);
+		
+		Vida2Boss = new JLabel("");
+		Vida2Boss.setBounds(810, 15, 40, 27);
+		Informacion1.add(Vida2Boss);
+		
+		Vida3Boss = new JLabel("");
+		Vida3Boss.setBounds(860, 15, 40, 27);
+		Informacion1.add(Vida3Boss);
+		
+		ImageIcon corazonlatino=new ImageIcon("src/img/corazonlatino.jpg");
+		Icon icono2=new ImageIcon(corazonlatino.getImage().getScaledInstance(Vida1Jugador.getWidth(), Vida1Jugador.getHeight(), Image.SCALE_DEFAULT));
+		Vida1Boss.setIcon(icono2);
+		Vida2Boss.setIcon(icono2);
+		Vida3Boss.setIcon(icono2);
+		this.repaint();
 		
 		Principal.addKeyListener( new KeyAdapter () {
 			public void keyPressed(KeyEvent a) {
