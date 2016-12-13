@@ -83,14 +83,16 @@ public class VentanaJuego extends JFrame {
 		Tiempo2 = new JLabel("New label");
 		Tiempo2.setBounds(679, 21, 46, 14);
 		Informacion1.add(Tiempo2);
-		
+	
+
 		Vida1Jugador = new JLabel("");
 		Vida1Jugador.setBounds(285, 15, 40, 27);
 		Informacion1.add(Vida1Jugador);
-		
+	
 		Vida2Jugador = new JLabel("");
 		Vida2Jugador.setBounds(335, 15, 40, 27);
 		Informacion1.add(Vida2Jugador);
+		
 		
 		Vida3Jugador  = new JLabel("");
 		Vida3Jugador .setBounds(385, 15, 40, 27);
@@ -101,7 +103,25 @@ public class VentanaJuego extends JFrame {
 		Vida1Jugador.setIcon(icono1);
 		Vida2Jugador.setIcon(icono1);
 		Vida3Jugador.setIcon(icono1);
-	
+		
+		if(miMundo.getVidasJugador()>2){
+		Vida1Jugador.setVisible(true);
+		}else{
+		Vida1Jugador.setVisible(false);
+		}
+		
+		if(miMundo.getVidasJugador()>1){
+		Vida2Jugador.setVisible(true);
+		}else{
+		Vida2Jugador.setVisible(false);	
+		}
+		
+		if(miMundo.getVidasJugador()>0){
+		Vida3Jugador.setVisible(true);
+		}else{
+		Vida3Jugador.setVisible(false);	
+		}
+		
 		lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(218, 21, 46, 14);
 		Informacion1.add(lblNewLabel);
@@ -118,7 +138,7 @@ public class VentanaJuego extends JFrame {
 		Vida3Boss.setBounds(860, 15, 40, 27);
 		Informacion1.add(Vida3Boss);
 		
-		ImageIcon corazonlatino=new ImageIcon("src/img/corazonlatino.jpg");
+		ImageIcon corazonlatino=new ImageIcon("src/img/corazonlatino.png");
 		Icon icono2=new ImageIcon(corazonlatino.getImage().getScaledInstance(Vida1Jugador.getWidth(), Vida1Jugador.getHeight(), Image.SCALE_DEFAULT));
 		Vida1Boss.setIcon(icono2);
 		Vida2Boss.setIcon(icono2);

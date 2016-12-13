@@ -21,8 +21,8 @@ public class GenerarMundo {
 	protected ArrayList <Ataque> ListaAtaquesNave = new ArrayList <Ataque> ();
 	public double distanciarecorrida = 0;
 	private Random r = new Random();
-	public int VidasJugador =0;
-	private int VidasBoss = 0;//Para cosas en las que se necesite aleatoriedad
+	public int VidasJugador =3;
+	private int VidasBoss = 3;//Para cosas en las que se necesite aleatoriedad
 	
 	public GenerarMundo(JPanel panel1){
 		panel = panel1;
@@ -289,6 +289,34 @@ public boolean SeSigueJugando(){
 		return false;
 		else
 			return true;
+}
+
+
+
+
+public int getVidasJugador() {
+	return VidasJugador;
+}
+
+
+
+
+public void setVidasJugador(int vidasJugador) {
+	VidasJugador = vidasJugador;
+}
+
+
+
+
+public int getVidasBoss() {
+	return VidasBoss;
+}
+
+
+
+
+public void setVidasBoss(int vidasBoss) {
+	VidasBoss = vidasBoss;
 }
 }
 
