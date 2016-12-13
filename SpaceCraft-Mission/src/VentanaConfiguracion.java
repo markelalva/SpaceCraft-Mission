@@ -125,9 +125,9 @@ public class VentanaConfiguracion extends JFrame {
 				
 				
 				if (rdbtnWasd.isSelected()==true){
-					modificada.setTeclas(0);
+					modificada.setTeclas("WASD");
 				}else if (radioButton.isSelected()==true){
-					modificada.setTeclas(1);
+					modificada.setTeclas("FLECHAS");
 				}
 				//Comprobamos si se ha modificado con la que existe en el usuario.
 					if (modificada.equals(usuario)){

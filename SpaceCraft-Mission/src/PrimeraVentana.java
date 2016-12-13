@@ -7,11 +7,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import BaseDeDatos.BaseDeDatos;
+import Clases.*;
+
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class PrimeraVentana extends JFrame {
@@ -53,6 +59,8 @@ public class PrimeraVentana extends JFrame {
 		MensajeBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
 		MensajeBienvenida.setBounds(101, 11, 208, 43);
 		contentPane.add(MensajeBienvenida);
+		
+		Connection con = BaseDeDatos.initBD();
 
 		btnQuieroJugar = new JButton("Quiero Jugar");
 		btnQuieroJugar.setBounds(159, 119, 129, 23);
@@ -69,10 +77,25 @@ public class PrimeraVentana extends JFrame {
 			}
 			
 			else{
-				Clases.Jugador j = new Clases.Jugador (NombreJugador);
-				VentanaPrincipal vp = new VentanaPrincipal(j);
-				vp.setVisible(true);
-				dispose();
+				ResultSet rs = BaseDeDatos.ObtenerDatosUsuario(NombreJugador.toUpperCase(), BaseDeDatos.ObtenerStatement(con));
+				boolean existe = true;
+				try{
+					rs.next();
+					rs.getString("nickname");
+				}
+				catch(Exception ex){
+					existe = false;
+				}
+				if (existe){
+					System.out.println("El jugador existe");
+					Jugador jug = BaseDeDatos.CargarJugador(rs);
+					VentanaPrincipal vp = new VentanaPrincipal(jug);
+					vp.setVisible(true);
+					dispose();
+					
+				}
+				
+
 				
 				
 			}
