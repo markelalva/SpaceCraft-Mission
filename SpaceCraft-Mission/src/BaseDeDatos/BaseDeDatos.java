@@ -1,137 +1,182 @@
 package BaseDeDatos;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-
+ 
+import java.awt.Color;
+import java.sql.*;
+ 
+import Clases.Configuracion;
 import Clases.Jugador;
-
+ 
 public class BaseDeDatos {
-	
-	
-	
-	public static Connection initBD( String nombreBD ) {
-		try {
-		    Class.forName("org.sqlite.JDBC");
-		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
-		    return con;
-		} catch (ClassNotFoundException | SQLException e) {
-
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	
-	public static Statement usarCrearTablasBD( Connection con ) {
-		try {
-			Statement statement = con.createStatement();
-			statement.setQueryTimeout(30);  // poner timeout 30 msg
-			try {
-				statement.executeUpdate("create table usuarios " +
-					"(nickname string, Colornave integer, Configuracion int, MaxPunt1 Integer, MaxPunt2 integer, MaxPunt3 Integer)");
-			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
-
-			return statement;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public static boolean usuarioInsert( Statement st,String Nickname) {
-		boolean correcto= true;
-		
-		String sentSQL = "";
-		
-
-			sentSQL = "Insert into usuario values(" +
-					"'" + Nickname+"'0,0,0,0,0)";
-					
-		try {
-			st.executeUpdate(sentSQL);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			correcto=false;
-		}	
-		
-	return correcto;
-
+    private static final String URL = "jdbc:postgresql://ec2-79-125-13-42.eu-west-1.compute.amazonaws.com:5432/ddq7vec664eksu?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+    private static final String USERNAME = "whdcyqdctwfnjx";
+    private static final String PASSWORD = "f468c95bedacc40a787b1d6fafe27a91bbc45309328b21d217003ab58a5930a7";
+   
+    public static Connection initBD( ) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD );
+            return con;
+        } catch (Exception e) {
+ 
+            e.printStackTrace();
+            return null;
+        }
+    }
+   
+   
+    //Obtener statement
+   
+    public static Statement ObtenerStatement(Connection con){
+        Statement st = null;;
+        try {
+            st = con.createStatement();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return st;
+    }
+    public static Statement usarCrearTablasBD( Connection con ) {
+        try {
+            Statement statement = con.createStatement();
+            statement.setQueryTimeout(30);  // poner timeout 30 msg
+            try {
+                statement.executeUpdate("create table usuarios " +
+                    "(nickname text not null primary key, Colornave integer, Configuracion text, MaxPunt1 Integer, MaxPunt2 integer, MaxPunt3 Integer)");
+                System.out.println("TABLA CREADA");
+            } catch (SQLException e) {
+            } // Tabla ya existe. Nada que hacer
+ 
+            return statement;
+        } catch (SQLException e) {
+           
+            return null;
+        }
+    }
+ 
+    public static boolean usuarioInsert( Statement st,String Nickname) {
+        boolean correcto= true;
+       
+        String sentSQL = "";
+       
+ 
+            sentSQL = "Insert into usuarios values(" +
+                    "'" + Nickname+"',0,'WASD',0,0,0)";
+                   
+        try {
+            st.executeUpdate(sentSQL);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            correcto=false;
+        }  
+       
+    return correcto;
+ 
 }
-	public static boolean CambiarConfiguracion( Statement st, Jugador u,int TipoConfiguracion  ) {
-		boolean completado = true;
-		String sentSQL = "update usuarios set" +
-				" Configuracion=" + TipoConfiguracion +
-				" where nick='" + u.getNombre() + "'";
-		try{
-			st.executeUpdate(sentSQL);
-
-	
-	
-
+    public static boolean CambiarConfiguracion( Statement st, Jugador u,int TipoConfiguracion  ) {
+        boolean completado = true;
+        String sentSQL = "update usuarios set" +
+                " Configuracion=" + TipoConfiguracion +
+                " where nick='" + u.getNombre() + "'";
+        try{
+            st.executeUpdate(sentSQL);
+ 
+   
+   
+ 
 } catch(Exception ex){
-	completado = false;
+    completado = false;
 }
-		return completado;
-	
-	
+        return completado;
+   
+   
 }
-	public static boolean CambiarColorNave( Statement st, Jugador u,int ColorNave  ) {
-		boolean completado = true;
-		String sentSQL = "update usuarios set" +
-				" Configuracion=" + ColorNave +
-				" where nick='" + u.getNombre() + "'";
-		try{
-			st.executeUpdate(sentSQL);
-
-	
-	
-
+    public static boolean CambiarColorNave( Statement st, Jugador u,int ColorNave  ) {
+        boolean completado = true;
+        String sentSQL = "update usuarios set" +
+                " Configuracion=" + ColorNave +
+                " where nick='" + u.getNombre() + "'";
+        try{
+            st.executeUpdate(sentSQL);
+ 
+   
+   
+ 
 } catch(Exception ex){
-	completado = false;
+    completado = false;
 }
-		return completado;
-	
-	
+        return completado;
+   
+   
 }
-	public static boolean ActualizarPuntuacion( Statement st, Jugador u, int puntuacion, int numerodepuntuacion ) {
-
-		boolean completado = true;
-		String sentSQL = "update usuarios set" +
-				" MaxPunt" + numerodepuntuacion + " =" + puntuacion +
-				" where nick='" + u.getNombre() + "'";
-		try{
-			st.executeUpdate(sentSQL);
-
-	
-	
-
+    public static boolean ActualizarPuntuacion( Statement st, Jugador u, int puntuacion, int numerodepuntuacion ) {
+ 
+        boolean completado = true;
+        String sentSQL = "update usuarios set" +
+                " MaxPunt" + numerodepuntuacion + " =" + puntuacion +
+                " where nick='" + u.getNombre() + "'";
+        try{
+            st.executeUpdate(sentSQL);
+ 
+   
+   
+ 
 } catch(Exception ex){
-	completado = false;
+    completado = false;
 }
-		return completado;
-	
-	
+        return completado;
+   
+   
 }
-	public static ResultSet ObtenerDatosUsuario(String nickname, Statement st){
-		ResultSet rs = null;
-		String sentSql = "Select * from usuarios where nickname = '" + nickname + "'";
-		
-		 try {
-			rs = st.executeQuery(sentSql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return rs; 
-	
-		
-		
-		
-
-	}
+    public static ResultSet ObtenerDatosUsuario(String nickname, Statement st){
+        ResultSet rs = null;
+        String sentSql = "Select * from usuarios where nickname = '" + nickname + "'";
+       
+         try {
+            rs = st.executeQuery(sentSql);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rs;
+   
+       
+       
+       
+ 
+    }
+   
+    public static Jugador CargarJugador(ResultSet rs){
+        Jugador e = new Jugador();
+        try{
+            System.out.println("Hola");
+        System.out.println("PENE");
+        e.setNombre(rs.getString("nickname"));
+       
+        e.setMaxPunt1(rs.getInt("MaxPunt1"));
+        e.setMaxPunt2(rs.getInt("MaxPunt2"));
+        e.setMaxPunt3(rs.getInt("MaxPunt3"));
+        Configuracion confi = new Configuracion();
+        confi.setTeclas(rs.getString("Configuracion"));
+        int color = rs.getInt("ColorNave");
+        if (color ==0){
+            confi.setColorNave(Color.BLUE);
+           
+        }
+        if (color ==1){
+            confi.setColorNave(Color.RED);
+           
+        }
+        if (color ==2){
+            confi.setColorNave(Color.GREEN);
+        }
+        e.setConfi(confi);
+       
+       
+    } catch (Exception ex){
+       
+    }
+        return e;
+    }
 }
