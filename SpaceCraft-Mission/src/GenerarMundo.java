@@ -20,14 +20,14 @@ public class GenerarMundo {
 	protected ArrayList <Ataque> ListaAtaques = new ArrayList <Ataque>(); //Array para los ataques del Boss
 	protected ArrayList <Ataque> ListaAtaquesNave = new ArrayList <Ataque> ();
 	public double distanciarecorrida = 0;
-	private Random r = new Random();
+	private Random r = new Random();//Para cosas en las que se necesite aleatoriedad
 	public int VidasJugador =3;
-	private int VidasBoss = 3;//Para cosas en las que se necesite aleatoriedad
+	private int VidasBoss = 3;
 	
 	public GenerarMundo(JPanel panel1){
 		panel = panel1;
 		VidasJugador = 3;
-		VidasBoss = 1;
+		VidasBoss = 3;
 		
 	}
 

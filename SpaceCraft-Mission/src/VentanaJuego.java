@@ -103,24 +103,7 @@ public class VentanaJuego extends JFrame {
 		Vida1Jugador.setIcon(icono1);
 		Vida2Jugador.setIcon(icono1);
 		Vida3Jugador.setIcon(icono1);
-		
-		if(miMundo.getVidasJugador()>2){
-		Vida1Jugador.setVisible(true);
-		}else{
-		Vida1Jugador.setVisible(false);
-		}
-		
-		if(miMundo.getVidasJugador()>1){
-		Vida2Jugador.setVisible(true);
-		}else{
-		Vida2Jugador.setVisible(false);	
-		}
-		
-		if(miMundo.getVidasJugador()>0){
-		Vida3Jugador.setVisible(true);
-		}else{
-		Vida3Jugador.setVisible(false);	
-		}
+	
 		
 		lblNewLabel = new JLabel("New label");
 		lblNewLabel.setBounds(218, 21, 46, 14);
@@ -298,7 +281,7 @@ public class VentanaJuego extends JFrame {
 		 int Color = r.nextInt(2);
 		miMundo.CrearColumnaInferior(200, Color);
 		miMundo.CrearColumnaSuperior(200,Color);
-
+		
 		
 
 		
@@ -350,7 +333,9 @@ public class VentanaJuego extends JFrame {
 				
 				
 				Tiempo2.setText(String.valueOf( (System.currentTimeMillis() - tiempojugado ) / 1000));
-				
+			//Eliminamos Vidas
+				VentanaJuego.this.QuitarVidas();
+				VentanaJuego.this.QuitarVidasBoss();
 			//Cuando la distancia llegue a un valor, activamos el Modo Boss.
 				if (miMundo.distanciarecorrida >100){
 					boss = true;
@@ -365,6 +350,7 @@ public class VentanaJuego extends JFrame {
 					miMundo.AvanzaAtaquesBoss();
 					miMundo.AvanzaAtaquesNave();
 					miMundo.ComprobarChoquesAtaques();
+					
 					seguir = miMundo.SeSigueJugando();
 					if (presionado[4]){
 						miMundo.AtacaNave();
@@ -410,4 +396,46 @@ public class VentanaJuego extends JFrame {
 		miMundo.CrearColumnaSuperior(n, Color);
 		}
 	}
+	public void QuitarVidas(){
+		
+		if(miMundo.getVidasJugador()>0){
+		Vida1Jugador.setVisible(true);
+		}else{
+		Vida1Jugador.setVisible(false);
+		}
+		
+		if(miMundo.getVidasJugador()>1){
+		Vida2Jugador.setVisible(true);
+		}else{
+		Vida2Jugador.setVisible(false);	
+		}
+		
+		if(miMundo.getVidasJugador()>2){
+		Vida3Jugador.setVisible(true);
+		}else{
+		Vida3Jugador.setVisible(false);	
+		}
+	}
+	
+		public void QuitarVidasBoss(){
+		
+		if(miMundo.getVidasBoss()>0){
+		Vida1Boss.setVisible(true);
+		}else{
+		Vida1Boss.setVisible(false);
+		}
+		
+		if(miMundo.getVidasBoss()>1){
+		Vida2Boss.setVisible(true);
+		}else{
+		Vida2Boss.setVisible(false);	
+		}
+		
+		if(miMundo.getVidasBoss()>2){
+		Vida3Boss.setVisible(true);
+		}else{
+		Vida3Boss.setVisible(false);	
+		}
+	}
 }
+
