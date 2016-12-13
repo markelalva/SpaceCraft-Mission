@@ -86,12 +86,20 @@ public class PrimeraVentana extends JFrame {
 				catch(Exception ex){
 					existe = false;
 				}
+				Jugador jug = null;
 				if (existe){
 					System.out.println("El jugador existe");
-					Jugador jug = BaseDeDatos.CargarJugador(rs);
+					jug = BaseDeDatos.CargarJugador(rs);
 					VentanaPrincipal vp = new VentanaPrincipal(jug);
 					vp.setVisible(true);
 					dispose();
+					
+				}
+				else
+					
+				{
+					BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
+
 					
 				}
 				
