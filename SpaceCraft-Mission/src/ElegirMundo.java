@@ -68,10 +68,17 @@ public class ElegirMundo extends JFrame {
 		Mundo2 = new JButton("2");
 		Mundo2.setBounds(195, 54, 89, 23);
 		contentPane.add(Mundo2);
+		if (usuario.getMaxPunt1() == 0){
+		Mundo2.setEnabled(false);	
+		}
 		
 		Mundo3  = new JButton("3");
 		Mundo3.setBounds(364, 54, 89, 23);
 		contentPane.add(Mundo3);
+		if (usuario.getMaxPunt2() == 0){
+		Mundo3.setEnabled(false);	
+		}
+		
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
