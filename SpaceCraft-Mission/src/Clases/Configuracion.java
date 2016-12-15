@@ -9,7 +9,7 @@ public class Configuracion {
     //Constructor con Parametros
     public Configuracion(Color colorNave, int teclas) {
         ColorNave = colorNave;
-        Teclas = " ";
+        Teclas = "FLECHAS";
     }
    
     //Constructor vacío
@@ -17,7 +17,7 @@ public class Configuracion {
     public Configuracion(){
        
         this.ColorNave = Color.RED;
-        this.Teclas = " ";
+        this.Teclas = "FLECHAS";
     }
  
  

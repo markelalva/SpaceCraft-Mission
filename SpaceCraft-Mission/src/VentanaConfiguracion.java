@@ -8,13 +8,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 import Clases.Configuracion;
+import Clases.Jugador;
+import BaseDeDatos.*;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 
 public class VentanaConfiguracion extends JFrame {
@@ -31,7 +36,7 @@ public class VentanaConfiguracion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Configuracion e = new Configuracion();
+					Jugador e = new Jugador();
 					VentanaConfiguracion frame = new VentanaConfiguracion(e);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -44,7 +49,7 @@ public class VentanaConfiguracion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaConfiguracion(Configuracion usuario) {
+	public VentanaConfiguracion(Jugador jug) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -107,15 +112,18 @@ public class VentanaConfiguracion extends JFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				boolean seguir = true;
 				modificada = new Configuracion();
 				
 				if (rdbtnAzul.isSelected()== false && rdbtnVerde.isSelected()== false && rdbtnRojo.isSelected()== false){
 					JOptionPane.showMessageDialog(null, "Seleccione un color de nave");
-	
+					seguir = false;
 				}else if(rdbtnWasd.isSelected()==false&&radioButton.isSelected()==false){
 					JOptionPane.showMessageDialog(null, "Seleccione una configuracion de botones");
+					seguir = false;
 				}else if(rdbtnAzul.isSelected()== false && rdbtnVerde.isSelected()== false && rdbtnRojo.isSelected()== false&&rdbtnWasd.isSelected()==false&&radioButton.isSelected()==false){
 					JOptionPane.showMessageDialog(null, "Seleccione un color de nave y una configuracion de botones");
+					seguir = false;
 				}else if (rdbtnAzul.isSelected()== true ){
 					modificada.setColorNave(Color.BLUE);
 				}else if (rdbtnVerde.isSelected()== true ){
@@ -130,18 +138,43 @@ public class VentanaConfiguracion extends JFrame {
 					modificada.setTeclas("FLECHAS");
 				}
 				//Comprobamos si se ha modificado con la que existe en el usuario.
-					if (modificada.equals(usuario)){
-						JOptionPane.showMessageDialog(null, "Ya disponï¿½as de esta configuracion, pulsa el boton salir para volver al menu.");
-						
+				System.out.println("La configuración del usuario es " + jug.getConfi().toString());
+				System.out.println(modificada.toString());
+				System.out.println(modificada.getColorNave() == jug.getConfi().getColorNave());
+				System.out.println(modificada.getTeclas().equals(jug.getConfi().getTeclas()));
+				if (seguir){
+					System.out.println();
+					if ((modificada.getColorNave() == jug.getConfi().getColorNave()) && (modificada.getTeclas().equals(jug.getConfi().getTeclas()))){
+						JOptionPane.showMessageDialog(null, "Ya disponï¿½as de esta configuracion, regresando al menú principal.");
+						VentanaPrincipal vp = new VentanaPrincipal(jug);
+						vp.setVisible(true);
+						dispose();
 					}
 					
-					else{
-					JOptionPane.showMessageDialog(null, "Su configuraciï¿½n es correcta y ha sido guardada, pulse el botï¿½n salir para volver al menu.");
-					System.out.println(modificada.toString());
+					else {
+					JOptionPane.showMessageDialog(null, "Su configuraciï¿½n es correcta y ha sido guardada, pulse el botón salir para volver al menu.");
+					//La modificamos
+					jug.setConfi(modificada);
+					//La actualizamos en la base de datos
+					//Creamos una nueva conexión.
+					Connection con = BaseDeDatos.initBD();
+					BaseDeDatos.CambiarConfiguracion(BaseDeDatos.ObtenerStatement(con), jug);
+					//Paramos 1 segundo
+					try {
+						Thread.sleep(500);
+						con.close();
+					} catch (Exception ex) {
+						ex.printStackTrace();
+					}
+					
+					VentanaPrincipal vp = new VentanaPrincipal(jug);
+					vp.setVisible(true);
+					dispose();
+					
+					
 				}
-					btnCancelar.setText("Salir");
-					btnAceptar.setEnabled(false);
 			   }
+			}
 		});
 		btnAceptar.setBounds(228, 227, 89, 23);
 		contentPane.add(btnAceptar);

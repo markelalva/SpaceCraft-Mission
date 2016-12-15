@@ -222,9 +222,6 @@ ArrayList <Ataque> ListaAtaquesTemp = new ArrayList <Ataque>(); //Array para los
 	if (ListaAtaques.size() >0 && ListaAtaquesNave.size() >0){
 		for (Ataque aNave: ListaAtaquesNave){
 			for (Ataque aBoss : ListaAtaques){
-		
-			System.out.println(aBoss.getR().toString());
-			System.out.println(aNave.getR().toString());
 			if (aBoss.getR().intersects(aNave.getR())){
 				panel.remove(aNave.getMiGrafico());
 				panel.remove(aBoss.getMiGrafico());

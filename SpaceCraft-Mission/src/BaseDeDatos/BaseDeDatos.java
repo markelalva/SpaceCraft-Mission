@@ -74,11 +74,20 @@ public class BaseDeDatos {
     return correcto;
  
 }
-    public static boolean CambiarConfiguracion( Statement st, Jugador u,int TipoConfiguracion  ) {
+    public static boolean CambiarConfiguracion( Statement st, Jugador u  ) {
         boolean completado = true;
+        int color = 0;
+
+        if (u.getConfi().getColorNave() == Color.RED){
+            color = 1;;
+           
+        }
+        if (u.getConfi().getColorNave() == Color.GREEN){
+            color = 2;
+        }
         String sentSQL = "update usuarios set" +
-                " Configuracion=" + TipoConfiguracion +
-                " where nick='" + u.getNombre() + "'";
+                " ColorNave=" + color + ", Configuracion = '" + u.getConfi().getTeclas() +  
+                "' where nickname='" + u.getNombre() + "'";
         try{
             st.executeUpdate(sentSQL);
  
@@ -86,7 +95,7 @@ public class BaseDeDatos {
    
  
 } catch(Exception ex){
-    completado = false;
+   ex.printStackTrace();
 }
         return completado;
    
@@ -96,7 +105,7 @@ public class BaseDeDatos {
         boolean completado = true;
         String sentSQL = "update usuarios set" +
                 " Configuracion=" + ColorNave +
-                " where nick='" + u.getNombre() + "'";
+                " where nickname='" + u.getNombre() + "'";
         try{
             st.executeUpdate(sentSQL);
  
@@ -162,6 +171,7 @@ public class BaseDeDatos {
         int color = rs.getInt("ColorNave");
         if (color ==0){
             confi.setColorNave(Color.BLUE);
+            System.out.println("El usuario tiene el color azul");
            
         }
         if (color ==1){

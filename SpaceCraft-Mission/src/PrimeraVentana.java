@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class PrimeraVentana extends JFrame {
@@ -88,20 +89,39 @@ public class PrimeraVentana extends JFrame {
 				}
 				Jugador jug = null;
 				if (existe){
-					System.out.println("El jugador existe");
+					try{
+					JOptionPane.showMessageDialog(null, "Gracias por volver a jugar: " + rs.getString("nickname"));
 					jug = BaseDeDatos.CargarJugador(rs);
+
 					VentanaPrincipal vp = new VentanaPrincipal(jug);
 					vp.setVisible(true);
 					dispose();
+					}
+					catch (Exception ex){
+						
+					}
 					
 				}
 				else
 					
 				{
 					BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
+					JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
+					jug = new Jugador();
+					jug.setNombre(NombreJugador);
+					VentanaPrincipal vp = new VentanaPrincipal(jug);
+					vp.setVisible(true);
+					//Cerramos la conexión
+					try {
+						con.close();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					dispose();
 
-					
 				}
+
 				
 
 				

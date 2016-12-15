@@ -41,7 +41,6 @@ public class VentanaJuego extends JFrame {
  
  
     public VentanaJuego(Jugador usuario) {
- 
        
         presionado = new boolean[5];
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,7 +131,7 @@ public class VentanaJuego extends JFrame {
             public void keyPressed(KeyEvent a) {
                 // Miramos el tipo de configuracion que tiene.
                 // Flechas
-                if (usuario.getConfi().getTeclas() == "FLECHAS") {
+                if (usuario.getConfi().getTeclas().equals("FLECHAS")) {
                     switch (a.getKeyCode()) {
  
                     case KeyEvent.VK_UP:
@@ -197,8 +196,7 @@ public class VentanaJuego extends JFrame {
             }
  
             public void keyReleased(KeyEvent a) {
-                if (usuario.getConfi().getTeclas() == "FLECHAS") {
- 
+                if (usuario.getConfi().getTeclas().equals("FLECHAS")) {
                     switch (a.getKeyCode()) {
  
                     case KeyEvent.VK_UP:

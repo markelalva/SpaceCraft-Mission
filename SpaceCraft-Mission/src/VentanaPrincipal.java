@@ -69,16 +69,13 @@ public class VentanaPrincipal extends JFrame {
 		MenuConfiguracion.addActionListener(new ActionListener(){
 			
 			public void actionPerformed(ActionEvent e){
-				VentanaConfiguracion vc = new VentanaConfiguracion(usuario.getConfi());
+				VentanaConfiguracion vc = new VentanaConfiguracion(usuario);
 				vc.setVisible(true);
-				vc.btnCancelar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						usuario.setConfi(vc.getModificada());
-						vc.dispose();
+				dispose();
 					}
 					
 					
-				}
+				
 				
 				
 				
@@ -87,8 +84,7 @@ public class VentanaPrincipal extends JFrame {
 			
 			
 		
-		);
-			}
+			
 		}
 		);
 		MenuConfiguracion.setBounds(180, 185, 133, 28);
