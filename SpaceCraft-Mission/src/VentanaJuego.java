@@ -45,7 +45,7 @@ public class VentanaJuego extends JFrame {
         presionado = new boolean[5];
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Principal = new JPanelFondo();
-        Principal.setBounds(-40, 57, 994, 653);
+        Principal.setBounds(0, 58, 994, 663);
         Principal.setFocusable(true);
         getContentPane().setLayout(null);
  
