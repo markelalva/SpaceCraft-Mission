@@ -12,11 +12,15 @@ public class JLabelBoss extends JLabel  {
 	
 	private static final long serialVersionUID = 1L;  // Para serialización
 	private static final int TAMANYO_BOSS = 100;  // píxels (igual ancho que algo)  
-	public JLabelBoss(){
+	public JLabelBoss(int nivel){
 		
 		try {
-			
+			if (nivel == 1)
 			setIcon( new ImageIcon(getClass().getResource("/img/Bowser.png")));
+			else if (nivel ==2)
+				setIcon( new ImageIcon(getClass().getResource("/img/Godzilla.png")));
+			else if (nivel ==3)
+				setIcon( new ImageIcon(getClass().getResource("/img/Megaman.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println( "Error en carga de recurso: columna.png no encontrado" );

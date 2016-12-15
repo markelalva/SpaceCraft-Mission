@@ -11,14 +11,14 @@ private int danyoataque;
 private JLabelBoss miGrafico;
 private Rectangle r;
 private boolean arriba = true;//Constructor con todos los par�metros
-public Boss(int x, int y, int vida, int danyoataque, Rectangle r) {
+public Boss(int x, int y, int vida, int danyoataque, Rectangle r, int nivel) {
 	super();
 	this.x = x;
 	this.y = y;
 	this.vida = vida;
 	this.danyoataque = danyoataque;
 	this.r = r;
-	miGrafico = new JLabelBoss();
+	miGrafico = new JLabelBoss(nivel);
 }
 
 public Boss() {
@@ -26,7 +26,7 @@ public Boss() {
 	this.y = 0;
 	this.vida = 100;
 	this.danyoataque = 100;
-	miGrafico = new JLabelBoss();
+	miGrafico = new JLabelBoss(1);
 	r = new Rectangle();
 	r.setBounds(0, 0, 100, 100);
 	// TODO Auto-generated constructor stub
