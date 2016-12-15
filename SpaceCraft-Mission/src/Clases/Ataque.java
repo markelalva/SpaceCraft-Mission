@@ -10,8 +10,8 @@ public class Ataque {
 	private double y;
 	private JLabelDisparo miGrafico;
 	private long TiempoCreacion;
-	
-	public Ataque(String atacante, int danyo,  double x, double y, JLabelDisparo miGrafico) {
+
+	public Ataque(String atacante, int danyo, double x, double y, JLabelDisparo miGrafico) {
 		Atacante = atacante;
 		this.danyo = danyo;
 		this.r = new Rectangle();
@@ -20,23 +20,22 @@ public class Ataque {
 		this.miGrafico = miGrafico;
 		this.TiempoCreacion = System.currentTimeMillis();
 	}
-	
-	public Ataque(boolean AtacaPlayer){
+
+	public Ataque(boolean AtacaPlayer) {
 		this.Atacante = "HatsuRobin";
-		this.danyo =0;
+		this.danyo = 0;
 		this.r = new Rectangle();
-		this.x =0;
-		this.y =0;
+		this.x = 0;
+		this.y = 0;
 		this.TiempoCreacion = System.currentTimeMillis();
-		if(AtacaPlayer){
-		miGrafico = new JLabelDisparo(true);
-		r.setBounds((int)x,(int)y, 20,20);
-		}else{
-		miGrafico = new JLabelDisparo(false);
-		r.setBounds((int)x,(int)y, 40,40);
+		if (AtacaPlayer) {
+			miGrafico = new JLabelDisparo(true);
+			r.setBounds((int) x, (int) y, 20, 20);
+		} else {
+			miGrafico = new JLabelDisparo(false);
+			r.setBounds((int) x, (int) y, 40, 40);
 		}
-			
-		
+
 	}
 
 	public long getTiempoCreacion() {
@@ -87,7 +86,6 @@ public class Ataque {
 		this.y = y;
 	}
 
-
 	public JLabelDisparo getMiGrafico() {
 		return miGrafico;
 	}
@@ -95,44 +93,34 @@ public class Ataque {
 	public void setMiGrafico(JLabelDisparo miGrafico) {
 		this.miGrafico = miGrafico;
 	}
-	
+
 	public void setPosicion(double posX, double posY) {
 		setX(posX);
 		setY(posY);
-		//Colocamos el grafico a esa posicion
-		miGrafico.setLocation( (int)posX, (int)posY );
-		r.setLocation((int)posX, (int)posY);
+		// Colocamos el grafico a esa posicion
+		miGrafico.setLocation((int) posX, (int) posY);
+		r.setLocation((int) posX, (int) posY);
 	}
-	
-	
-	public void Avanzar(boolean EsJugador){
-		if (!EsJugador){
-		this.x = this.x -3;
-		int valor = (int) this.x;
-		int valor2 = (int)  this.y;
-		miGrafico.setLocation( valor, valor2);
-		r.setLocation((int) (r.getX()-3), (int)this.y);
-	}
-		else
-		{
-			this.x = this.x +3;
+
+	public void Avanzar(boolean EsJugador) {
+		if (!EsJugador) {
+			this.x = this.x - 3;
 			int valor = (int) this.x;
-			int valor2 = (int)  this.y;
-			miGrafico.setLocation( valor, valor2);
-			r.setLocation((int) (r.getX()+3), (int)this.y);
+			int valor2 = (int) this.y;
+			miGrafico.setLocation(valor, valor2);
+			r.setLocation((int) (r.getX() - 3), (int) this.y);
+		} else {
+			this.x = this.x + 3;
+			int valor = (int) this.x;
+			int valor2 = (int) this.y;
+			miGrafico.setLocation(valor, valor2);
+			r.setLocation((int) (r.getX() + 3), (int) this.y);
 		}
 	}
 
-	//To String para Pruebas
+	// To String para Pruebas
 	public String toString() {
 		return "Ataque [Atacante=" + Atacante + ", da�o=" + danyo + ", r=" + r + ", x=" + x + ", y=" + y + "]";
 	}
-	
-
-	
-	
-	
-	
-	
 
 }

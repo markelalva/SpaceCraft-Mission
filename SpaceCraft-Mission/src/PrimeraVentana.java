@@ -27,8 +27,7 @@ public class PrimeraVentana extends JFrame {
 	private JLabel MensajeBienvenida;
 	private JButton btnQuieroJugar, btnSalir;
 	private JTextField Jugador;
-	//Prueba
-	
+	// Prueba
 
 	/**
 	 * Launch the application.
@@ -61,83 +60,71 @@ public class PrimeraVentana extends JFrame {
 		MensajeBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
 		MensajeBienvenida.setBounds(101, 11, 208, 43);
 		contentPane.add(MensajeBienvenida);
-		
+
 		Connection con = BaseDeDatos.initBD();
 
 		btnQuieroJugar = new JButton("Quiero Jugar");
 		btnQuieroJugar.setBounds(159, 119, 129, 23);
 		contentPane.add(btnQuieroJugar);
-		btnQuieroJugar.addActionListener(new ActionListener(){
+		btnQuieroJugar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-			//TODO creamos la siguiente ventana.
-			String NombreJugador = Jugador.getText();
-			if (NombreJugador.length() ==0 ){
-				JOptionPane.showMessageDialog(null, "No ha introducido un nombre de usuario");
-				
-				
-			}
-			
-			else{
-				ResultSet rs = BaseDeDatos.ObtenerDatosUsuario(NombreJugador.toUpperCase(), BaseDeDatos.ObtenerStatement(con));
-				boolean existe = true;
-				try{
-					rs.next();
-					rs.getString("nickname");
-				}
-				catch(Exception ex){
-					existe = false;
-				}
-				Jugador jug = null;
-				if (existe){
-					try{
-					JOptionPane.showMessageDialog(null, "Gracias por volver a jugar: " + rs.getString("nickname"));
-					jug = BaseDeDatos.CargarJugador(rs);
+				// TODO creamos la siguiente ventana.
+				String NombreJugador = Jugador.getText();
+				if (NombreJugador.length() == 0) {
+					JOptionPane.showMessageDialog(null, "No ha introducido un nombre de usuario");
 
-					VentanaPrincipal vp = new VentanaPrincipal(jug);
-					vp.setVisible(true);
-					dispose();
-					}
-					catch (Exception ex){
-						
-					}
-					
 				}
-				else
-					
-				{
-					BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
-					JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
-					jug = new Jugador();
-					jug.setNombre(NombreJugador);
-					VentanaPrincipal vp = new VentanaPrincipal(jug);
-					vp.setVisible(true);
-					//Cerramos la conexión
+
+				else {
+					ResultSet rs = BaseDeDatos.ObtenerDatosUsuario(NombreJugador.toUpperCase(),
+							BaseDeDatos.ObtenerStatement(con));
+					boolean existe = true;
 					try {
-						con.close();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						rs.next();
+						rs.getString("nickname");
+					} catch (Exception ex) {
+						existe = false;
 					}
-					dispose();
+					Jugador jug = null;
+					if (existe) {
+						try {
+							JOptionPane.showMessageDialog(null,
+									"Gracias por volver a jugar: " + rs.getString("nickname"));
+							jug = BaseDeDatos.CargarJugador(rs);
+
+							VentanaPrincipal vp = new VentanaPrincipal(jug);
+							vp.setVisible(true);
+							dispose();
+						} catch (Exception ex) {
+
+						}
+
+					} else
+
+					{
+						BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
+						JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
+						jug = new Jugador();
+						jug.setNombre(NombreJugador);
+						VentanaPrincipal vp = new VentanaPrincipal(jug);
+						vp.setVisible(true);
+						// Cerramos la conexiï¿½n
+						try {
+							con.close();
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						dispose();
+
+					}
 
 				}
 
-				
-
-				
-				
-			}
-				
 			}
 
-
-		
-			
-			
-			
-		}
-	);
+		});
 
 		btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(new ActionListener() {
@@ -148,12 +135,11 @@ public class PrimeraVentana extends JFrame {
 		});
 		btnSalir.setBounds(345, 237, 89, 23);
 		contentPane.add(btnSalir);
-		
+
 		Jugador = new JTextField();
 		Jugador.setBounds(159, 65, 129, 20);
 		contentPane.add(Jugador);
 		Jugador.setColumns(10);
-		
-	
+
 	}
 }

@@ -24,22 +24,16 @@ public class VentanaPrincipal extends JFrame {
 	private JButton ElegirMundo;
 	private JButton MenuConfiguracion;
 	private JLabel NombreUsuario;
+
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	/*
+	 * public static void main(String[] args) { EventQueue.invokeLater(new
+	 * Runnable() { public void run() { try { VentanaPrincipal frame = new
+	 * VentanaPrincipal(); frame.setVisible(true); } catch (Exception e) {
+	 * e.printStackTrace(); } } }); }
+	 */
 	/**
 	 * Create the frame.
 	 */
@@ -50,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		ElegirMundo = new JButton("Seleccionar Nivel");
 		ElegirMundo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,37 +53,29 @@ public class VentanaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		
-		
-		
+
 		ElegirMundo.setBounds(180, 118, 133, 28);
 		contentPane.add(ElegirMundo);
-		
-		MenuConfiguracion = new JButton ("Configuraci�n");
-		MenuConfiguracion.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent e){
+
+		MenuConfiguracion = new JButton("Configuraci�n");
+		MenuConfiguracion.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
 				VentanaConfiguracion vc = new VentanaConfiguracion(usuario);
 				vc.setVisible(true);
 				dispose();
-					}
-					
-		
-			
-		}
-		);
+			}
+
+		});
 		MenuConfiguracion.setBounds(180, 185, 133, 28);
 		contentPane.add(MenuConfiguracion);
-		
+
 		JLabel lblNewLabel = new JLabel("Menu Principal (Cambiar por un icono)");
 		lblNewLabel.setBounds(180, 23, 165, 46);
 		contentPane.add(lblNewLabel);
-		
+
 		NombreUsuario = new JLabel(usuario.getNombre());
 		NombreUsuario.setBounds(10, 23, 46, 14);
 		contentPane.add(NombreUsuario);
 	}
 }
-
-
-

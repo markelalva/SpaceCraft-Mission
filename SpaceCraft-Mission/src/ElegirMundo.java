@@ -21,7 +21,6 @@ public class ElegirMundo extends JFrame {
 	private JPanel contentPane;
 	private JButton Mundo1, Mundo2, Mundo3;
 	private JButton btnVolver;
-	
 
 	/**
 	 * Launch the application.
@@ -50,11 +49,11 @@ public class ElegirMundo extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("elegir mundo");
 		lblNewLabel.setBounds(102, 11, 273, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		Mundo1 = new JButton("1");
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,35 +63,32 @@ public class ElegirMundo extends JFrame {
 		});
 		Mundo1.setBounds(22, 54, 89, 23);
 		contentPane.add(Mundo1);
-		
+
 		Mundo2 = new JButton("2");
 		Mundo2.setBounds(195, 54, 89, 23);
 		contentPane.add(Mundo2);
-		if (usuario.getMaxPunt1() == 0){
-		Mundo2.setEnabled(false);	
+		if (usuario.getMaxPunt1() == 0) {
+			Mundo2.setEnabled(false);
 		}
-		
-		Mundo3  = new JButton("3");
+
+		Mundo3 = new JButton("3");
 		Mundo3.setBounds(364, 54, 89, 23);
 		contentPane.add(Mundo3);
-		if (usuario.getMaxPunt2() == 0){
-		Mundo3.setEnabled(false);	
+		if (usuario.getMaxPunt2() == 0) {
+			Mundo3.setEnabled(false);
 		}
-		
-		
+
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaPrincipal vp = new VentanaPrincipal(usuario);
 				vp.setVisible(true);
 				dispose();
-				
-				
+
 			}
 		});
 		btnVolver.setBounds(364, 263, 89, 23);
 		contentPane.add(btnVolver);
-		
 
 	}
 }

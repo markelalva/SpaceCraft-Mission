@@ -8,39 +8,41 @@ import java.awt.RenderingHints;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class JLabelBoss extends JLabel  {
-	
-	private static final long serialVersionUID = 1L;  // Para serialización
-	private static final int TAMANYO_BOSS = 100;  // píxels (igual ancho que algo)  
-	public JLabelBoss(int nivel){
-		
+public class JLabelBoss extends JLabel {
+
+	private static final long serialVersionUID = 1L; // Para serializaciï¿½n
+	private static final int TAMANYO_BOSS = 100; // pï¿½xels (igual ancho que
+													// algo)
+
+	public JLabelBoss(int nivel) {
+
 		try {
 			if (nivel == 1)
-			setIcon( new ImageIcon(getClass().getResource("/img/Bowser.png")));
-			else if (nivel ==2)
-				setIcon( new ImageIcon(getClass().getResource("/img/Godzilla.png")));
-			else if (nivel ==3)
-				setIcon( new ImageIcon(getClass().getResource("/img/Megaman.png")));
+				setIcon(new ImageIcon(getClass().getResource("/img/Bowser.png")));
+			else if (nivel == 2)
+				setIcon(new ImageIcon(getClass().getResource("/img/Godzilla.png")));
+			else if (nivel == 3)
+				setIcon(new ImageIcon(getClass().getResource("/img/Megaman.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.err.println( "Error en carga de recurso: columna.png no encontrado" );
-			
+			System.err.println("Error en carga de recurso: columna.png no encontrado");
+
 		}
-		
-		 setSize( TAMANYO_BOSS, TAMANYO_BOSS );  
-		
-	}
-			protected void paintComponent(Graphics g) {
-//				super.paintComponent(g);   // En este caso no nos sirve el pintado normal de un JLabel
-				Image img = ((ImageIcon)getIcon()).getImage();
-				Graphics2D g2 = (Graphics2D) g;  // El Graphics realmente es Graphics2D
-				// Escalado más fino con estos 3 parámetros:
-				g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-				g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
-				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	
-		        // Dibujado de la imagen
-		        g2.drawImage( img, 0, 0, TAMANYO_BOSS, TAMANYO_BOSS, null );
-		}
+
+		setSize(TAMANYO_BOSS, TAMANYO_BOSS);
+
 	}
 
-
+	protected void paintComponent(Graphics g) {
+		// super.paintComponent(g); // En este caso no nos sirve el pintado
+		// normal de un JLabel
+		Image img = ((ImageIcon) getIcon()).getImage();
+		Graphics2D g2 = (Graphics2D) g; // El Graphics realmente es Graphics2D
+		// Escalado mï¿½s fino con estos 3 parï¿½metros:
+		g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		// Dibujado de la imagen
+		g2.drawImage(img, 0, 0, TAMANYO_BOSS, TAMANYO_BOSS, null);
+	}
+}
