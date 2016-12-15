@@ -27,6 +27,7 @@ public class PrimeraVentana extends JFrame {
 	private JLabel MensajeBienvenida;
 	private JButton btnQuieroJugar, btnSalir;
 	private JTextField Jugador;
+	//Prueba
 	
 
 	/**

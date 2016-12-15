@@ -45,6 +45,8 @@ public JLabelNave(Configuracion con){
 			g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			g2.setRenderingHint(RenderingHints.KEY_RENDERING,RenderingHints.VALUE_RENDER_QUALITY);
 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);	
+			//Para hacerlo desaparecer
+			//g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.2f));
 	        // Dibujado de la imagen
 	        g2.drawImage( img, 0, 0, TAMANYO_NAVE, TAMANYO_NAVE, null );
 	        if (DIBUJAR_ESFERA_NAVE) g2.drawOval( TAMANYO_NAVE/2-RADIO_ESFERA_COCHE, TAMANYO_NAVE/2-RADIO_ESFERA_COCHE,

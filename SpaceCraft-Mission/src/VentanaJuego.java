@@ -4,7 +4,9 @@ import java.awt.Container;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
  
 import javax.swing.JFrame;
@@ -36,6 +38,7 @@ public class VentanaJuego extends JFrame {
     private JLabel lblNewLabel_1;
     private JLabel lblNewLabel_2;
     private JLabel lblNewLabel_3;
+    DateFormat formatoFechaLocal = DateFormat.getDateInstance(3, Locale.getDefault());
    
    
  
@@ -44,7 +47,7 @@ public class VentanaJuego extends JFrame {
        
         presionado = new boolean[5];
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Principal = new JPanelFondo();
+        Principal = new JPanelFondo(0);
         Principal.setBounds(0, 58, 994, 663);
         Principal.setFocusable(true);
         getContentPane().setLayout(null);
@@ -355,7 +358,7 @@ public class VentanaJuego extends JFrame {
                     }
                    
                 }
-               
+                miMundo.Avanzar();
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
