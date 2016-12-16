@@ -104,17 +104,17 @@ public class Ataque {
 
 	public void Avanzar(boolean EsJugador) {
 		if (!EsJugador) {
-			this.x = this.x - 3;
+			this.x = this.x - 5;
 			int valor = (int) this.x;
 			int valor2 = (int) this.y;
 			miGrafico.setLocation(valor, valor2);
-			r.setLocation((int) (r.getX() - 3), (int) this.y);
+			r.setLocation((int) (r.getX() - 5), (int) this.y);
 		} else {
-			this.x = this.x + 3;
+			this.x = this.x + 5;
 			int valor = (int) this.x;
 			int valor2 = (int) this.y;
 			miGrafico.setLocation(valor, valor2);
-			r.setLocation((int) (r.getX() + 3), (int) this.y);
+			r.setLocation((int) (r.getX() + 5), (int) this.y);
 		}
 	}
 
