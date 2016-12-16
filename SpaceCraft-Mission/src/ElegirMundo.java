@@ -71,13 +71,25 @@ public class ElegirMundo extends JFrame {
 		if (usuario.getMaxPunt1() == 0) {
 			Mundo2.setEnabled(false);
 		}
-
+		Mundo2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(2));
+				as.setVisible(true);
+			}
+		});
 		Mundo3 = new JButton("3");
 		Mundo3.setBounds(364, 54, 89, 23);
 		contentPane.add(Mundo3);
 		if (usuario.getMaxPunt2() == 0) {
 			Mundo3.setEnabled(false);
 		}
+		
+		Mundo3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(3));
+				as.setVisible(true);
+			}
+		});
 
 		btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
