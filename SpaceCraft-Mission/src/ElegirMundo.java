@@ -10,6 +10,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
+import Clases.Dificultades;
 import Clases.Jugador;
 
 import javax.swing.JButton;
@@ -57,7 +58,7 @@ public class ElegirMundo extends JFrame {
 		Mundo1 = new JButton("1");
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaJuego as = new VentanaJuego(usuario);
+				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(1));
 				as.setVisible(true);
 			}
 		});

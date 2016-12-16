@@ -66,12 +66,12 @@ public class Columna {
 		this.migrafico = migrafico;
 	}
 
-	public void Avanzar() {
-		this.x = this.x - 3;
+	public void Avanzar(int Dificultad) {
+		this.x = this.x - Dificultad;
 		int valor = (int) this.x;
 		int valor2 = (int) this.y;
 		migrafico.setLocation(valor, valor2);
-		r.setLocation((int) (r.getX() - 3), (int) this.y);
+		r.setLocation((int) (r.getX() - Dificultad), (int) this.y);
 	}
 
 	public Rectangle getR() {

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import Clases.Columna;
+import Clases.Dificultades;
 import Clases.JPanelFondo;
 import Clases.Jugador;
 import Clases.NaveJuego;
@@ -40,9 +41,10 @@ public class VentanaJuego extends JFrame {
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
+	private Dificultades dif;
 	DateFormat formatoFechaLocal = DateFormat.getDateInstance(3, Locale.getDefault());
 
-	public VentanaJuego(Jugador usuario) {
+	public VentanaJuego(Jugador usuario, Dificultades dificultad) {
 
 		presionado = new boolean[5];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +52,7 @@ public class VentanaJuego extends JFrame {
 		Principal.setBounds(0, 58, 994, 663);
 		Principal.setFocusable(true);
 		getContentPane().setLayout(null);
+		dif = dificultad;
 
 		// Formato y layouts
 		Principal.setLayout(null);
@@ -258,7 +261,7 @@ public class VentanaJuego extends JFrame {
 			}
 
 		});
-		this.miMundo = new GenerarMundo(Principal);
+		this.miMundo = new GenerarMundo(Principal, dif);
 		this.miMundo.cargarNave(200, 300, usuario.getConfi());
 		this.nave = miMundo.getNave();
 		this.Principal.repaint();
@@ -322,7 +325,7 @@ public class VentanaJuego extends JFrame {
 				VentanaJuego.this.QuitarVidasBoss();
 				// Cuando la distancia llegue a un valor, activamos el Modo
 				// Boss.
-				if (miMundo.distanciarecorrida > 100) {
+				if (miMundo.distanciarecorrida > dif.getDistanciaMapa()) {
 					boss = true;
 
 					if (!bosscargado) {
@@ -330,7 +333,7 @@ public class VentanaJuego extends JFrame {
 						miMundo.BorrarColumnas();
 
 					}
-					miMundo.boss.MoverBoss();
+					miMundo.boss.MoverBoss(dif.getVelocidadMovimientoBoss());
 					miMundo.AtacaBoss();
 					miMundo.AvanzaAtaquesBoss();
 					miMundo.AvanzaAtaquesNave();
@@ -369,9 +372,9 @@ public class VentanaJuego extends JFrame {
 	public void CrearColumnas() {
 		r = new Random();
 		int n = 0;
-		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() / 2)) > 100) {
+		if ((miMundo.distanciarecorrida / (miMundo.ListaColumnas.size() / 2)) > dif.getDistanciaEntreColumnas()) {
 			do {
-				n = r.nextInt(300);
+				n = r.nextInt(dif.getMaximoTamanyoDeColumna());
 
 			} while (n < 170);
 			int Color = r.nextInt(2);

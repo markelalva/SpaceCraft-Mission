@@ -8,6 +8,7 @@ import Clases.Ataque;
 import Clases.Boss;
 import Clases.Columna;
 import Clases.Configuracion;
+import Clases.Dificultades;
 import Clases.JPanelFondo;
 import Clases.NaveJuego;
 
@@ -16,6 +17,7 @@ public class GenerarMundo {
 	private NaveJuego nave;
 	public Boss boss;
 	public static Fondo panelfondo;
+	public Dificultades dif;
 	protected ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
 	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>(); // Array
 																		// para
@@ -30,10 +32,11 @@ public class GenerarMundo {
 	public int VidasJugador = 3;
 	private int VidasBoss = 3;
 
-	public GenerarMundo(JPanel panel1) {
+	public GenerarMundo(JPanel panel1, Dificultades dificultad) {
 		panel = panel1;
 		VidasJugador = 3;
 		VidasBoss = 3;
+		dif = dificultad;
 
 	}
 
@@ -82,7 +85,7 @@ public class GenerarMundo {
 
 	public void Avanzar() {
 		for (Columna ee : ListaColumnas) {
-			ee.Avanzar();
+			ee.Avanzar(dif.getVelocidadAvance());
 			ee.getMigrafico().repaint();
 			panel.repaint();
 
@@ -159,7 +162,7 @@ public class GenerarMundo {
 		}
 
 		else {
-			if ((System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() - 1).getTiempoCreacion()) > 1000) {
+			if ((System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() - 1).getTiempoCreacion()) > dif.getTiempoEntreAtaqueBoss()) {
 
 				Ataque r = new Ataque(false);
 				r.setAtacante("HATSUROBIN");

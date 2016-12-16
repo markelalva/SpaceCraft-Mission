@@ -145,7 +145,6 @@ public class BaseDeDatos {
 		Jugador e = new Jugador();
 		try {
 			System.out.println("Hola");
-			System.out.println("PENE");
 			e.setNombre(rs.getString("nickname"));
 
 			e.setMaxPunt1(rs.getInt("MaxPunt1"));

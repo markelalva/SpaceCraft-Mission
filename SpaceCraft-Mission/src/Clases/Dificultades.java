@@ -11,36 +11,36 @@ public class Dificultades {
 
 	public Dificultades(int Nivel) {
 		 if (Nivel ==1 ){
-		DistanciaMapa = 0;
-		VelocidadAvance = 0;
-		DistanciaEntreColumnas = 0;
-		ImagenFondo = 0;
-		VelocidadMovimientoBoss = 0;
-		TiempoEntreAtaqueBoss = 0;
-		MaximoTamanyoDeColumna = 0;
+		DistanciaMapa = 2000;
+		VelocidadAvance = 4;
+		DistanciaEntreColumnas = 100;
+		ImagenFondo = 1;
+		VelocidadMovimientoBoss = 2;
+		TiempoEntreAtaqueBoss = 1000;
+		MaximoTamanyoDeColumna = 300;
 	}
 		if (Nivel ==2){
-			DistanciaMapa = 0;
-			VelocidadAvance = 0;
-			DistanciaEntreColumnas = 0;
-			ImagenFondo = 0;
-			VelocidadMovimientoBoss = 0;
-			TiempoEntreAtaqueBoss = 0;
-			MaximoTamanyoDeColumna = 0;
+			DistanciaMapa = 3000;
+			VelocidadAvance = 6;
+			DistanciaEntreColumnas = 90;
+			ImagenFondo = 2;
+			VelocidadMovimientoBoss = 4;
+			TiempoEntreAtaqueBoss = 750;
+			MaximoTamanyoDeColumna = 300;
 			
 			
 		}
 		if (Nivel ==3){
-			DistanciaMapa = 0;
-			VelocidadAvance = 0;
-			DistanciaEntreColumnas = 0;
-			ImagenFondo = 0;
-			VelocidadMovimientoBoss = 0;
-			TiempoEntreAtaqueBoss = 0;
-			MaximoTamanyoDeColumna = 0;
+			DistanciaMapa = 4000;
+			VelocidadAvance = 8;
+			DistanciaEntreColumnas = 80;
+			ImagenFondo = 3;
+			VelocidadMovimientoBoss = 6;
+			TiempoEntreAtaqueBoss = 500;
+			MaximoTamanyoDeColumna = 300;
 			
 		}
-	
+	//revisar tamanyo columna, igual no pasa la nave
 
 }
 

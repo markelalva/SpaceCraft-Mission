@@ -96,14 +96,14 @@ public class Boss {
 		this.miGrafico = miGrafico;
 	}
 
-	public void MoverBoss() {
+	public void MoverBoss(int Dificultad) {
 		if (arriba) {
-			setPosicion(this.x, this.y - 2);
+			setPosicion(this.x, this.y - Dificultad);
 			if (this.y < 0)
 				arriba = false;
 
 		} else {
-			setPosicion(this.x, this.y + 2);
+			setPosicion(this.x, this.y + Dificultad);
 			if (this.y >= 500)
 				arriba = true;
 		}
