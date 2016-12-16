@@ -27,6 +27,7 @@ public class GenerarMundo {
 																		// Boss
 	protected ArrayList<Ataque> ListaAtaquesNave = new ArrayList<Ataque>();
 	public double distanciarecorrida = 0;
+	public double puntuacion = 0;
 	private Random r = new Random();// Para cosas en las que se necesite
 									// aleatoriedad
 	public int VidasJugador = 3;

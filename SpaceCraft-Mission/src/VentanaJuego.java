@@ -43,9 +43,10 @@ public class VentanaJuego extends JFrame {
 	private JLabel lblNewLabel_3;
 	private Dificultades dif;
 	DateFormat formatoFechaLocal = DateFormat.getDateInstance(3, Locale.getDefault());
+	Jugador jug;
 
 	public VentanaJuego(Jugador usuario, Dificultades dificultad) {
-
+		jug = usuario;
 		presionado = new boolean[5];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Principal = new JPanelFondo(1);
@@ -267,16 +268,18 @@ public class VentanaJuego extends JFrame {
 		this.Principal.repaint();
 		// PONEMOS A 0 EL TIEMPO.
 		tiempojugado = System.currentTimeMillis();
+		
+		// Creamos las dos primeras columnas.
+		int Color = r.nextInt(2);
+		miMundo.CrearColumnaInferior(200, Color);
+		miMundo.CrearColumnaSuperior(200, Color);
 
 		// HILO
 		this.Hilo = new MiRunnable(); // Sintaxis de new para clase interna
 		Thread nuevoHilo = new Thread(this.Hilo);
 		nuevoHilo.start();
 
-		// Creamos las dos primeras columnas.
-		int Color = r.nextInt(2);
-		miMundo.CrearColumnaInferior(200, Color);
-		miMundo.CrearColumnaSuperior(200, Color);
+
 
 	};
 
@@ -354,13 +357,18 @@ public class VentanaJuego extends JFrame {
 				}
 
 			}
-			if (!seguir) {
-
-				if (miMundo.VidasJugador == 0) {
-					JOptionPane.showMessageDialog(null,
-							"Ha perdido, intentalo de nuevo. Puntuacion: (Pendiente de editar");
+			if ( !seguir ) {
+				System.out.println(bosscargado);
+				if ((miMundo.VidasJugador == 0) || (!bosscargado)) {
+					JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo. Puntuacion: (Pendiente de editar");
+					//Volvemos al menú principal
+					ElegirMundo em = new ElegirMundo(jug);
+					em.setVisible(true);
+					dispose();
+					
 
 				} else {
+
 					JOptionPane.showMessageDialog(null, "Ha ganado");
 
 				}
@@ -376,7 +384,7 @@ public class VentanaJuego extends JFrame {
 			do {
 				n = r.nextInt(dif.getMaximoTamanyoDeColumna());
 
-			} while (n < 170);
+			} while (n < dif.getMinimoTamanyoDeColumna());
 			int Color = r.nextInt(2);
 			miMundo.CrearColumnaInferior(n, Color);
 			miMundo.CrearColumnaSuperior(n, Color);

@@ -7,6 +7,7 @@ public class Dificultades {
 	private int ImagenFondo;
 	private int VelocidadMovimientoBoss;
 	private int TiempoEntreAtaqueBoss;
+	private int MinimoTamanyoDeColumna;
 	private int MaximoTamanyoDeColumna;
 
 	public Dificultades(int Nivel) {
@@ -17,6 +18,7 @@ public class Dificultades {
 		ImagenFondo = 1;
 		VelocidadMovimientoBoss = 2;
 		TiempoEntreAtaqueBoss = 1000;
+		MinimoTamanyoDeColumna = 100;
 		MaximoTamanyoDeColumna = 300;
 	}
 		if (Nivel ==2){
@@ -26,6 +28,7 @@ public class Dificultades {
 			ImagenFondo = 2;
 			VelocidadMovimientoBoss = 4;
 			TiempoEntreAtaqueBoss = 750;
+			MinimoTamanyoDeColumna = 200;
 			MaximoTamanyoDeColumna = 300;
 			
 			
@@ -37,6 +40,7 @@ public class Dificultades {
 			ImagenFondo = 3;
 			VelocidadMovimientoBoss = 6;
 			TiempoEntreAtaqueBoss = 500;
+			MinimoTamanyoDeColumna = 0;
 			MaximoTamanyoDeColumna = 300;
 			
 		}
@@ -72,4 +76,9 @@ public class Dificultades {
 	public int getMaximoTamanyoDeColumna() {
 		return MaximoTamanyoDeColumna;
 	}
+
+	public int getMinimoTamanyoDeColumna() {
+		return MinimoTamanyoDeColumna;
+	}
+	
 }
