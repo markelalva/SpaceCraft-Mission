@@ -40,7 +40,7 @@ public class Dificultades {
 			ImagenFondo = 3;
 			VelocidadMovimientoBoss = 6;
 			TiempoEntreAtaqueBoss = 500;
-			MinimoTamanyoDeColumna = 0;
+			MinimoTamanyoDeColumna = 250;
 			MaximoTamanyoDeColumna = 300;
 			
 		}

@@ -23,7 +23,7 @@ public class Boss {	private int ImagenBoss;
 	}
 
 	public Boss(int ImagenBoss) {
-		ImagenBoss=1;
+		
 		this.x = 0;
 		this.y = 0;
 		this.vida = 100;
