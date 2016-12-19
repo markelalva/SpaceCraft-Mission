@@ -32,12 +32,15 @@ public class GenerarMundo {
 									// aleatoriedad
 	public int VidasJugador = 3;
 	private int VidasBoss = 3;
+	private double tiempojugado;
 
 	public GenerarMundo(JPanel panel1, Dificultades dificultad) {
 		panel = panel1;
 		VidasJugador = 3;
 		VidasBoss = 3;
 		dif = dificultad;
+		puntuacion = (dificultad.getDistanciaMapa() * 3);
+		tiempojugado = System.currentTimeMillis();
 
 	}
 
@@ -276,6 +279,10 @@ public class GenerarMundo {
 		}
 
 	}
+	
+	public void ActualizarPuntuacion(){
+		puntuacion = (dif.getDistanciaMapa() * 3) - ((System.currentTimeMillis() - tiempojugado)/60) - 500*(3-VidasJugador);
+	}
 
 	public boolean SeSigueJugando() {
 		if (VidasJugador == 0 || VidasBoss == 0)
@@ -299,4 +306,17 @@ public class GenerarMundo {
 	public void setVidasBoss(int vidasBoss) {
 		VidasBoss = vidasBoss;
 	}
+
+	public double getPuntuacion() {
+		return puntuacion;
+	}
+
+	public void setPuntuacion(double puntuacion) {
+		this.puntuacion = puntuacion;
+	}
+
+	public double getTiempojugado() {
+		return tiempojugado;
+	}
+	
 }

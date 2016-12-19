@@ -35,7 +35,6 @@ public class VentanaJuego extends JFrame {
 	NaveJuego nave;
 	boolean presionado[];
 	MiRunnable Hilo = null;
-	private double tiempojugado;
 	private Random r = new Random(); // Prueba
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
@@ -267,7 +266,6 @@ public class VentanaJuego extends JFrame {
 		this.nave = miMundo.getNave();
 		this.Principal.repaint();
 		// PONEMOS A 0 EL TIEMPO.
-		tiempojugado = System.currentTimeMillis();
 		
 		// Creamos las dos primeras columnas.
 		int Color = r.nextInt(2);
@@ -321,8 +319,9 @@ public class VentanaJuego extends JFrame {
 					seguir = !miMundo.ComprobarChoques();
 				}
 				// Actualizamos los labels
-
-				Tiempo2.setText(String.valueOf((System.currentTimeMillis() - tiempojugado) / 1000));
+				miMundo.ActualizarPuntuacion();
+				Tiempo2.setText(String.valueOf((System.currentTimeMillis() - miMundo.getTiempojugado()) / 1000));
+				Puntuacion2.setText(String.valueOf(miMundo.getPuntuacion()));
 				// Eliminamos Vidas
 				VentanaJuego.this.QuitarVidas();
 				VentanaJuego.this.QuitarVidasBoss();
