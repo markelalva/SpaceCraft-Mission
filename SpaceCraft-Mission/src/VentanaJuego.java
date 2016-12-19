@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -24,6 +25,8 @@ import Clases.NaveJuego;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import BaseDeDatos.*;
+
 public class VentanaJuego extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -43,6 +46,7 @@ public class VentanaJuego extends JFrame {
 	private Dificultades dif;
 	DateFormat formatoFechaLocal = DateFormat.getDateInstance(3, Locale.getDefault());
 	Jugador jug;
+	Connection con;
 
 	public VentanaJuego(Jugador usuario, Dificultades dificultad) {
 		jug = usuario;
@@ -53,6 +57,7 @@ public class VentanaJuego extends JFrame {
 		Principal.setFocusable(true);
 		getContentPane().setLayout(null);
 		dif = dificultad;
+		con = BaseDeDatos.initBD();
 
 		// Formato y layouts
 		Principal.setLayout(null);
@@ -369,6 +374,24 @@ public class VentanaJuego extends JFrame {
 				} else {
 
 					JOptionPane.showMessageDialog(null, "Ha ganado");
+					//Actualizamos las puntuaciones tanto en el usuario como en la BD.
+					if (dif.getImagenFondo() ==1){
+						jug.setMaxPunt1((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 1);
+						
+					}
+					if (dif.getImagenFondo() ==2){
+						jug.setMaxPunt2((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 2);
+						
+					}
+					else{
+						jug.setMaxPunt3((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 3);
+						
+					}
+					JOptionPane.showMessageDialog(null, "Enhorabuena, ha ganado");
+					ElegirMundo em = new ElegirMundo(jug); 
 
 				}
 			}
