@@ -385,8 +385,36 @@ public class VentanaJuego extends JFrame {
 						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 3);
 						
 					}
+					JOptionPane.showMessageDialog(null, "Ha ganado");
+					//Actualizamos las puntuaciones tanto en el usuario como en la BD.
+					if (dif.getImagenFondo() ==1){
+						jug.setMaxPunt1((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 1);
+						
+					}
+					if (dif.getImagenFondo() ==2){
+						jug.setMaxPunt2((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 2);
+						
+					}
+					else{
+						jug.setMaxPunt3((int)miMundo.getPuntuacion());
+						BaseDeDatos.ActualizarPuntuacion(BaseDeDatos.ObtenerStatement(con), jug, (int)miMundo.getPuntuacion(), 3);
+						
+					}
 					JOptionPane.showMessageDialog(null, "Enhorabuena, ha ganado");
-					ElegirMundo em = new ElegirMundo(jug); 
+					ElegirMundo em = new ElegirMundo(jug);
+					em.setVisible(true);
+					try{
+						con.close();	
+					}
+					catch (Exception ex){
+						
+					}
+					
+					dispose();
+
+				
 
 				}
 			}
