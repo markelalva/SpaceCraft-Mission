@@ -115,13 +115,13 @@ public class BaseDeDatos {
 	public static boolean ActualizarPuntuacion(Statement st, Jugador u, int puntuacion, int numerodepuntuacion) {
 
 		boolean completado = true;
-		String sentSQL = "update usuarios set" + " MaxPunt" + numerodepuntuacion + " =" + puntuacion + " where nick='"
+		String sentSQL = "update usuarios set" + " MaxPunt" + numerodepuntuacion + " =" + puntuacion + " where nickname='"
 				+ u.getNombre() + "'";
 		try {
 			st.executeUpdate(sentSQL);
 
 		} catch (Exception ex) {
-			completado = false;
+			ex.printStackTrace();
 		}
 		return completado;
 

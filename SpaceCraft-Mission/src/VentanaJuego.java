@@ -51,7 +51,7 @@ public class VentanaJuego extends JFrame {
 		jug = usuario;
 		presionado = new boolean[5];
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Principal = new JPanelFondo(1);
+		Principal = new JPanelFondo(dificultad.getImagenFondo());
 		Principal.setBounds(0, 58, 994, 663);
 		Principal.setFocusable(true);
 		getContentPane().setLayout(null);
