@@ -308,7 +308,7 @@ public class GenerarMundo {
 	}
 
 	public double getPuntuacion() {
-		return puntuacion;
+		return (int)puntuacion;
 	}
 
 	public void setPuntuacion(double puntuacion) {

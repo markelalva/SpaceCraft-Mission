@@ -39,7 +39,6 @@ public class VentanaJuego extends JFrame {
 	boolean presionado[];
 	MiRunnable Hilo = null;
 	private Random r = new Random(); // Prueba
-	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
@@ -109,10 +108,6 @@ public class VentanaJuego extends JFrame {
 		Vida1Jugador.setIcon(icono1);
 		Vida2Jugador.setIcon(icono1);
 		Vida3Jugador.setIcon(icono1);
-
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(218, 21, 46, 14);
-		Informacion1.add(lblNewLabel);
 
 		Vida1Boss = new JLabel("");
 		Vida1Boss.setBounds(760, 15, 40, 27);
