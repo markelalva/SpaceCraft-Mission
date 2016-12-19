@@ -22,7 +22,7 @@ public class JLabelBoss extends JLabel {
 			else if (nivel == 2)
 				setIcon(new ImageIcon(getClass().getResource("/img/Godzilla.png")));
 			else if (nivel == 3)
-				setIcon(new ImageIcon(getClass().getResource("/img/Megaman.png")));
+				setIcon(new ImageIcon(getClass().getResource("/img/naveBoss1.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error en carga de recurso: columna.png no encontrado");
