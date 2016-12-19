@@ -3,7 +3,7 @@ package Clases;
 import java.awt.Component;
 import java.awt.Rectangle;
 
-public class Boss {
+public class Boss {	private int ImagenBoss;
 	private double x;
 	private double y;
 	private int vida;
@@ -23,11 +23,12 @@ public class Boss {
 	}
 
 	public Boss() {
+		int ImagenBoss=1;
 		this.x = 0;
 		this.y = 0;
 		this.vida = 100;
 		this.danyoataque = 100;
-		miGrafico = new JLabelBoss(1);
+		miGrafico = new JLabelBoss(ImagenBoss);
 		r = new Rectangle();
 		r.setBounds(0, 0, 100, 100);
 		// TODO Auto-generated constructor stub

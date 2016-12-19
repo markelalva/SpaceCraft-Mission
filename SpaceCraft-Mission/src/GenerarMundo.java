@@ -144,7 +144,7 @@ public class GenerarMundo {
 
 	// Metodo para Crear los Boss
 	public boolean cargarBoss() {
-		boss = new Boss();
+		boss = new Boss(dif.getImagenFondo());
 		boss.setPosicion(700, 200);
 		panel.add(boss.getMiGrafico()); // A�ade al panel visual
 		boss.getMiGrafico().repaint();
