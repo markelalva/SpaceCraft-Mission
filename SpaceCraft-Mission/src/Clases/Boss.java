@@ -22,8 +22,8 @@ public class Boss {	private int ImagenBoss;
 		miGrafico = new JLabelBoss(nivel);
 	}
 
-	public Boss() {
-		int ImagenBoss=1;
+	public Boss(int ImagenBoss) {
+		ImagenBoss=1;
 		this.x = 0;
 		this.y = 0;
 		this.vida = 100;
