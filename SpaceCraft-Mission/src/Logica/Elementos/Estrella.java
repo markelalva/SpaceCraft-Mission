@@ -22,7 +22,7 @@ public class Estrella {
 		this.x = 0;
 		this.y =0;
 		this.creacion = System.currentTimeMillis();
-		this.r = new Rectangle();
+		this.r = new Rectangle(0,0, 30,30);
 		this.miGrafico = new JLabelEstrella();
 		
 		
@@ -74,6 +74,14 @@ public class Estrella {
 		setY(posY);
 		r.setLocation(posX, posY);
 		miGrafico.setLocation(posX, posY);
+	}
+	//Metodo para avanzar las estrellas.
+	public void Avanzar(int Dificultad) {
+		this.x = this.x - Dificultad;
+		int valor = (int) this.x;
+		int valor2 = (int) this.y;
+		miGrafico.setLocation(valor, valor2);
+		r.setLocation((int) (r.getX() - Dificultad), (int) this.y);
 	}
 
 	@Override
