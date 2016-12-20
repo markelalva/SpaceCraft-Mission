@@ -21,11 +21,11 @@ public class JPanelFondo extends JPanel {
 		// Como no estamos usando un Jlabel no podemos utilizar el set Icon, asi
 		// que lo crearemos con el m�todo ImageIcon
 		if (nivel ==1)
-		imagenFondo = new ImageIcon(getClass().getResource("/img/FondoPlaya.jpg"));
+		imagenFondo = new ImageIcon(getClass().getResource("/Visual/img/FondoPlaya.jpg"));
 		if (nivel ==2)
-			imagenFondo = new ImageIcon(getClass().getResource("/img/FondoCiudad.jpg"));
+			imagenFondo = new ImageIcon(getClass().getResource("/Visual/img/FondoCiudad.jpg"));
 		if (nivel ==3)
-			imagenFondo = new ImageIcon(getClass().getResource("/img/Fondo2.png"));
+			imagenFondo = new ImageIcon(getClass().getResource("/Visual/img/Fondo2.png"));
 		
 		g.drawImage(imagenFondo.getImage(), 0, 0, 994, 663, null);
 		setOpaque(false);

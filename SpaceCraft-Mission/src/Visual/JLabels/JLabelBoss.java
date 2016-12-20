@@ -18,11 +18,11 @@ public class JLabelBoss extends JLabel {
 
 		try {
 			if (nivel == 1)
-				setIcon(new ImageIcon(getClass().getResource("/img/Bowser.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/Bowser.png")));
 			else if (nivel == 2)
-				setIcon(new ImageIcon(getClass().getResource("/img/Godzilla.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/Godzilla.png")));
 			else if (nivel == 3)
-				setIcon(new ImageIcon(getClass().getResource("/img/naveBoss1.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/naveBoss1.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error en carga de recurso: columna.png no encontrado");

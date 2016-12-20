@@ -28,11 +28,11 @@ public class JLabelNave extends JLabel {
 		// TODO Dependiendo del color que se le pase, se coger� un icono u otro.
 		try {
 			if (con.getColorNave() == Color.RED)
-				setIcon(new ImageIcon(getClass().getResource("/img/NaveROJO.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/NaveROJO.png")));
 			if (con.getColorNave() == Color.BLUE)
-				setIcon(new ImageIcon(getClass().getResource("/img/NaveAzul.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/NaveAzul.png")));
 			if (con.getColorNave() == Color.GREEN)
-				setIcon(new ImageIcon(getClass().getResource("/img/NaveVerde.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/NaveVerde.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error en carga de recurso: nave.png no encontrado");

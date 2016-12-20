@@ -20,9 +20,9 @@ public class JLabelColumna extends JLabel {
 
 		try {
 			if (tipo == 0)
-				setIcon(new ImageIcon(getClass().getResource("/img/columnaverde.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/columnaverde.png")));
 			else
-				setIcon(new ImageIcon(getClass().getResource("/img/columnarojo.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/columnarojo.png")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error en carga de recurso: columnaverde.png no encontrado");

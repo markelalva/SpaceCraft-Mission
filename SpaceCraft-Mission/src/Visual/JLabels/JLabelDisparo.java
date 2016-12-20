@@ -16,9 +16,9 @@ public class JLabelDisparo extends JLabel {
 
 		try {
 			if (!AtacaPlayer)
-				setIcon(new ImageIcon(getClass().getResource("/img/AtaqueBowser.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/AtaqueBowser.png")));
 			else {
-				setIcon(new ImageIcon(getClass().getResource("/img/DisparoMegaman.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/DisparoMegaman.png")));
 				this.TAMANYO_DISPARO = 20;
 			}
 		} catch (Exception e) {
