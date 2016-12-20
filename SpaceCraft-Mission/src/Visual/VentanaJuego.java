@@ -315,6 +315,8 @@ public class VentanaJuego extends JFrame {
 					CrearColumnas();
 					// Comprobamos los choques
 					seguir = !miMundo.ComprobarChoques();
+					//Cargamos las Estrellas
+					miMundo.CrearYBorrarEstrellas();
 				}
 				// Actualizamos los labels
 				miMundo.ActualizarPuntuacion();

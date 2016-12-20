@@ -8,6 +8,7 @@ import Logica.*;
 import Logica.Elementos.Ataque;
 import Logica.Elementos.Boss;
 import Logica.Elementos.Columna;
+import Logica.Elementos.Estrella;
 import Logica.Elementos.NaveJuego;
 import Visual.JPanels.JPanelFondo;
 
@@ -17,13 +18,9 @@ public class GenerarMundo {
 	public Boss boss;
 	public Dificultades dif;
 	public ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
-	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>(); // Array
-																		// para
-																		// los
-																		// ataques
-																		// del
-																		// Boss
+	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>();
 	protected ArrayList<Ataque> ListaAtaquesNave = new ArrayList<Ataque>();
+	protected ArrayList <Estrella>ListaEstrellas = new ArrayList <Estrella>();
 	public double distanciarecorrida = 0;
 	public double puntuacion = 0;
 	private Random r = new Random();// Para cosas en las que se necesite
@@ -288,6 +285,32 @@ public class GenerarMundo {
 		else
 			return true;
 	}
+	
+	public void CrearYBorrarEstrellas(){
+		//Primera Estrella
+		if (ListaEstrellas.size() == 0){
+		//Esperamos 5 segundos desde la creación del mundo para empezar con la primera.
+			if ((System.currentTimeMillis() - this.tiempojugado ) >5000){
+				Estrella e = new Estrella();
+				//Obtenemos las coordenadas mediante un random.
+				e.setPosicion(r.nextInt(600), r.nextInt(200));
+				ListaEstrellas.add(e);
+				panel.add(e.getMiGrafico());
+			}
+		}
+			else
+			{
+				if ((System.currentTimeMillis() - ListaEstrellas.get(ListaEstrellas.size() -1).getCreacion()) >400){
+					Estrella e = new Estrella();
+					//Obtenemos las coordenadas mediante un random.
+					e.setPosicion(r.nextInt(600), r.nextInt(200));
+					ListaEstrellas.add(e);
+					panel.add(e.getMiGrafico());
+				}
+			}
+			
+		}
+	
 
 	public int getVidasJugador() {
 		return VidasJugador;
@@ -316,5 +339,7 @@ public class GenerarMundo {
 	public double getTiempojugado() {
 		return tiempojugado;
 	}
+	
+	
 	
 }
