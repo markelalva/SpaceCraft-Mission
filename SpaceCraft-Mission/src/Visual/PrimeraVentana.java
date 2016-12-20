@@ -8,9 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import Logica.BaseDeDatos;
-import Logica.Elementos.*;
+import Logica.*;
 
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -87,7 +85,7 @@ public class PrimeraVentana extends JFrame {
 					} catch (Exception ex) {
 						existe = false;
 					}
-					Jugador jug = null;
+					Logica.Elementos.Jugador jug = null;
 					if (existe) {
 						try {
 							JOptionPane.showMessageDialog(null,
@@ -106,7 +104,7 @@ public class PrimeraVentana extends JFrame {
 					{
 						BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
 						JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
-						jug = new Jugador();
+						jug = new Logica.Elementos.Jugador();
 						jug.setNombre(NombreJugador);
 						VentanaPrincipal vp = new VentanaPrincipal(jug);
 						vp.setVisible(true);

@@ -3,6 +3,8 @@ package Logica;
 import java.awt.Color;
 import java.sql.*;
 
+import Logica.Elementos.Jugador;
+
 public class BaseDeDatos {
 	private static final String URL = "jdbc:postgresql://ec2-79-125-13-42.eu-west-1.compute.amazonaws.com:5432/ddq7vec664eksu?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
 	private static final String USERNAME = "whdcyqdctwfnjx";

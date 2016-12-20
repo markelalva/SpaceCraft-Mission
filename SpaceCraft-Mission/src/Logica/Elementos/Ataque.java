@@ -2,6 +2,8 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Visual.JLabels.JLabelDisparo;
+
 public class Ataque {
 	private String Atacante;
 	private int danyo;

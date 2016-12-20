@@ -2,6 +2,8 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Visual.JLabels.JLabelColumna;
+
 public class Columna {
 	public double x;
 	public double y;

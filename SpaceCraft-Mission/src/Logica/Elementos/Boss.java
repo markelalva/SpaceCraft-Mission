@@ -3,6 +3,8 @@ package Logica.Elementos;
 import java.awt.Component;
 import java.awt.Rectangle;
 
+import Visual.JLabels.JLabelBoss;
+
 public class Boss {	private int ImagenBoss;
 	private double x;
 	private double y;

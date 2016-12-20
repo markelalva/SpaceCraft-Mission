@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Logica.Configuracion;
-import Logica.Jugador;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -38,7 +37,7 @@ public class VentanaPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaPrincipal(Jugador usuario) {
+	public VentanaPrincipal(Logica.Elementos.Jugador usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 365);
 		contentPane = new JPanel();

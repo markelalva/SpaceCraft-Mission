@@ -19,18 +19,16 @@ import javax.swing.SwingUtilities;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import BaseDeDatos.*;
 import Logica.BaseDeDatos;
-import Logica.Columna;
 import Logica.Dificultades;
-import Logica.Jugador;
-import Logica.NaveJuego;
+import Logica.GenerarMundo;
+import Logica.Elementos.*;
 import Visual.JPanels.JPanelFondo;
+
 
 public class VentanaJuego extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	static Fondo panelfondo;
 	JPanel Principal, Informacion1;
 	JLabel Tiempo1, Puntuacion1, Tiempo2, Puntuacion2, Vida1Jugador, Vida2Jugador, Vida3Jugador, Vida1Boss, Vida2Boss,
 			Vida3Boss;

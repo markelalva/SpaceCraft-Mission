@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JPanel;
-
-import Logica.Ataque;
-import Logica.Boss;
-import Logica.Columna;
-import Logica.Configuracion;
-import Logica.Dificultades;
-import Logica.NaveJuego;
+import Logica.*;
+import Logica.Elementos.Ataque;
+import Logica.Elementos.Boss;
+import Logica.Elementos.Columna;
+import Logica.Elementos.NaveJuego;
 import Visual.JPanels.JPanelFondo;
 
 public class GenerarMundo {
 	private JPanel panel;
 	private NaveJuego nave;
 	public Boss boss;
-	public static Fondo panelfondo;
 	public Dificultades dif;
-	protected ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
+	public ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
 	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>(); // Array
 																		// para
 																		// los

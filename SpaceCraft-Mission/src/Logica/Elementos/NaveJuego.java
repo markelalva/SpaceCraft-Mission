@@ -2,6 +2,9 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Logica.Configuracion;
+import Visual.JLabels.JLabelNave;
+
 public class NaveJuego extends Nave {
 	private JLabelNave miGrafico;
 	private Rectangle r;

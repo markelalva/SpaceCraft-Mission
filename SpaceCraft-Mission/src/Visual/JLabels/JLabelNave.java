@@ -8,7 +8,6 @@ import java.awt.RenderingHints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import Clases.*;
 import Logica.Configuracion;
 
 public class JLabelNave extends JLabel {

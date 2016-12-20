@@ -11,10 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import org.omg.Messaging.SyncScopeHelper;
 
-import BaseDeDatos.*;
 import Logica.BaseDeDatos;
 import Logica.Configuracion;
-import Logica.Jugador;
+import Logica.Elementos.Jugador;
 
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;

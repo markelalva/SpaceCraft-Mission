@@ -1,5 +1,7 @@
 package Logica.Elementos;
 
+import Logica.Configuracion;
+
 public class Jugador {
 
 	private String nombre;

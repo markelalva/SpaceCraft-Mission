@@ -12,7 +12,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import Logica.Dificultades;
-import Logica.Jugador;
+import Logica.Elementos.*;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
