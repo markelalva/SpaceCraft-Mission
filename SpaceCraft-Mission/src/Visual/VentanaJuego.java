@@ -16,17 +16,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-import Clases.Columna;
-import Clases.Dificultades;
-import Clases.JPanelFondo;
-import Clases.Jugador;
-import Clases.NaveJuego;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import BaseDeDatos.*;
+import Logica.BaseDeDatos;
+import Logica.Columna;
+import Logica.Dificultades;
+import Logica.Jugador;
+import Logica.NaveJuego;
+import Visual.JPanels.JPanelFondo;
 
 public class VentanaJuego extends JFrame {
 

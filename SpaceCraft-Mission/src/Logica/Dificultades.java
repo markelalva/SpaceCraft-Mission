@@ -1,4 +1,4 @@
-package Clases;
+package Logica;
 
 public class Dificultades {
 	private int DistanciaMapa;

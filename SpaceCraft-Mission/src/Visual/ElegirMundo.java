@@ -11,8 +11,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
-import Clases.Dificultades;
-import Clases.Jugador;
+import Logica.Dificultades;
+import Logica.Jugador;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

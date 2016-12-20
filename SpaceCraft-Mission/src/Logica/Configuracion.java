@@ -1,4 +1,4 @@
-package Clases;
+package Logica;
 
 import java.awt.Color;
 

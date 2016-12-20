@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Clases.Configuracion;
-import Clases.Jugador;
+import Logica.Configuracion;
+import Logica.Jugador;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;

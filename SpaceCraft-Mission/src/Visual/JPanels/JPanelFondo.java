@@ -1,4 +1,4 @@
-package Clases;
+package Visual.JPanels;
 
 import java.awt.Graphics;
 
