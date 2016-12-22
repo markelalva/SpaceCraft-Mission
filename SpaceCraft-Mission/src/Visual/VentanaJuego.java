@@ -100,7 +100,7 @@ public class VentanaJuego extends JFrame {
 		Vida3Jugador.setBounds(385, 15, 40, 27);
 		Informacion1.add(Vida3Jugador);
 
-		ImageIcon corazon = new ImageIcon("src/img/corazon.jpg");
+		ImageIcon corazon = new ImageIcon("src/Visual/img/corazon.jpg");
 		Icon icono1 = new ImageIcon(corazon.getImage().getScaledInstance(Vida1Jugador.getWidth(),
 				Vida1Jugador.getHeight(), Image.SCALE_DEFAULT));
 		Vida1Jugador.setIcon(icono1);
@@ -119,7 +119,7 @@ public class VentanaJuego extends JFrame {
 		Vida3Boss.setBounds(860, 15, 40, 27);
 		Informacion1.add(Vida3Boss);
 
-		ImageIcon corazonlatino = new ImageIcon("src/img/corazonlatino.png");
+		ImageIcon corazonlatino = new ImageIcon("src/Visual/img/corazonlatino.png");
 		Icon icono2 = new ImageIcon(corazonlatino.getImage().getScaledInstance(Vida1Jugador.getWidth(),
 				Vida1Jugador.getHeight(), Image.SCALE_DEFAULT));
 		Vida1Boss.setIcon(icono2);
