@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 
 public class PrimeraVentana extends JFrame {
@@ -61,6 +62,8 @@ public class PrimeraVentana extends JFrame {
 		contentPane.add(MensajeBienvenida);
 
 		Connection con = BaseDeDatos.initBD();
+		//También cargamos el Log
+		Log.CargarLog();
 
 		btnQuieroJugar = new JButton("Quiero Jugar");
 		btnQuieroJugar.setBounds(159, 119, 129, 23);
@@ -90,6 +93,7 @@ public class PrimeraVentana extends JFrame {
 						try {
 							JOptionPane.showMessageDialog(null,
 									"Gracias por volver a jugar: " + rs.getString("nickname"));
+								
 							jug = BaseDeDatos.CargarJugador(rs);
 
 							VentanaPrincipal vp = new VentanaPrincipal(jug);
@@ -104,6 +108,7 @@ public class PrimeraVentana extends JFrame {
 					{
 						BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
 						JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
+						Log.Loggear("El Jugador " + NombreJugador + "Se ha loggeado correctamente", Level.INFO);
 						jug = new Logica.Elementos.Jugador();
 						jug.setNombre(NombreJugador);
 						VentanaPrincipal vp = new VentanaPrincipal(jug);
