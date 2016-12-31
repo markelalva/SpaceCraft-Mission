@@ -323,7 +323,9 @@ public class GenerarMundo {
 				
 				 e = new Estrella();
 				//Obtenemos las coordenadas mediante un random.
-				e.setPosicion(r.nextInt(600), r.nextInt(200));
+				 
+				e.setPosicion(r.nextInt(600), r.nextInt(600) -10);
+				System.out.println(e.toString());
 				for (Columna ee: ListaColumnas){
 					if (e.getR().intersects(ee.getR()))
 						correcto = false;
