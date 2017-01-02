@@ -15,7 +15,7 @@ public class JLabelEstrella extends JLabel {
 	public JLabelEstrella() {
 
 		try {
-				setIcon(new ImageIcon(getClass().getResource("/Visual/img/Estrella.png")));
+				setIcon(new ImageIcon(getClass().getResource("/Visual/img/Estrella.jpg")));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println("Error en carga de recurso: Estrella.png no encontrado");
