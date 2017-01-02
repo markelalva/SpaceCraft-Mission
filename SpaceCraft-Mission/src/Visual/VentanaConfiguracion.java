@@ -13,6 +13,7 @@ import org.omg.Messaging.SyncScopeHelper;
 
 import Logica.BaseDeDatos;
 import Logica.Configuracion;
+import Logica.Log;
 import Logica.Elementos.Jugador;
 
 import javax.swing.JTextField;
@@ -21,6 +22,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 
 public class VentanaConfiguracion extends JFrame {
@@ -158,6 +160,7 @@ public class VentanaConfiguracion extends JFrame {
 					else {
 						JOptionPane.showMessageDialog(null,
 								"Su configuraci�n es correcta y ha sido guardada, pulse el bot�n salir para volver al menu.");
+						Log.Loggear("El usuario : " + jug.getNombre() + "ha cambiado su configuracion.", Level.FINE);
 						// La modificamos
 						jug.setConfi(modificada);
 						// La actualizamos en la base de datos

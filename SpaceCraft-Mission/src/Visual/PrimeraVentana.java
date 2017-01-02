@@ -93,7 +93,7 @@ public class PrimeraVentana extends JFrame {
 						try {
 							JOptionPane.showMessageDialog(null,
 									"Gracias por volver a jugar: " + rs.getString("nickname"));
-								
+							Log.Loggear("El Jugador " + NombreJugador + "Se ha loggeado correctamente", Level.INFO);
 							jug = BaseDeDatos.CargarJugador(rs);
 
 							VentanaPrincipal vp = new VentanaPrincipal(jug);

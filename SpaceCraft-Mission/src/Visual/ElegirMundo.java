@@ -12,10 +12,12 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import Logica.Dificultades;
+import Logica.Log;
 import Logica.Elementos.*;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 
 public class ElegirMundo extends JFrame {
@@ -60,6 +62,7 @@ public class ElegirMundo extends JFrame {
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(1));
+				Log.Loggear("Mundo 1 Seleccionado..", Level.INFO);
 				as.setVisible(true);
 			}
 		});
@@ -75,6 +78,7 @@ public class ElegirMundo extends JFrame {
 		Mundo2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(2));
+				Log.Loggear("Mundo 2 Seleccionado..", Level.INFO);
 				as.setVisible(true);
 			}
 		});
@@ -88,6 +92,7 @@ public class ElegirMundo extends JFrame {
 		Mundo3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(3));
+				Log.Loggear("Mundo 3 Seleccionado..", Level.INFO);
 				as.setVisible(true);
 			}
 		});

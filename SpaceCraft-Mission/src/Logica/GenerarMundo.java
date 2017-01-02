@@ -2,6 +2,7 @@ package Logica;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
 
 import javax.swing.JPanel;
 import Logica.*;
@@ -31,6 +32,7 @@ public class GenerarMundo {
 	private int estrellasrecogidas;
 
 	public GenerarMundo(JPanel panel1, Dificultades dificultad) {
+		Log.Loggear("Mundo Cargado.", Level.INFO);
 		panel = panel1;
 		VidasJugador = 3;
 		VidasBoss = 3;
@@ -168,6 +170,7 @@ public class GenerarMundo {
 		boss.setPosicion(700, 200);
 		panel.add(boss.getMiGrafico()); // A�ade al panel visual
 		boss.getMiGrafico().repaint();
+		Log.Loggear("El usuario ha llegado al Boss.", Level.INFO);
 
 		return true;
 

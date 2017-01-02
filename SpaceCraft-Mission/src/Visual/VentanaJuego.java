@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
+import java.util.logging.Level;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +23,7 @@ import javax.swing.ImageIcon;
 import Logica.BaseDeDatos;
 import Logica.Dificultades;
 import Logica.GenerarMundo;
+import Logica.Log;
 import Logica.Elementos.*;
 import Visual.JPanels.JPanelFondo;
 
@@ -363,6 +365,7 @@ public class VentanaJuego extends JFrame {
 				System.out.println(bosscargado);
 				if ((miMundo.VidasJugador == 0) || (!bosscargado)) {
 					JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo.");
+					Log.Loggear("El usuario ha perdido.", Level.INFO);
 					//Volvemos al menú principal
 					ElegirMundo em = new ElegirMundo(jug);
 					em.setVisible(true);
@@ -372,6 +375,7 @@ public class VentanaJuego extends JFrame {
 				} else {
 
 					JOptionPane.showMessageDialog(null, "Ha ganado");
+					Log.Loggear("El usuario : " + jug.getNombre() + "ha completado el mundo " + dif.getImagenFondo() + ".", Level.INFO);
 
 					//Actualizamos las puntuaciones tanto en el usuario como en la BD.
 					if (dif.getImagenFondo() ==1){
