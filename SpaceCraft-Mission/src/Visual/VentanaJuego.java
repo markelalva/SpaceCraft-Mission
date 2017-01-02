@@ -310,11 +310,12 @@ public class VentanaJuego extends JFrame {
 
 				// Aplicamos el efecto de la gravedad.
 				nave.Gravedad();
+				miMundo.ComprobarChoques();
 				// Generamos mas columnas.
 				if (!boss) {
 					CrearColumnas();
 					// Comprobamos los choques
-					seguir = !miMundo.ComprobarChoques();
+					seguir = miMundo.SeSigueJugando();
 					//Cargamos las Estrellas
 					miMundo.CrearYBorrarEstrellas();
 				}
@@ -341,6 +342,7 @@ public class VentanaJuego extends JFrame {
 					miMundo.AvanzaAtaquesNave();
 					miMundo.ComprobarChoquesAtaques();
 					
+					
 
 					seguir = miMundo.SeSigueJugando();
 					if (presionado[4]) {
@@ -360,7 +362,7 @@ public class VentanaJuego extends JFrame {
 			if ( !seguir ) {
 				System.out.println(bosscargado);
 				if ((miMundo.VidasJugador == 0) || (!bosscargado)) {
-					JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo. Puntuacion: (Pendiente de editar");
+					JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo.");
 					//Volvemos al menú principal
 					ElegirMundo em = new ElegirMundo(jug);
 					em.setVisible(true);

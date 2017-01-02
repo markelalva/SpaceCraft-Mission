@@ -116,13 +116,14 @@ public class GenerarMundo {
 		}
 	}
 
-	public boolean ComprobarChoques() {
-		boolean chocan = false;
+	public void ComprobarChoques() {
+
 		//Comprobamos los choqus con las columnas
 		for (Columna e : ListaColumnas) {
 			if (e.getR().intersects(nave.getR())) {
-
-				chocan = true;
+				nave.setPosicion(200, 300);
+				System.out.println("Chocan");
+				VidasJugador--;
 
 			}
 
@@ -143,7 +144,7 @@ public class GenerarMundo {
 		for (Estrella e : ListaEstrellasAux){
 			ListaEstrellas.remove(e);
 		}
-		return chocan;
+		
 	}
 	
 
