@@ -2,9 +2,10 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Interfaces.ObjetoConMovimiento;
 import Visual.JLabels.JLabelColumna;
 
-public class Columna {
+public class Columna implements ObjetoConMovimiento {
 	public double x;
 	public double y;
 	private JLabelColumna migrafico;
@@ -83,5 +84,30 @@ public class Columna {
 	public void AjustarColumna() {
 		this.r.setLocation((int) this.x + 50, (int) this.y);
 	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public void setY(double y) {
+		this.y = y;
+	}
+
+	public void setR(Rectangle r) {
+		this.r = r;
+	}
+
+	@Override
+	public void setPosicion(double posX, double posY) {
+		setX(posX);
+		setY(posY);
+		// Colocamos el grafico a esa posicion
+		migrafico.setLocation((int) posX, (int) posY);
+		r.setLocation((int) posX, (int) posY);
+		
+	}
+
+	
+
 
 }

@@ -2,9 +2,10 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Interfaces.ObjetoConMovimiento;
 import Visual.JLabels.JLabelDisparo;
 
-public class Ataque {
+public class Ataque implements ObjetoConMovimiento {
 	private String Atacante;
 	private int danyo;
 	private Rectangle r;

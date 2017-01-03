@@ -3,9 +3,10 @@ package Logica.Elementos;
 import java.awt.Component;
 import java.awt.Rectangle;
 
+import Interfaces.ObjetoConMovimiento;
 import Visual.JLabels.JLabelBoss;
 
-public class Boss {	private int ImagenBoss;
+public class Boss implements ObjetoConMovimiento {	
 	private double x;
 	private double y;
 	private int vida;

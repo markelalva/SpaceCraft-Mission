@@ -2,11 +2,12 @@ package Logica.Elementos;
 
 import java.awt.Rectangle;
 
+import Interfaces.ObjetoConMovimiento;
 import Visual.JLabels.JLabelEstrella;
 
-public class Estrella {
-	public int x;
-	public int y;
+public class Estrella implements ObjetoConMovimiento {
+	public double x;
+	public double y;
 	public double creacion;
 	public Rectangle r;
 	public JLabelEstrella miGrafico;
@@ -30,19 +31,19 @@ public class Estrella {
 
 
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 
@@ -88,10 +89,22 @@ public class Estrella {
 	public String toString() {
 		return "Estrella [x=" + x + ", y=" + y + ", creacion=" + creacion + ", r=" + r + "]";
 	}
-	
+
+
+
+	@Override
+	public void setPosicion(double posX, double posY) {
+		setX(posX);
+		setY(posY);
+		// Colocamos el grafico a esa posicion
+		miGrafico.setLocation((int) posX, (int) posY);
+		r.setLocation((int) posX, (int) posY);
+		
+
 	
 	
 	
 	
 
+}
 }
