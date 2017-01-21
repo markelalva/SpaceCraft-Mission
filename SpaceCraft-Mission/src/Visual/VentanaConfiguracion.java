@@ -142,16 +142,13 @@ public class VentanaConfiguracion extends JFrame {
 				}
 				// Comprobamos si se ha modificado con la que existe en el
 				// usuario.
-				System.out.println("La configuraciï¿½n del usuario es " + jug.getConfi().toString());
-				System.out.println(modificada.toString());
-				System.out.println(modificada.getColorNave() == jug.getConfi().getColorNave());
-				System.out.println(modificada.getTeclas().equals(jug.getConfi().getTeclas()));
+			
 				if (seguir) {
-					System.out.println();
+					
 					if ((modificada.getColorNave() == jug.getConfi().getColorNave())
 							&& (modificada.getTeclas().equals(jug.getConfi().getTeclas()))) {
 						JOptionPane.showMessageDialog(null,
-								"Ya disponï¿½as de esta configuracion, regresando al menï¿½ principal.");
+								"Ya disponías de esta configuracion, regresando al menï¿½ principal.");
 						VentanaPrincipal vp = new VentanaPrincipal(jug);
 						vp.setVisible(true);
 						dispose();

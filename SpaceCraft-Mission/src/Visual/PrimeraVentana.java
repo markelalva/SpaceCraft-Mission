@@ -20,6 +20,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.SpringLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class PrimeraVentana extends JFrame {
 
@@ -55,19 +62,14 @@ public class PrimeraVentana extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		MensajeBienvenida = new JLabel("Bienvenido a SpaceCraft-Mission");
 		MensajeBienvenida.setHorizontalAlignment(SwingConstants.CENTER);
-		MensajeBienvenida.setBounds(101, 11, 208, 43);
-		contentPane.add(MensajeBienvenida);
 
 		Connection con = BaseDeDatos.initBD();
 		//También cargamos el Log
 		Log.CargarLog();
 
 		btnQuieroJugar = new JButton("Quiero Jugar");
-		btnQuieroJugar.setBounds(159, 119, 129, 23);
-		contentPane.add(btnQuieroJugar);
 		btnQuieroJugar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +110,7 @@ public class PrimeraVentana extends JFrame {
 					{
 						BaseDeDatos.usuarioInsert(BaseDeDatos.ObtenerStatement(con), NombreJugador.toUpperCase());
 						JOptionPane.showMessageDialog(null, "Bienvenido a SpaceCraft-Mission  " + NombreJugador);
-						Log.Loggear("El Jugador " + NombreJugador + "Se ha loggeado correctamente", Level.INFO);
+						Log.Loggear("El Jugador " + NombreJugador + " Se ha loggeado correctamente", Level.INFO);
 						jug = new Logica.Elementos.Jugador();
 						jug.setNombre(NombreJugador);
 						VentanaPrincipal vp = new VentanaPrincipal(jug);
@@ -137,13 +139,38 @@ public class PrimeraVentana extends JFrame {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(345, 237, 89, 23);
-		contentPane.add(btnSalir);
 
 		Jugador = new JTextField();
-		Jugador.setBounds(159, 65, 129, 20);
-		contentPane.add(Jugador);
 		Jugador.setColumns(10);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(106)
+					.addComponent(MensajeBienvenida, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(134)
+					.addComponent(Jugador, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(162)
+					.addComponent(btnQuieroJugar))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(350)
+					.addComponent(btnSalir, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(16)
+					.addComponent(MensajeBienvenida, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(Jugador, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(34)
+					.addComponent(btnQuieroJugar)
+					.addGap(80)
+					.addComponent(btnSalir))
+		);
+		contentPane.setLayout(gl_contentPane);
 
 	}
 }

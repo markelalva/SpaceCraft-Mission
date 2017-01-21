@@ -19,6 +19,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class ElegirMundo extends JFrame {
 
@@ -54,11 +56,14 @@ public class ElegirMundo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("elegir mundo");
-		lblNewLabel.setBounds(102, 11, 273, 14);
+		JLabel lblNewLabel = new JLabel("ELEGIR MUNDO");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBounds(0, 11, 503, 45);
 		contentPane.add(lblNewLabel);
 
-		Mundo1 = new JButton("1");
+		Mundo1 = new JButton("MUNDO 1");
+		Mundo1.setToolTipText("Máxima Puntuacion de " + usuario.getNombre() + ": " +String.valueOf(usuario.getMaxPunt1()));
 		Mundo1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaJuego as = new VentanaJuego(usuario,new Dificultades(1));
@@ -66,11 +71,12 @@ public class ElegirMundo extends JFrame {
 				as.setVisible(true);
 			}
 		});
-		Mundo1.setBounds(22, 54, 89, 23);
+		Mundo1.setBounds(22, 92, 89, 23);
 		contentPane.add(Mundo1);
 
-		Mundo2 = new JButton("2");
-		Mundo2.setBounds(195, 54, 89, 23);
+		Mundo2 = new JButton("MUNDO 2");
+		Mundo2.setToolTipText("Máxima Puntuacion de " + usuario.getNombre() + ": " +String.valueOf(usuario.getMaxPunt2()));
+		Mundo2.setBounds(196, 92, 89, 23);
 		contentPane.add(Mundo2);
 		if (usuario.getMaxPunt1() == 0) {
 			Mundo2.setEnabled(false);
@@ -82,8 +88,9 @@ public class ElegirMundo extends JFrame {
 				as.setVisible(true);
 			}
 		});
-		Mundo3 = new JButton("3");
-		Mundo3.setBounds(364, 54, 89, 23);
+		Mundo3 = new JButton("MUNDO 3");
+		Mundo3.setToolTipText("Máxima Puntuacion de " + usuario.getNombre() + ": " + String.valueOf( usuario.getMaxPunt3()));
+		Mundo3.setBounds(364, 92, 89, 23);
 		contentPane.add(Mundo3);
 		if (usuario.getMaxPunt2() == 0) {
 			Mundo3.setEnabled(false);
@@ -97,7 +104,8 @@ public class ElegirMundo extends JFrame {
 			}
 		});
 
-		btnVolver = new JButton("Volver");
+		btnVolver = new JButton("VOLVER");
+		btnVolver.setToolTipText("Regresa al men\u00FA principal");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaPrincipal vp = new VentanaPrincipal(usuario);
@@ -106,7 +114,7 @@ public class ElegirMundo extends JFrame {
 
 			}
 		});
-		btnVolver.setBounds(364, 263, 89, 23);
+		btnVolver.setBounds(364, 259, 89, 23);
 		contentPane.add(btnVolver);
 
 	}

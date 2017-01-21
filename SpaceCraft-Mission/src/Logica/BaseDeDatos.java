@@ -53,23 +53,7 @@ public class BaseDeDatos {
 			return null;
 		}
 	}
-	public static Statement usarCrearTablaErroresBD(Connection con) {
-		try {
-			Statement statement = con.createStatement();
-			statement.setQueryTimeout(30); // poner timeout 30 msg
-			try {
-				statement.executeUpdate("create table errores "
-						+ "(nickname text not null primary key, Pantalla text, Descripcion text)");
-				System.out.println("TABLA CREADA");
-			} catch (SQLException e) {
-			} // Tabla ya existe. Nada que hacer
 
-			return statement;
-		} catch (SQLException e) {
-
-			return null;
-		}
-	}
 	
 	
 
@@ -91,24 +75,7 @@ public class BaseDeDatos {
 		return correcto;
 
 	}
-	public static boolean ErrorInsert(Statement st, String Nickname, String Pantalla, String Descripcion) {
-		boolean correcto = true;
 
-		String sentSQL = "";
-
-		sentSQL = "Insert into errores  values(" + "'" + Nickname + "','" + Pantalla + "','" + Descripcion + "')";
-
-		try {
-			st.executeUpdate(sentSQL);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			correcto = false;
-		}
-
-		return correcto;
-
-	}
 
 	public static boolean CambiarConfiguracion(Statement st, Jugador u) {
 		boolean completado = true;
@@ -175,6 +142,19 @@ public class BaseDeDatos {
 		}
 		return rs;
 
+	}
+	
+	public static ResultSet ObtenerMaximasPuntuacion2(Statement st){
+		ResultSet rs = null;
+		String sent = "select MAX(MaxPunt1) from usuarios";
+		try {
+			rs = st.executeQuery(sent);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;		
+		
 	}
 
 	public static Jugador CargarJugador(ResultSet rs) {

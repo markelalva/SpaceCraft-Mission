@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Logica.BaseDeDatos;
 import Logica.Configuracion;
 import Logica.Log;
 
@@ -14,6 +15,9 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -22,6 +26,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.ImageIcon;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -55,16 +60,13 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Menu Principal (Cambiar por un icono)");
-		lblNewLabel.setBounds(185, 28, 165, 46);
-		contentPane.add(lblNewLabel);
-
 		NombreUsuario = new JLabel(usuario.getNombre());
-		NombreUsuario.setBounds(15, 28, 46, 14);
+		NombreUsuario.setBounds(10, 43, 136, 14);
 		contentPane.add(NombreUsuario);
 		
-				MenuConfiguracion = new JButton("Configuraciï¿½n");
-				MenuConfiguracion.setBounds(185, 249, 111, 23);
+				MenuConfiguracion = new JButton("Configuraci\u00F3n");
+				MenuConfiguracion.setToolTipText("Elige c\u00F3mo quieres jugar");
+				MenuConfiguracion.setBounds(171, 181, 165, 23);
 				MenuConfiguracion.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
@@ -76,9 +78,12 @@ public class VentanaPrincipal extends JFrame {
 				});
 				
 						ElegirMundo = new JButton("Seleccionar Nivel");
-						ElegirMundo.setBounds(185, 151, 113, 23);
+						ElegirMundo.setToolTipText("Selecciona un nivel");
+						ElegirMundo.setBounds(171, 133, 165, 23);
 						ElegirMundo.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
+								
+								
 								ElegirMundo em = new ElegirMundo(usuario);
 								em.setVisible(true);
 								dispose();
@@ -88,26 +93,52 @@ public class VentanaPrincipal extends JFrame {
 				contentPane.add(MenuConfiguracion);
 		
 		btnExportarDatos = new JButton("Exportar Datos");
-		btnExportarDatos.setBounds(15, 278, 170, 23);
+		btnExportarDatos.setToolTipText("Obten tu diploma");
+		if (usuario.getMaxPunt3() == 0){
+			btnExportarDatos.setEnabled(false);
+		}
+		btnExportarDatos.setBounds(171, 230, 170, 23);
 		btnExportarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Log.Loggear("Sus datos serán exportados a un .txt " , Level.INFO);
 				PrintStream fich = null;
 				try {
-					fich = new PrintStream(new FileOutputStream("Puntuaciones_" + usuario.getNombre()));
+					fich = new PrintStream(new FileOutputStream("Puntuaciones_" + usuario.getNombre() +".txt"));
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				fich.print("Enhorabuena, has conseguido pasarte el juego.");
+				fich.println("DIPLOMA:");
 				fich.println("Nombre: " + usuario.getNombre() );
 				fich.println("Color De Nave Seleccionado : " + usuario.getConfi().getColorNave() );
 				fich.println("Teclas a usar: " + usuario.getConfi().getTeclas() );
 				fich.println("Máxima puntuación obtenida en el mundo 1: " + usuario.getMaxPunt1());
 				fich.println("Máxima puntuación obtenida en el mundo 2: " + usuario.getMaxPunt2());
 				fich.println("Máxima puntuación obtenida en el mundo 3: " + usuario.getMaxPunt3());
+				fich.println(" ");
+				fich.println("Gracias por jugar, esperemos haya cumplido sus expectativas.");
 				
 			}
 		});
 		contentPane.add(btnExportarDatos);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/Visual/img/barra-principal.png")));
+		lblNewLabel.setBounds(156, 28, 200, 62);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Volver");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PrimeraVentana pv = new PrimeraVentana();
+				pv.setVisible(true);
+				dispose();
+						
+			}
+		});
+		btnNewButton.setToolTipText("Regresa al primer men\u00FA");
+		btnNewButton.setBounds(171, 276, 165, 23);
+		contentPane.add(btnNewButton);
 	}
 }

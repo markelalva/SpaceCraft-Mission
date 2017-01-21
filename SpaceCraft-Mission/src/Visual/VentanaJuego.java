@@ -340,8 +340,7 @@ public class VentanaJuego extends JFrame {
 					}
 					miMundo.boss.MoverBoss(dif.getVelocidadMovimientoBoss());
 					miMundo.AtacaBoss();
-					miMundo.AvanzaAtaquesBoss();
-					miMundo.AvanzaAtaquesNave();
+					miMundo.AvanzaAtaques();
 					miMundo.ComprobarChoquesAtaques();
 					
 					

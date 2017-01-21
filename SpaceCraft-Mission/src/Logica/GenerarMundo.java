@@ -1,7 +1,9 @@
 package Logica;
+
 import java.awt.Color;
 import java.awt.List;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Level;
 
@@ -23,7 +25,7 @@ public class GenerarMundo {
 	public static ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
 	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>();
 	protected ArrayList<Ataque> ListaAtaquesNave = new ArrayList<Ataque>();
-	protected ArrayList <Estrella>ListaEstrellas = new ArrayList <Estrella>();
+	protected ArrayList<Estrella> ListaEstrellas = new ArrayList<Estrella>();
 	public double distanciarecorrida = 0;
 	public double puntuacion = 0;
 	private Random r = new Random();// Para cosas en las que se necesite
@@ -55,7 +57,6 @@ public class GenerarMundo {
 	public NaveJuego getNave() {
 		return nave;
 	}
-	// 600, 465, 0
 
 	public void CrearColumnaInferior(int tamanyo, int color) {
 
@@ -72,7 +73,6 @@ public class GenerarMundo {
 		ListaColumnas.add(col);
 	}
 
-	// 600, 0, 1
 	public void CrearColumnaSuperior(int tamanyo, int color) {
 		Columna col = new Columna(tamanyo, color);
 		col.setX(600);
@@ -94,7 +94,7 @@ public class GenerarMundo {
 			panel.repaint();
 
 		}
-		for (Estrella ee : ListaEstrellas){
+		for (Estrella ee : ListaEstrellas) {
 			ee.Avanzar(dif.getVelocidadAvance());
 			ee.getMiGrafico().repaint();
 			panel.repaint();
@@ -102,16 +102,13 @@ public class GenerarMundo {
 		distanciarecorrida++;
 	}
 
-	public void AvanzaAtaquesBoss() {
+	public void AvanzaAtaques() {
 		for (Ataque at : ListaAtaques) {
 			at.Avanzar(false);
 			at.getMiGrafico().repaint();
 			panel.repaint();
 
 		}
-	}
-
-	public void AvanzaAtaquesNave() {
 		for (Ataque at : ListaAtaquesNave) {
 			at.Avanzar(true);
 			at.getMiGrafico().repaint();
@@ -122,73 +119,60 @@ public class GenerarMundo {
 
 	public void ComprobarChoques() {
 
-		//Comprobamos los choqus con las columnas
+		// Comprobamos los choqus con las columnas
 		for (Columna e : ListaColumnas) {
 			if (e.getR().intersects(nave.getR())) {
 				nave.setPosicion(200, 300);
-				System.out.println("Chocan");
+
 				VidasJugador--;
 
 			}
 
 		}
-		
-		//Comprobamos los choques con las estrellas.
-		//Creamos un Array Aux, en principio con una variable Estrella nos valdría, pero por si acaso se generan 2 estrellas pegadas.
-		ArrayList <Estrella>ListaEstrellasAux = new ArrayList <Estrella>();
-		for (Estrella e : ListaEstrellas){
+
+		// Comprobamos los choques con las estrellas.
+		// Creamos un Array Aux, en principio con una variable Estrella nos
+		// valdría, pero por si acaso se generan 2 estrellas pegadas.
+		ArrayList<Estrella> ListaEstrellasAux = new ArrayList<Estrella>();
+		for (Estrella e : ListaEstrellas) {
 			if (e.getR().intersects(nave.getR())) {
 				panel.remove(e.getMiGrafico());
-				System.out.println("Chocan");
+
 				ListaEstrellasAux.add(e);
 				estrellasrecogidas++;
-				
+
 			}
 		}
-		for (Estrella e : ListaEstrellasAux){
+		for (Estrella e : ListaEstrellasAux) {
 			ListaEstrellas.remove(e);
 		}
-		
+
 	}
-	
 
 	// Metodo para borrar las columnas una vez que el Boss ha aparecido
-	
-	
-	public static void BorrarColumnasRecursivo(int posicion){
-		if (posicion == ListaColumnas.size()){
+
+	public static void BorrarColumnasRecursivo(int posicion) {
+		if (posicion == ListaColumnas.size()) {
 			ListaColumnas.clear();
 			Log.Loggear("Se han borrado todas las columnas", Level.INFO);
-			
-		}
-		else{
-			
-			panel.remove(ListaColumnas.get(posicion).getMigrafico());
-			BorrarColumnasRecursivo(posicion+1);
-			
-			
-		}
-		
-		
-		
-	}
-		
-		
-		
-	
-	/*public void BorrarColumnas() {
-		// Borramos todo
-		for (Columna ee : ListaColumnas) {
-			panel.remove(ee.getMigrafico());
-		}
-		ListaColumnas.clear();
 
-		// Minimizamos el tamaï¿½o del array, para no ocupar memoria que no
-		// necesitamos.
-		ListaColumnas.trimToSize();
-		panel.repaint();
+		} else {
+
+			panel.remove(ListaColumnas.get(posicion).getMigrafico());
+			BorrarColumnasRecursivo(posicion + 1);
+
+		}
+
 	}
-	*/
+
+	/*
+	 * public void BorrarColumnas() { // Borramos todo for (Columna ee :
+	 * ListaColumnas) { panel.remove(ee.getMigrafico()); }
+	 * ListaColumnas.clear();
+	 * 
+	 * // Minimizamos el tamaï¿½o del array, para no ocupar memoria que no //
+	 * necesitamos. ListaColumnas.trimToSize(); panel.repaint(); }
+	 */
 
 	// Metodo para Crear los Boss
 	public boolean cargarBoss() {
@@ -215,7 +199,8 @@ public class GenerarMundo {
 		}
 
 		else {
-			if ((System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() - 1).getTiempoCreacion()) > dif.getTiempoEntreAtaqueBoss()) {
+			if ((System.currentTimeMillis() - ListaAtaques.get(ListaAtaques.size() - 1).getTiempoCreacion()) > dif
+					.getTiempoEntreAtaqueBoss()) {
 
 				Ataque r = new Ataque(false);
 				r.setAtacante("HATSUROBIN");
@@ -328,9 +313,10 @@ public class GenerarMundo {
 		}
 
 	}
-	
-	public void ActualizarPuntuacion(){
-		puntuacion = (dif.getDistanciaMapa() * 3) - ((System.currentTimeMillis() - tiempojugado)/60) - 500*(3-VidasJugador) + (200*estrellasrecogidas);
+
+	public void ActualizarPuntuacion() {
+		puntuacion = (dif.getDistanciaMapa() * 3) - ((System.currentTimeMillis() - tiempojugado) / 60)
+				- 500 * (3 - VidasJugador) + (200 * estrellasrecogidas);
 	}
 
 	public boolean SeSigueJugando() {
@@ -339,72 +325,69 @@ public class GenerarMundo {
 		else
 			return true;
 	}
-	
-	public void CrearYBorrarEstrellas(){
-		//Primera Estrella
-		if (ListaEstrellas.size() == 0){
-		//Esperamos 5 segundos desde la creaciÃ³n del mundo para empezar con la primera.
-			if ((System.currentTimeMillis() - this.tiempojugado ) >5000){
+
+	public void CrearYBorrarEstrellas() {
+		// Primera Estrella
+		if (ListaEstrellas.size() == 0) {
+			// Esperamos 5 segundos desde la creaciÃ³n del mundo para empezar
+			// con la primera.
+			if ((System.currentTimeMillis() - this.tiempojugado) > 5000) {
 				boolean correcto;
-			Estrella e = null;
-			//Para que no se pongan con las columnas
-				do{
+				Estrella e = null;
+				// Para que no se pongan con las columnas
+				do {
 					correcto = true;
+
+					e = new Estrella();
+					// Obtenemos las coordenadas mediante un random.
+
+					e.setPosicion(r.nextInt(600), r.nextInt(600) - 10);
 				
-				 e = new Estrella();
-				//Obtenemos las coordenadas mediante un random.
-				 
-				e.setPosicion(r.nextInt(600), r.nextInt(600) -10);
-				System.out.println(e.toString());
-				for (Columna ee: ListaColumnas){
-					if (e.getR().intersects(ee.getR()))
-						correcto = false;
-				}
-				}
-				while (!correcto);
+					for (Columna ee : ListaColumnas) {
+						if (e.getR().intersects(ee.getR()))
+							correcto = false;
+					}
+				} while (!correcto);
+				ListaEstrellas.add(e);
+				panel.add(e.getMiGrafico());
+			}
+		} else {
+			if ((System.currentTimeMillis() - ListaEstrellas.get(ListaEstrellas.size() - 1).getCreacion()) > 1000) {
+				boolean correcto;
+				Estrella e = null;
+				// Para que no se pongan con las columnas
+				do {
+					correcto = true;
+
+					e = new Estrella();
+					// Obtenemos las coordenadas mediante un random.
+					e.setPosicion(r.nextInt(600), r.nextInt(200));
+					for (Columna ee : ListaColumnas) {
+						if (e.getR().intersects(ee.getR()))
+							correcto = false;
+					}
+				} while (!correcto);
 				ListaEstrellas.add(e);
 				panel.add(e.getMiGrafico());
 			}
 		}
-			else
-			{
-				if ((System.currentTimeMillis() - ListaEstrellas.get(ListaEstrellas.size() -1).getCreacion()) >1000){
-					boolean correcto;
-					Estrella e = null;
-					//Para que no se pongan con las columnas
-						do{
-							correcto = true;
-						
-						 e = new Estrella();
-						//Obtenemos las coordenadas mediante un random.
-						e.setPosicion(r.nextInt(600), r.nextInt(200));
-						for (Columna ee: ListaColumnas){
-							if (e.getR().intersects(ee.getR()))
-								correcto = false;
-						}
-						}
-						while (!correcto);
-					ListaEstrellas.add(e);
-					panel.add(e.getMiGrafico());
-				}
-			}
-		
-		//Borramos las estrellas que lleven mas de 6 segundos
-		//Creamos un Array auxiliar para evitar el ConcurrentModification
-		ArrayList <Estrella>ListaEstrellasAux = new ArrayList <Estrella>();
-		
-		for(Estrella ee: ListaEstrellas){
-			if ((System.currentTimeMillis() - ee.getCreacion()) >6000 ){
-				panel.remove(ee.getMiGrafico());;
+
+		// Borramos las estrellas que lleven mas de 6 segundos
+		// Creamos un Array auxiliar para evitar el ConcurrentModification
+		ArrayList<Estrella> ListaEstrellasAux = new ArrayList<Estrella>();
+
+		for (Estrella ee : ListaEstrellas) {
+			if ((System.currentTimeMillis() - ee.getCreacion()) > 6000) {
+				panel.remove(ee.getMiGrafico());
+				;
 				ListaEstrellasAux.add(ee);
 			}
 		}
-		for (Estrella ee: ListaEstrellasAux){
+		for (Estrella ee : ListaEstrellasAux) {
 			ListaEstrellas.remove(ee);
 		}
-			
-		}
-	
+
+	}
 
 	public int getVidasJugador() {
 		return VidasJugador;
@@ -423,7 +406,7 @@ public class GenerarMundo {
 	}
 
 	public double getPuntuacion() {
-		return (int)puntuacion;
+		return (int) puntuacion;
 	}
 
 	public void setPuntuacion(double puntuacion) {
@@ -433,7 +416,5 @@ public class GenerarMundo {
 	public double getTiempojugado() {
 		return tiempojugado;
 	}
-	
-	
-	
+
 }
