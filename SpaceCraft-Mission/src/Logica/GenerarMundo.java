@@ -153,7 +153,14 @@ public class GenerarMundo {
 	
 
 	// Metodo para borrar las columnas una vez que el Boss ha aparecido
-	public void BorrarColumnas() {
+	
+	
+
+		
+		
+		
+	
+	/*public void BorrarColumnas() {
 		// Borramos todo
 		for (Columna ee : ListaColumnas) {
 			panel.remove(ee.getMigrafico());
@@ -165,6 +172,7 @@ public class GenerarMundo {
 		ListaColumnas.trimToSize();
 		panel.repaint();
 	}
+	*/
 
 	// Metodo para Crear los Boss
 	public boolean cargarBoss() {

@@ -53,32 +53,18 @@ public class VentanaPrincipal extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.UNRELATED_GAP_COLSPEC,
-				ColumnSpec.decode("46px"),
-				ColumnSpec.decode("124px"),
-				ColumnSpec.decode("165px"),},
-			new RowSpec[] {
-				RowSpec.decode("23px"),
-				RowSpec.decode("46px"),
-				RowSpec.decode("49px"),
-				RowSpec.decode("28px"),
-				RowSpec.decode("39px"),
-				RowSpec.decode("28px"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
+		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Menu Principal (Cambiar por un icono)");
-		contentPane.add(lblNewLabel, "4, 2, fill, fill");
+		lblNewLabel.setBounds(185, 28, 165, 46);
+		contentPane.add(lblNewLabel);
 
 		NombreUsuario = new JLabel(usuario.getNombre());
-		contentPane.add(NombreUsuario, "2, 2, fill, top");
+		NombreUsuario.setBounds(15, 28, 46, 14);
+		contentPane.add(NombreUsuario);
 		
 				MenuConfiguracion = new JButton("Configuraciï¿½n");
+				MenuConfiguracion.setBounds(185, 249, 111, 23);
 				MenuConfiguracion.addActionListener(new ActionListener() {
 
 					public void actionPerformed(ActionEvent e) {
@@ -90,6 +76,7 @@ public class VentanaPrincipal extends JFrame {
 				});
 				
 						ElegirMundo = new JButton("Seleccionar Nivel");
+						ElegirMundo.setBounds(185, 151, 113, 23);
 						ElegirMundo.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
 								ElegirMundo em = new ElegirMundo(usuario);
@@ -97,10 +84,11 @@ public class VentanaPrincipal extends JFrame {
 								dispose();
 							}
 						});
-						contentPane.add(ElegirMundo, "4, 5, left, top");
-				contentPane.add(MenuConfiguracion, "4, 10, left, fill");
+						contentPane.add(ElegirMundo);
+				contentPane.add(MenuConfiguracion);
 		
 		btnExportarDatos = new JButton("Exportar Datos");
+		btnExportarDatos.setBounds(15, 278, 170, 23);
 		btnExportarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Log.Loggear("Sus datos serán exportados a un .txt " , Level.INFO);
@@ -120,6 +108,6 @@ public class VentanaPrincipal extends JFrame {
 				
 			}
 		});
-		contentPane.add(btnExportarDatos, "2, 12, 2, 1");
+		contentPane.add(btnExportarDatos);
 	}
 }
