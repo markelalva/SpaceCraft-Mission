@@ -335,7 +335,7 @@ public class VentanaJuego extends JFrame {
 
 					if (!bosscargado) {
 						bosscargado = miMundo.cargarBoss();
-						miMundo.BorrarColumnas();
+						GenerarMundo.BorrarColumnasRecursivo(0);
 
 					}
 					miMundo.boss.MoverBoss(dif.getVelocidadMovimientoBoss());

@@ -16,11 +16,11 @@ import Logica.Elementos.NaveJuego;
 import Visual.JPanels.JPanelFondo;
 
 public class GenerarMundo {
-	private JPanel panel;
+	private static JPanel panel;
 	private NaveJuego nave;
 	public Boss boss;
 	public Dificultades dif;
-	public ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
+	public static ArrayList<Columna> ListaColumnas = new ArrayList<Columna>();
 	protected ArrayList<Ataque> ListaAtaques = new ArrayList<Ataque>();
 	protected ArrayList<Ataque> ListaAtaquesNave = new ArrayList<Ataque>();
 	protected ArrayList <Estrella>ListaEstrellas = new ArrayList <Estrella>();
@@ -155,7 +155,23 @@ public class GenerarMundo {
 	// Metodo para borrar las columnas una vez que el Boss ha aparecido
 	
 	
-
+	public static void BorrarColumnasRecursivo(int posicion){
+		if (posicion == ListaColumnas.size()){
+			ListaColumnas.clear();
+			Log.Loggear("Se han borrado todas las columnas", Level.INFO);
+			
+		}
+		else{
+			
+			panel.remove(ListaColumnas.get(posicion).getMigrafico());
+			BorrarColumnasRecursivo(posicion+1);
+			
+			
+		}
+		
+		
+		
+	}
 		
 		
 		
