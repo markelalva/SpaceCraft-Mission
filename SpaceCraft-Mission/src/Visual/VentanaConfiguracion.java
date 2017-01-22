@@ -168,7 +168,7 @@ public class VentanaConfiguracion extends JFrame {
 					else {
 						JOptionPane.showMessageDialog(null,
 								"Su configuraci�n es correcta y ha sido guardada, pulse el bot�n salir para volver al menu.");
-						Log.Loggear("El usuario : " + jug.getNombre() + "ha cambiado su configuracion.", Level.FINE);
+						Log.Loggear("El usuario : " + jug.getNombre() + "ha cambiado su configuracion.", Level.INFO);
 						// La modificamos
 						jug.setConfi(modificada);
 						// La actualizamos en la base de datos

@@ -83,7 +83,7 @@ public class VentanaPrincipal extends JFrame {
 						ElegirMundo.setBounds(171, 133, 165, 23);
 						ElegirMundo.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								
+								Log.Loggear("El usuario : " + usuario.getNombre() + " está eligiendo nivel.", Level.INFO);
 								
 								ElegirMundo em = new ElegirMundo(usuario);
 								em.setVisible(true);
@@ -109,7 +109,7 @@ public class VentanaPrincipal extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				fich.print("Enhorabuena, has conseguido pasarte el juego.");
+				fich.println("Enhorabuena, has conseguido pasarte el juego.");
 				fich.println("DIPLOMA:");
 				fich.println("Nombre: " + usuario.getNombre() );
 				fich.println("Color De Nave Seleccionado : " + usuario.getConfi().getColorNave() );
@@ -118,7 +118,7 @@ public class VentanaPrincipal extends JFrame {
 				fich.println("Máxima puntuación obtenida en el mundo 2: " + usuario.getMaxPunt2());
 				fich.println("Máxima puntuación obtenida en el mundo 3: " + usuario.getMaxPunt3());
 				fich.println(" ");
-				fich.println("Gracias por jugar, esperemos haya cumplido sus expectativas.");
+				fich.println("Gracias por jugar, esperemos que el juego haya cumplido sus expectativas.");
 				
 			}
 		});
@@ -134,6 +134,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PrimeraVentana pv = new PrimeraVentana();
 				pv.setVisible(true);
+				Log.Loggear("El usuario : " + usuario.getNombre() + " se ha desconectado correctamente.", Level.INFO);
 				dispose();
 						
 			}
