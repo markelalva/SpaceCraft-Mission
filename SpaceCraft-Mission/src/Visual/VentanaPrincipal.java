@@ -59,6 +59,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setTitle("Ventana Principal");
 
 		NombreUsuario = new JLabel(usuario.getNombre());
 		NombreUsuario.setBounds(10, 43, 136, 14);

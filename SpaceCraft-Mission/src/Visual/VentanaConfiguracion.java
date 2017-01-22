@@ -55,6 +55,7 @@ public class VentanaConfiguracion extends JFrame {
 	public VentanaConfiguracion(Jugador jug) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		setTitle("Configuración");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -107,6 +108,16 @@ public class VentanaConfiguracion extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(335, 227, 89, 23);
 		contentPane.add(btnCancelar);
+		btnCancelar.setToolTipText("Regresa a la ventana principal");
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaPrincipal vp = new VentanaPrincipal(jug);
+				vp.setVisible(true);
+				dispose();
+			}
+		}
+		);
 
 		BotonesFlechas.add(rdbtnWasd);
 		BotonesFlechas.add(radioButton);

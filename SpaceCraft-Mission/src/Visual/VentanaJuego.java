@@ -361,7 +361,7 @@ public class VentanaJuego extends JFrame {
 
 			}
 			if ( !seguir ) {
-				System.out.println(bosscargado);
+				
 				if ((miMundo.VidasJugador == 0) || (!bosscargado)) {
 					JOptionPane.showMessageDialog(null, "Ha perdido, intentalo de nuevo.");
 					Log.Loggear("El usuario ha perdido.", Level.INFO);

@@ -160,7 +160,7 @@ public class BaseDeDatos {
 	public static Jugador CargarJugador(ResultSet rs) {
 		Jugador e = new Jugador();
 		try {
-			System.out.println("Hola");
+
 			e.setNombre(rs.getString("nickname"));
 
 			e.setMaxPunt1(rs.getInt("MaxPunt1"));
@@ -171,7 +171,7 @@ public class BaseDeDatos {
 			int color = rs.getInt("ColorNave");
 			if (color == 0) {
 				confi.setColorNave(Color.BLUE);
-				System.out.println("El usuario tiene el color azul");
+			
 
 			}
 			if (color == 1) {
