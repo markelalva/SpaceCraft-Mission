@@ -34,7 +34,7 @@ public class Dificultades {
 			
 		}
 		if (Nivel ==3){
-			DistanciaMapa = 40;
+			DistanciaMapa = 4000;
 			VelocidadAvance = 8;
 			DistanciaEntreColumnas = 80;
 			ImagenFondo = 3;
